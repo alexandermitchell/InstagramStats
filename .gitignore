@@ -181,4 +181,4 @@ fastlane/report.xml
 fastlane/screenshots
 *.xcuserstate
 
-/Users/alexmitchell/Desktop/Master/Lighthouse Prep/InstagramStats/InstagramStats/InstagramStats/API_KEYS.h
+/API_KEYS.h
