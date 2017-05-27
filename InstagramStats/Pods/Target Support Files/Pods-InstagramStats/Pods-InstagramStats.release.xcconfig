@@ -1,9 +1,9 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/InstagramKit" "${PODS_ROOT}/Headers/Public/UICKeyChainStore"
-LIBRARY_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/AFNetworking" "$PODS_CONFIGURATION_BUILD_DIR/InstagramKit" "$PODS_CONFIGURATION_BUILD_DIR/UICKeyChainStore"
-OTHER_CFLAGS = $(inherited) -INSTAGRAMKIT_INCLUDE_UICKEYCHAINSTORE $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AFNetworking" -isystem "${PODS_ROOT}/Headers/Public/InstagramKit" -isystem "${PODS_ROOT}/Headers/Public/UICKeyChainStore"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"AFNetworking" -l"InstagramKit" -l"UICKeyChainStore" -framework "CoreGraphics" -framework "MobileCoreServices" -framework "Security" -framework "SystemConfiguration"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/InstagramKit" "${PODS_ROOT}/Headers/Public/MDFTextAccessibility" "${PODS_ROOT}/Headers/Public/MaterialComponents" "${PODS_ROOT}/Headers/Public/PKRevealController" "${PODS_ROOT}/Headers/Public/UICKeyChainStore"
+LIBRARY_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/AFNetworking" "$PODS_CONFIGURATION_BUILD_DIR/InstagramKit" "$PODS_CONFIGURATION_BUILD_DIR/MDFTextAccessibility" "$PODS_CONFIGURATION_BUILD_DIR/MaterialComponents" "$PODS_CONFIGURATION_BUILD_DIR/PKRevealController" "$PODS_CONFIGURATION_BUILD_DIR/UICKeyChainStore"
+OTHER_CFLAGS = $(inherited) -INSTAGRAMKIT_INCLUDE_UICKEYCHAINSTORE $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AFNetworking" -isystem "${PODS_ROOT}/Headers/Public/InstagramKit" -isystem "${PODS_ROOT}/Headers/Public/MDFTextAccessibility" -isystem "${PODS_ROOT}/Headers/Public/MaterialComponents" -isystem "${PODS_ROOT}/Headers/Public/PKRevealController" -isystem "${PODS_ROOT}/Headers/Public/UICKeyChainStore"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"AFNetworking" -l"InstagramKit" -l"MDFTextAccessibility" -l"MaterialComponents" -l"PKRevealController" -l"UICKeyChainStore" -framework "CoreGraphics" -framework "Foundation" -framework "MobileCoreServices" -framework "QuartzCore" -framework "Security" -framework "SystemConfiguration" -framework "UIKit"
 PODS_BUILD_DIR = $BUILD_DIR
 PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_ROOT = ${SRCROOT}/Pods
