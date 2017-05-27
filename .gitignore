@@ -181,4 +181,4 @@ fastlane/report.xml
 fastlane/screenshots
 *.xcuserstate
 
-/API_KEYS.h
+/**/API_KEYS.h
