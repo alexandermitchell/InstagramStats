@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		920101041ED9FF8400FCB342 /* User+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 920100FD1ED9FF8400FCB342 /* User+CoreDataClass.m */; };
+		920101051ED9FF8400FCB342 /* User+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 920100FF1ED9FF8400FCB342 /* User+CoreDataProperties.m */; };
+		920101061ED9FF8400FCB342 /* Photo+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 920101011ED9FF8400FCB342 /* Photo+CoreDataClass.m */; };
+		920101071ED9FF8400FCB342 /* Photo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 920101031ED9FF8400FCB342 /* Photo+CoreDataProperties.m */; };
 		D01ABCCF1ED9EFC8009D11CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D01ABCCE1ED9EFC8009D11CE /* main.m */; };
 		D01ABCD21ED9EFC8009D11CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D01ABCD11ED9EFC8009D11CE /* AppDelegate.m */; };
 		D01ABCD51ED9EFC8009D11CE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D01ABCD41ED9EFC8009D11CE /* ViewController.m */; };
@@ -20,6 +24,14 @@
 /* Begin PBXFileReference section */
 		1FBA3DA4FCB566320621DC1B /* Pods-InstagramStats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramStats.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InstagramStats/Pods-InstagramStats.debug.xcconfig"; sourceTree = "<group>"; };
 		830C5B42B9CFD08B5589E92D /* libPods-InstagramStats.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-InstagramStats.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		920100FC1ED9FF8400FCB342 /* User+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "User+CoreDataClass.h"; sourceTree = "<group>"; };
+		920100FD1ED9FF8400FCB342 /* User+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "User+CoreDataClass.m"; sourceTree = "<group>"; };
+		920100FE1ED9FF8400FCB342 /* User+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "User+CoreDataProperties.h"; sourceTree = "<group>"; };
+		920100FF1ED9FF8400FCB342 /* User+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "User+CoreDataProperties.m"; sourceTree = "<group>"; };
+		920101001ED9FF8400FCB342 /* Photo+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Photo+CoreDataClass.h"; sourceTree = "<group>"; };
+		920101011ED9FF8400FCB342 /* Photo+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Photo+CoreDataClass.m"; sourceTree = "<group>"; };
+		920101021ED9FF8400FCB342 /* Photo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Photo+CoreDataProperties.h"; sourceTree = "<group>"; };
+		920101031ED9FF8400FCB342 /* Photo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Photo+CoreDataProperties.m"; sourceTree = "<group>"; };
 		BC1E65EC1431FCE086212DF2 /* Pods-InstagramStats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramStats.release.xcconfig"; path = "Pods/Target Support Files/Pods-InstagramStats/Pods-InstagramStats.release.xcconfig"; sourceTree = "<group>"; };
 		D01ABCCA1ED9EFC8009D11CE /* InstagramStats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramStats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D01ABCCE1ED9EFC8009D11CE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -63,6 +75,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		920101081ED9FF8A00FCB342 /* CoreDataModel */ = {
+			isa = PBXGroup;
+			children = (
+				920100FC1ED9FF8400FCB342 /* User+CoreDataClass.h */,
+				920100FD1ED9FF8400FCB342 /* User+CoreDataClass.m */,
+				920100FE1ED9FF8400FCB342 /* User+CoreDataProperties.h */,
+				920100FF1ED9FF8400FCB342 /* User+CoreDataProperties.m */,
+				920101001ED9FF8400FCB342 /* Photo+CoreDataClass.h */,
+				920101011ED9FF8400FCB342 /* Photo+CoreDataClass.m */,
+				920101021ED9FF8400FCB342 /* Photo+CoreDataProperties.h */,
+				920101031ED9FF8400FCB342 /* Photo+CoreDataProperties.m */,
+			);
+			name = CoreDataModel;
+			sourceTree = "<group>";
+		};
 		D01ABCC11ED9EFC8009D11CE = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +111,7 @@
 		D01ABCCC1ED9EFC8009D11CE /* InstagramStats */ = {
 			isa = PBXGroup;
 			children = (
+				920101081ED9FF8A00FCB342 /* CoreDataModel */,
 				D01ABCD01ED9EFC8009D11CE /* AppDelegate.h */,
 				D01ABCD11ED9EFC8009D11CE /* AppDelegate.m */,
 				D01ABCD31ED9EFC8009D11CE /* ViewController.h */,
@@ -229,10 +257,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				920101051ED9FF8400FCB342 /* User+CoreDataProperties.m in Sources */,
 				D01ABCDB1ED9EFC8009D11CE /* InstagramStats.xcdatamodeld in Sources */,
+				920101071ED9FF8400FCB342 /* Photo+CoreDataProperties.m in Sources */,
 				D01ABCD51ED9EFC8009D11CE /* ViewController.m in Sources */,
 				D01ABCD21ED9EFC8009D11CE /* AppDelegate.m in Sources */,
+				920101061ED9FF8400FCB342 /* Photo+CoreDataClass.m in Sources */,
 				D01ABCCF1ED9EFC8009D11CE /* main.m in Sources */,
+				920101041ED9FF8400FCB342 /* User+CoreDataClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +425,7 @@
 				D01ABCE61ED9EFC9009D11CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
