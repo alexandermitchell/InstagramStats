@@ -1,5 +1,6 @@
 target 'InstagramStats' do
-  pod 'InstagramKit', '~> 3.0'
+
+pod 'InstagramKit', '~> 3.0'
 pod 'InstagramKit/UICKeyChainStore'
 pod 'PKRevealController'
 pod 'MaterialComponents'

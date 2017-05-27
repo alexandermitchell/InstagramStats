@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @end
 
@@ -25,5 +25,19 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 100;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell"
+                                                                           forIndexPath:indexPath];
+    NSLog(@"%@", [cell class]);
+    return cell;
+}
 
 @end
