@@ -41,7 +41,6 @@
 		D01ABD011ED9FE09009D11CE /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		D01ABD031EDA0259009D11CE /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		D01ABD041EDA0259009D11CE /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
-		D01ABD061EDA0453009D11CE /* API_KEYS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API_KEYS.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +109,6 @@
 				D01ABD041EDA0259009D11CE /* DataManager.m */,
 				D01ABD001ED9FE09009D11CE /* User.h */,
 				D01ABD011ED9FE09009D11CE /* User.m */,
-				D01ABD061EDA0453009D11CE /* API_KEYS.h */,
 				D01ABCCD1ED9EFC8009D11CE /* Supporting Files */,
 			);
 			path = InstagramStats;
