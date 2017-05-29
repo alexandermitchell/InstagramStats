@@ -19,6 +19,7 @@
 		D01ABD051EDA0259009D11CE /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D01ABD041EDA0259009D11CE /* DataManager.m */; };
 		D01ABD0A1EDB22B2009D11CE /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D01ABD091EDB22B2009D11CE /* DashboardViewController.m */; };
 		D01ABD0D1EDC69B7009D11CE /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D01ABD0C1EDC69B7009D11CE /* Info.plist */; };
+		D01ABD101EDC727E009D11CE /* DashboardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D01ABD0F1EDC727E009D11CE /* DashboardCollectionViewCell.m */; };
 		F33AB56DB3FD5C0604BD7050 /* libPods-InstagramStats.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 830C5B42B9CFD08B5589E92D /* libPods-InstagramStats.a */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,8 @@
 		D01ABD081EDB22B2009D11CE /* DashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardViewController.h; sourceTree = "<group>"; };
 		D01ABD091EDB22B2009D11CE /* DashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardViewController.m; sourceTree = "<group>"; };
 		D01ABD0C1EDC69B7009D11CE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D01ABD0E1EDC727E009D11CE /* DashboardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardCollectionViewCell.h; sourceTree = "<group>"; };
+		D01ABD0F1EDC727E009D11CE /* DashboardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +106,8 @@
 				D01ABCD31ED9EFC8009D11CE /* ViewController.h */,
 				D01ABCD41ED9EFC8009D11CE /* ViewController.m */,
 				D01ABCD61ED9EFC8009D11CE /* Main.storyboard */,
+				D01ABD0E1EDC727E009D11CE /* DashboardCollectionViewCell.h */,
+				D01ABD0F1EDC727E009D11CE /* DashboardCollectionViewCell.m */,
 				D01ABD081EDB22B2009D11CE /* DashboardViewController.h */,
 				D01ABD091EDB22B2009D11CE /* DashboardViewController.m */,
 				D01ABCDC1ED9EFC8009D11CE /* Assets.xcassets */,
@@ -254,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D01ABCD51ED9EFC8009D11CE /* ViewController.m in Sources */,
+				D01ABD101EDC727E009D11CE /* DashboardCollectionViewCell.m in Sources */,
 				D01ABD021ED9FE09009D11CE /* User.m in Sources */,
 				D01ABD051EDA0259009D11CE /* DataManager.m in Sources */,
 				D01ABD0A1EDB22B2009D11CE /* DashboardViewController.m in Sources */,
