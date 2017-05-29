@@ -7,8 +7,21 @@
 //
 
 #import "DashboardViewController.h"
+#import "DataManager.h"
+#import <InstagramKit.h>
+#import <InstagramEngine.h>
+#import "User+CoreDataProperties.h"
 
-@interface DashboardViewController ()
+@interface DashboardViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+
+
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *graphView;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (nonatomic) DataManager *manager;
+@property (nonatomic) InstagramEngine *engine;
+
 
 @end
 
@@ -16,6 +29,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.manager = [DataManager sharedManager];
+//    CGFloat cellWidth = self.view.frame.size.width / 2;
+    
     // Do any additional setup after loading the view.
     NSLog(@"got here");
 }
@@ -23,6 +39,17 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Collection View Data Source Methods
+
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    return 1;
+}
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return nil;
 }
 
 /*

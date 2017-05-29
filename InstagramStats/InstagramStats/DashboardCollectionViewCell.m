@@ -8,6 +8,7 @@
 
 #import "DashboardCollectionViewCell.h"
 
+
 @interface DashboardCollectionViewCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLable;

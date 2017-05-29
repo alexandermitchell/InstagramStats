@@ -108,10 +108,10 @@
             </objects>
             <point key="canvasLocation" x="1880.8" y="112.89355322338831"/>
         </scene>
-        <!--View Controller-->
+        <!--Dashboard View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="DashboardViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -146,7 +146,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell1" id="7W6-5T-VfR" customClass="DashboardCollectionViewCell">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DashboardCollectionViewCell" id="7W6-5T-VfR" customClass="DashboardCollectionViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -186,6 +186,10 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="bAi-OT-deh"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="RUm-vg-9R5"/>
+                                </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MFs-nn-JgR">
                                 <rect key="frame" x="0.0" y="248" width="375" height="128"/>
@@ -229,13 +233,15 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="fNJ-K4-wa1" id="0fo-HH-ay1"/>
+                        <outlet property="graphView" destination="MFs-nn-JgR" id="1oY-rS-owc"/>
+                        <outlet property="profileImageView" destination="wlr-TI-WdA" id="tXh-O9-dwh"/>
+                        <outlet property="scrollView" destination="GiB-fy-Dtq" id="XBf-zv-Vzb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer numberOfTapsRequired="2" id="EmU-fq-S1x">
-                    <connections>
-                        <segue destination="ymk-LN-b0e" kind="show" id="4tW-op-HCM"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="EmU-fq-S1x"/>
             </objects>
             <point key="canvasLocation" x="1104.8" y="777.66116941529242"/>
         </scene>
@@ -298,39 +304,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kLC-3b-9Kx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1880.8" y="777.66116941529242"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="luQ-FM-cIa">
-            <objects>
-                <viewController id="ymk-LN-b0e" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="tdh-2y-a8I"/>
-                        <viewControllerLayoutGuide type="bottom" id="tTF-lK-SMS"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="bGP-lf-7Vg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3K0-xT-DN0">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  Stats go here  </string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="3K0-xT-DN0" firstAttribute="leading" secondItem="bGP-lf-7Vg" secondAttribute="leading" id="hD8-r9-otJ"/>
-                            <constraint firstItem="3K0-xT-DN0" firstAttribute="top" secondItem="tdh-2y-a8I" secondAttribute="bottom" id="ihi-TC-pMF"/>
-                            <constraint firstItem="tTF-lK-SMS" firstAttribute="top" secondItem="3K0-xT-DN0" secondAttribute="bottom" id="l96-TU-hR8"/>
-                            <constraint firstAttribute="trailing" secondItem="3K0-xT-DN0" secondAttribute="trailing" id="rdg-7l-2by"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nu0-EQ-cyB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1881" y="1545"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="k3c-Im-NM6">

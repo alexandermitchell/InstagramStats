@@ -9,6 +9,12 @@
 #import "DataManager.h"
 #import "User+CoreDataProperties.h"
 
+@interface DataManager ()
+
+
+
+@end
+
 @implementation DataManager
 
 -(instancetype) init {
@@ -68,5 +74,9 @@
     return users;
     
 }
+
+
+
+
 
 @end

@@ -70,7 +70,7 @@
 //            [manager saveContext];
             
             NSLog(@"username: %@", user.username);
-            
+            //get media
             [[InstagramEngine sharedEngine] getMediaForUser:self.myUser.Id withSuccess:^(NSArray<InstagramMedia *> * _Nonnull media, InstagramPaginationInfo * _Nonnull paginationInfo) {
                 
                 NSLog(@"test user %@", media[0].lowResolutionImageURL);
