@@ -12,14 +12,12 @@
 #import <InstagramEngine.h>
 #import "User+CoreDataProperties.h"
 
-<<<<<<< HEAD
 
-@interface ViewController ()<UIWebViewDelegate>
+
+@interface ViewController ()<UIWebViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak) InstagramUser *myUser;
-=======
-@interface ViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
->>>>>>> 58bba43c70864af1c1afe000075f6e9e54b9a708
+
 
 @end
 
@@ -45,9 +43,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-<<<<<<< HEAD
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
-{
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     
     NSLog(@"%@", webView.request.URL);
     NSError *error;
@@ -107,7 +104,7 @@
 //https://www.instagram.com/p/BT2cBFHjAF5/
 
 
-=======
+
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
 }
@@ -122,6 +119,5 @@
     NSLog(@"%@", [cell class]);
     return cell;
 }
->>>>>>> 58bba43c70864af1c1afe000075f6e9e54b9a708
 
 @end
