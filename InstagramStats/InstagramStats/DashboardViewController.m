@@ -7,22 +7,58 @@
 //
 
 #import "DashboardViewController.h"
+#import "DataManager.h"
+#import <InstagramKit.h>
+#import <InstagramEngine.h>
+#import "User+CoreDataProperties.h"
+#import "LoginViewController.h"
 
-@interface DashboardViewController ()
+@interface DashboardViewController () <UICollectionViewDelegate, UICollectionViewDataSource, LoginDelegateProtocol>
+
+
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *graphView;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (nonatomic) DataManager *manager;
+@property (nonatomic) InstagramEngine *engine;
+
 
 @end
 
 @implementation DashboardViewController
 
-- (void)viewDidLoad {
+-(void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    NSLog(@"got here");
+    
+    self.manager = [DataManager sharedManager];
+    [self.manager.engine logout];
+
+    if (![self.manager.engine isSessionValid]) {
+        
+//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        
+        LoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Login"];
+        
+        loginVC.delegate = self;
+        [self presentViewController:loginVC animated:NO completion:^{
+        }];
+    }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
+#pragma mark - Collection View Data Source Methods
+
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 1;
+}
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return [collectionView dequeueReusableCellWithReuseIdentifier:@"DashboardCollectionViewCell"
+                                                     forIndexPath:indexPath];
 }
 
 /*
@@ -34,5 +70,19 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)openInstagram:(UIBarButtonItem *)sender {
+
+
+}
+
+
+#pragma mark LoginDelegateProtocol
+
+-(void)loginDidSucceed {
+    [self dismissViewControllerAnimated:YES
+                             completion:nil];
+}
+
 
 @end
