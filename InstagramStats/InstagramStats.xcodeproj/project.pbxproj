@@ -17,6 +17,7 @@
 		D01ABCFF1ED9FDF6009D11CE /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = D01ABCFE1ED9FDF6009D11CE /* Photo.m */; };
 		D01ABD021ED9FE09009D11CE /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = D01ABD011ED9FE09009D11CE /* User.m */; };
 		D01ABD051EDA0259009D11CE /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D01ABD041EDA0259009D11CE /* DataManager.m */; };
+		D01ABD0A1EDB22B2009D11CE /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D01ABD091EDB22B2009D11CE /* DashboardViewController.m */; };
 		F33AB56DB3FD5C0604BD7050 /* libPods-InstagramStats.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 830C5B42B9CFD08B5589E92D /* libPods-InstagramStats.a */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,8 @@
 		D01ABD031EDA0259009D11CE /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		D01ABD041EDA0259009D11CE /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		D01ABD071EDA234D009D11CE /* API_KEYS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API_KEYS.h; sourceTree = "<group>"; };
+		D01ABD081EDB22B2009D11CE /* DashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardViewController.h; sourceTree = "<group>"; };
+		D01ABD091EDB22B2009D11CE /* DashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,16 +97,17 @@
 		D01ABCCC1ED9EFC8009D11CE /* InstagramStats */ = {
 			isa = PBXGroup;
 			children = (
-				D01ABCED1ED9FC16009D11CE /* CoreDataProperties */,
 				D01ABCD01ED9EFC8009D11CE /* AppDelegate.h */,
 				D01ABCD11ED9EFC8009D11CE /* AppDelegate.m */,
 				D01ABCD31ED9EFC8009D11CE /* ViewController.h */,
 				D01ABCD41ED9EFC8009D11CE /* ViewController.m */,
 				D01ABCD61ED9EFC8009D11CE /* Main.storyboard */,
+				D01ABD081EDB22B2009D11CE /* DashboardViewController.h */,
+				D01ABD091EDB22B2009D11CE /* DashboardViewController.m */,
 				D01ABCDC1ED9EFC8009D11CE /* Assets.xcassets */,
 				D01ABCDE1ED9EFC8009D11CE /* LaunchScreen.storyboard */,
-				D01ABCE11ED9EFC9009D11CE /* Info.plist */,
 				D01ABCD91ED9EFC8009D11CE /* InstagramStats.xcdatamodeld */,
+				D01ABCE11ED9EFC9009D11CE /* Info.plist */,
 				D01ABCFD1ED9FDF6009D11CE /* Photo.h */,
 				D01ABCFE1ED9FDF6009D11CE /* Photo.m */,
 				D01ABD031EDA0259009D11CE /* DataManager.h */,
@@ -122,13 +126,6 @@
 				D01ABCCE1ED9EFC8009D11CE /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		D01ABCED1ED9FC16009D11CE /* CoreDataProperties */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = CoreDataProperties;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +254,7 @@
 				D01ABCD51ED9EFC8009D11CE /* ViewController.m in Sources */,
 				D01ABD021ED9FE09009D11CE /* User.m in Sources */,
 				D01ABD051EDA0259009D11CE /* DataManager.m in Sources */,
+				D01ABD0A1EDB22B2009D11CE /* DashboardViewController.m in Sources */,
 				D01ABCD21ED9EFC8009D11CE /* AppDelegate.m in Sources */,
 				D01ABCFF1ED9FDF6009D11CE /* Photo.m in Sources */,
 				D01ABCDB1ED9EFC8009D11CE /* InstagramStats.xcdatamodeld in Sources */,

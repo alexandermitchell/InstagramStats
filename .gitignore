@@ -182,3 +182,4 @@ fastlane/screenshots
 *.xcuserstate
 
 /**/API_KEYS.h
+/**/Info.plist

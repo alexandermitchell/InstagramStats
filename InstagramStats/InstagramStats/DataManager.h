@@ -24,4 +24,6 @@
 
 -(void)saveContext;
 
+-(NSArray<User *> *) fetchUser;
+
 @end
