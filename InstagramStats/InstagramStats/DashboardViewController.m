@@ -36,11 +36,6 @@
     NSLog(@"got here");
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - Collection View Data Source Methods
 
 
