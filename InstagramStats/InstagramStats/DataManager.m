@@ -7,6 +7,7 @@
 //
 
 #import "DataManager.h"
+#import "User+CoreDataProperties.h"
 
 @implementation DataManager
 
@@ -32,7 +33,7 @@
     
     @synchronized (self) {
         if (_persistentContainer == nil) {
-            _persistentContainer = [[NSPersistentContainer alloc] initWithName:@"CatsData"];
+            _persistentContainer = [[NSPersistentContainer alloc] initWithName:@"InstagramStats"];
             [_persistentContainer loadPersistentStoresWithCompletionHandler:^(NSPersistentStoreDescription *storeDescription, NSError *error) {
                 if (error != nil) {
                     
@@ -56,6 +57,16 @@
         NSLog(@"Unresolved error %@, %@", error, error.userInfo);
         abort();
     }
+}
+
+-(NSArray<User *> *)fetchUser {
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
+    NSArray<User *> *users = [self.persistentContainer.viewContext executeFetchRequest:request error:nil];
+    
+    NSLog(@"%@", users[0].fullName);
+    
+    return users;
+    
 }
 
 @end

@@ -3,5 +3,6 @@ target 'InstagramStats' do
 pod 'InstagramKit/UICKeyChainStore'
 pod 'PKRevealController'
 pod 'MaterialComponents'
+pod 'SDWebImage/GIF'
 
 end

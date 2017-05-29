@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - FLAnimatedImage (1.0.12)
   - InstagramKit (3.8):
     - AFNetworking (~> 3.0)
     - InstagramKit/Exclude-UICKeyChainStore (= 3.8)
@@ -184,6 +185,10 @@ PODS:
     - MaterialComponents/private/Application
   - MDFTextAccessibility (1.2.0)
   - PKRevealController (2.0.6)
+  - SDWebImage/Core (4.0.0)
+  - SDWebImage/GIF (4.0.0):
+    - FLAnimatedImage (~> 1.0)
+    - SDWebImage/Core
   - UICKeyChainStore (2.1.1)
 
 DEPENDENCIES:
@@ -191,15 +196,18 @@ DEPENDENCIES:
   - InstagramKit/UICKeyChainStore
   - MaterialComponents
   - PKRevealController
+  - SDWebImage/GIF
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   InstagramKit: 402d6bba375357b548039de08eea19a1b8716354
   MaterialComponents: f6461aa016750c92a5ef436692d2a5eff67a9a66
   MDFTextAccessibility: 94098925e0853551c5a311ce7c1ecefbe297cdb6
   PKRevealController: ffb45a16f5a5032ad90a3d16e5cbb0d8e035bd58
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   UICKeyChainStore: 239558492fa260531a0774cfc611ea83a6eaff3a
 
-PODFILE CHECKSUM: 4128c7a5037cdbf1724d0d109db2de703d5d88ed
+PODFILE CHECKSUM: e5fb1cfd95d03ac00b4bbb70d7ecfc49e726443e
 
 COCOAPODS: 1.2.1
