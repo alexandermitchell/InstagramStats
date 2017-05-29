@@ -229,6 +229,7 @@
                         <barButtonItem key="leftBarButtonItem" style="done" systemItem="refresh" id="Tid-ru-c6O"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="yiO-Iw-8fJ">
                             <connections>
+                                <action selector="openInstagram:" destination="BYZ-38-t0r" id="Sda-5R-A2A"/>
                                 <segue destination="vAZ-WK-zHS" kind="presentation" id="5zV-PA-bl1"/>
                             </connections>
                         </barButtonItem>

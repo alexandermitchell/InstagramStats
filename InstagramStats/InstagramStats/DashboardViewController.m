@@ -71,11 +71,18 @@
 }
 */
 
+- (IBAction)openInstagram:(UIBarButtonItem *)sender {
+
+
+}
+
+
 #pragma mark LoginDelegateProtocol
 
 -(void)loginDidSucceed {
     [self dismissViewControllerAnimated:YES
                              completion:nil];
 }
+
 
 @end
