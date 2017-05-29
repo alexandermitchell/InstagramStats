@@ -12,10 +12,14 @@
 #import <InstagramEngine.h>
 #import "User+CoreDataProperties.h"
 
+<<<<<<< HEAD
 
 @interface ViewController ()<UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak) InstagramUser *myUser;
+=======
+@interface ViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+>>>>>>> 58bba43c70864af1c1afe000075f6e9e54b9a708
 
 @end
 
@@ -41,6 +45,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+<<<<<<< HEAD
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     
@@ -102,5 +107,21 @@
 //https://www.instagram.com/p/BT2cBFHjAF5/
 
 
+=======
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 100;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell"
+                                                                           forIndexPath:indexPath];
+    NSLog(@"%@", [cell class]);
+    return cell;
+}
+>>>>>>> 58bba43c70864af1c1afe000075f6e9e54b9a708
 
 @end
