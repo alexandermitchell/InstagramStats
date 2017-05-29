@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol LoginDelegateProtocol
+
+-(void) loginDidSucceed;
+
+@end
+
 @interface LoginViewController : UIViewController
+
+@property (nonatomic) id<LoginDelegateProtocol> delegate;
 
 @end

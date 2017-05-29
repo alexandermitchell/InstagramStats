@@ -55,6 +55,7 @@
                 
                 
                 [manager savePhotos:media withUser:manager.currentUser];
+                [self.delegate loginDidSucceed];
                 
                 
                 
@@ -73,10 +74,11 @@
         
         
         
-        //[self performSegueWithIdentifier:@"toMain" sender:nil];
+        [self dismissViewControllerAnimated:YES completion:nil];
         
     }
     return YES;
+    
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
