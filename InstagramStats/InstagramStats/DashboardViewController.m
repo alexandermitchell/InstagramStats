@@ -32,23 +32,15 @@
     [super viewDidLoad];
     
     self.manager = [DataManager sharedManager];
-    [self.manager.engine logout];
 
     if (![self.manager.engine isSessionValid]) {
-        
-//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//        
         LoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Login"];
-        
         loginVC.delegate = self;
         [self presentViewController:loginVC animated:NO completion:^{
         }];
     }
 }
 
--(void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
 
 #pragma mark - Collection View Data Source Methods
 
@@ -56,6 +48,7 @@
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return 1;
 }
+
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     return [collectionView dequeueReusableCellWithReuseIdentifier:@"DashboardCollectionViewCell"
                                                      forIndexPath:indexPath];
@@ -71,6 +64,10 @@
 }
 */
 
+
+#pragma mark - Open Instagram
+
+
 - (IBAction)openInstagram:(UIBarButtonItem *)sender {
 
 
@@ -79,10 +76,10 @@
 
 #pragma mark LoginDelegateProtocol
 
+
 -(void)loginDidSucceed {
     [self dismissViewControllerAnimated:YES
                              completion:nil];
 }
-
 
 @end
