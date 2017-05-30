@@ -82,11 +82,7 @@
     NSArray<User *> *users = [self.persistentContainer.viewContext executeFetchRequest:request error:nil];
     
     NSLog(@"%@", users[0].fullName);
-    
-    //self.currentUser = users[0];
-    
     return users;
-    
 }
 
 -(void)saveUser:(InstagramUser *)user {
@@ -180,14 +176,24 @@
     NSOrderedSet<Photo *> *photos = self.currentUser.photos;
     
     
-    NSDictionary *followersDict = @{@"title" : followersTitle, @"data" : followersNum};
+
     
-    NSDictionary *followingDict = @{@"title" : followingTitle, @"data" : followingNum};
-    
-    NSDictionary *photosDict = @{@"title" : photosTitle, @"data" : photos};
-    
-    NSDictionary *locationDict = @{@"title" : mapTitle, @"data" : photosWithLocationArray};
-    
+    NSDictionary *followersDict = [DataManager dictionaryForCellWithTitle:followersTitle
+                                                                subtitle:@""
+                                                            counterLabel:[followersNum description]
+                                                                 andData:nil];
+    NSDictionary *followingDict = [DataManager dictionaryForCellWithTitle:followingTitle
+                                                                 subtitle:@""
+                                                             counterLabel:[followingNum description]
+                                                                  andData:nil];
+    NSDictionary *photosDict = [DataManager dictionaryForCellWithTitle:photosTitle
+                                                              subtitle:@""
+                                                          counterLabel:@""
+                                                               andData:photos];
+    NSDictionary *locationDict = [DataManager dictionaryForCellWithTitle:mapTitle
+                                                                subtitle:@""
+                                                            counterLabel:@""
+                                                                 andData:photosWithLocationArray];
     return [NSArray arrayWithObjects:followersDict, followingDict, photosDict, locationDict, nil];
     
 }
@@ -201,10 +207,13 @@
 
 }
 
-//, @"user = %@", self.currentUser
-
-
-
-
++(NSDictionary *)dictionaryForCellWithTitle:(NSString *)title subtitle:(NSString *)subtitle counterLabel:(NSString *)counter andData:(NSOrderedSet<Photo *> *)data {
+    return @{
+             @"title": title,
+             @"subtitle": subtitle,
+             @"counter": counter,
+             @"data": (data) ? data : @[]
+             };
+}
 
 @end
