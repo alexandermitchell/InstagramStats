@@ -22,9 +22,17 @@
 
 
 -(void)setData:(NSDictionary *)data {
-    self.titleLable = [data objectForKey:@"title"];
-    self.counterLabel = [data objectForKey:@"data"];
     
+    if (self.index < 2) {
+    
+        self.titleLable.text = [data objectForKey:@"title"];
+        self.counterLabel.text = [NSString stringWithFormat:@"%@",[data objectForKey:@"data"]];
+    } else if (self.index == 2){
+        self.titleLable.text = [data objectForKey:@"title"];
+        self.counterLabel.text = [NSString stringWithFormat:@"%lu", [[data objectForKey:@"data"] count]];
+    } else {
+        self.titleLable.text = [data objectForKey:@"title"];
+    }
     _data = data;
 }
 

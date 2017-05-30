@@ -78,28 +78,38 @@
     
     DashboardCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DashboardCollectionViewCell" forIndexPath:indexPath];
     
-    switch ([self.cellDataArray indexOfObject:self.cellDataArray[indexPath.row]]) {
+    switch (indexPath.row) {
         case 0:
             //followers Dict
+            cell.index = indexPath.row;
             cell.data = self.cellDataArray[0];
+           
+            
             break;
         case 1:
             //following dict
+            cell.index = indexPath.row;
             cell.data = self.cellDataArray[1];
+            
             break;
             
         case 2:
             //all photos dict
+            cell.index = indexPath.row;
             cell.data = self.cellDataArray[2];
+            
             break;
         case 3:
             //photos with valid location dict
+            cell.index = indexPath.row;
             cell.data = self.cellDataArray[3];
+            
             break;
             
         default:
             break;
     }
+//    [self.collectionView reloadData];
 
     return cell;
     
