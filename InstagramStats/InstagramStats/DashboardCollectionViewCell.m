@@ -20,4 +20,12 @@
 
 @implementation DashboardCollectionViewCell
 
+
+-(void)setData:(NSDictionary *)data {
+    self.titleLable = [data objectForKey:@"title"];
+    self.counterLabel = [data objectForKey:@"data"];
+    
+    _data = data;
+}
+
 @end

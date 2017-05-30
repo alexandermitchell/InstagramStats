@@ -12,6 +12,7 @@
 #import <InstagramEngine.h>
 #import "User+CoreDataProperties.h"
 #import "LoginViewController.h"
+#import "DashboardCollectionViewCell.h"
 
 @interface DashboardViewController () <UICollectionViewDelegate, UICollectionViewDataSource, LoginDelegateProtocol>
 
@@ -22,11 +23,19 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic) DataManager *manager;
 @property (nonatomic) InstagramEngine *engine;
+@property (nonatomic) NSArray *cellDataArray;
 
 
 @end
 
 @implementation DashboardViewController
+
+//-(NSArray *)cellDataArray {
+//    if (_cellDataArray == nil) {
+//        _cellDataArray = [self.manager fetchCellArray];
+//    }
+//    return _cellDataArray;
+//}
 
 -(void)viewDidLoad {
     [super viewDidLoad];
@@ -46,19 +55,54 @@
     }
 }
 
--(void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
+//-(void)viewWillAppear:(BOOL)animated {
+//    [super viewWillAppear:animated];
+//    
+//    if (self.manager != nil && self.manager.currentUser != nil) {
+//        self.cellDataArray = [self.manager fetchCellArray];
+//        
+//        
+//        [self.collectionView reloadData];
+//    }
+//}
 
 #pragma mark - Collection View Data Source Methods
 
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 1;
+    return self.cellDataArray.count;
 }
+
+//TODO: LOOK UP NSOPTIONS
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return [collectionView dequeueReusableCellWithReuseIdentifier:@"DashboardCollectionViewCell"
-                                                     forIndexPath:indexPath];
+    
+    DashboardCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DashboardCollectionViewCell" forIndexPath:indexPath];
+    
+    switch ([self.cellDataArray indexOfObject:self.cellDataArray[indexPath.row]]) {
+        case 0:
+            //followers Dict
+            cell.data = self.cellDataArray[0];
+            break;
+        case 1:
+            //following dict
+            cell.data = self.cellDataArray[1];
+            break;
+            
+        case 2:
+            //all photos dict
+            cell.data = self.cellDataArray[2];
+            break;
+        case 3:
+            //photos with valid location dict
+            cell.data = self.cellDataArray[3];
+            break;
+            
+        default:
+            break;
+    }
+
+    return cell;
+    
 }
 
 /*
@@ -82,6 +126,9 @@
 -(void)loginDidSucceed {
     [self dismissViewControllerAnimated:YES
                              completion:nil];
+    
+    self.cellDataArray = [self.manager fetchCellArray];
+    [self.collectionView reloadData];
 }
 
 

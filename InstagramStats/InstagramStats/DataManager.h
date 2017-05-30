@@ -34,4 +34,6 @@
 
 +(void) loadImage:(NSData *)imageData complete:(void (^)(UIImage *image))complete;
 
+-(NSArray *) fetchCellArray;
+
 @end

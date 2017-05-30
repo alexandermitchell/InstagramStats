@@ -74,8 +74,6 @@
         
         
         
-        [self dismissViewControllerAnimated:YES completion:nil];
-        
     }
     return YES;
     
