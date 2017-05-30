@@ -159,7 +159,6 @@
                                                              andData:datasets[i]]];
     }
     return cellArray;
-    
 }
 
 -(NSArray<Photo *> *) fetchPhotosWithLocation {

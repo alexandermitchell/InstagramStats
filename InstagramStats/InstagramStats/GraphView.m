@@ -21,6 +21,23 @@
 @implementation GraphView
 
 
+-(instancetype)init {
+
+    self = [super init];
+    if (self) {
+        self.likesDataSet = [[NSMutableArray alloc] init];
+        self.commentsDataSet = [[NSMutableArray alloc] init];
+
+        for (int i = 0; i < 20; i++) {
+            [self.likesDataSet addObject:@(arc4random_uniform(30) + 10)];
+            [self.commentsDataSet addObject:@(arc4random_uniform(20))];
+        }
+    }
+    NSLog(@"%@", self.likesDataSet);
+    NSLog(@"%@", self.commentsDataSet);
+    return self;
+}
+
 - (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
     self.partitionWidth = self.frame.size.width / self.likesDataSet.count;
@@ -48,7 +65,9 @@
     CGContextMoveToPoint(context, locationX, 0);
     CGContextAddLineToPoint(context, locationX, self.frame.size.height);
     CGContextSetLineWidth(context, 2.0);
+    CGContextSetAlpha(context, 0.5);
     CGContextStrokePath(context);
+    CGContextSetAlpha(context, 1.0);
 }
 
 -(void)drawLikesLineWithContext:(CGContextRef)context {
@@ -67,6 +86,7 @@
 
     UIBezierPath *path = [[UIBezierPath alloc] init];
     [color setStroke];
+    path.lineWidth = 3.0;
 
     if (dataset.count == 2) {
         CGFloat maxData = [GraphView getMax:dataset];
@@ -127,6 +147,7 @@
     }
 
     CGFloat c = ([data doubleValue] - min) / (max - min);
+    //NSLog(@"%@: %@", @(__FUNCTION__), @(self.frame.size.height * (1 - c)));
     return self.frame.size.height * (1 - c);
 }
 
@@ -139,8 +160,12 @@
                                                      andMax:maxData])];
 
     for (int i = 1; i < dataset.count; i++) {
-        CGPoint p = CGPointMake(i * self.partitionWidth, [dataset[i - 1] doubleValue]);
-        CGPoint q = CGPointMake(i * self.partitionWidth, [dataset[i] doubleValue]);
+        CGPoint p = CGPointMake((i - 1) * self.partitionWidth, [self getHeightForData:dataset[i - 1]
+                                                                      WithinMin:minData
+                                                                         andMax:maxData]);
+        CGPoint q = CGPointMake(i * self.partitionWidth, [self getHeightForData:dataset[i]
+                                                                      WithinMin:minData
+                                                                         andMax:maxData]);
 
         CGPoint midpoint = [GraphView getMidpointBetween:p and:q];
         CGPoint controlPoint1 = [GraphView getControlPointFor:midpoint and:p];

@@ -13,6 +13,7 @@
 #import "User+CoreDataProperties.h"
 #import "LoginViewController.h"
 #import "DashboardCollectionViewCell.h"
+#import "GraphView.h"
 
 @interface DashboardViewController () <UICollectionViewDelegate, UICollectionViewDataSource, LoginDelegateProtocol>
 
@@ -39,15 +40,21 @@
     [super viewDidLoad];
     
     self.manager = [DataManager sharedManager];
-    [self.manager.engine logout];
+    //[self.manager.engine logout];
     
-    if (![self.manager.engine isSessionValid]) {
-    
-        LoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Login"];
-        loginVC.delegate = self;
-        [self presentViewController:loginVC animated:NO completion:^{
-        }];
-    }
+//    if (![self.manager.engine isSessionValid]) {
+//    
+//        LoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Login"];
+//        loginVC.delegate = self;
+//        [self presentViewController:loginVC animated:NO completion:^{
+//        }];
+//    }
+
+    GraphView *graphView = [[GraphView alloc] init];
+    graphView.frame = self.graphView.bounds;
+
+    [self.graphView addSubview:graphView];
+
 }
 
 
@@ -83,6 +90,7 @@
 
 
 #pragma mark LoginDelegateProtocol
+
 
 -(void)loginDidSucceed {
     [self dismissViewControllerAnimated:YES
