@@ -10,4 +10,7 @@
 
 @interface GraphView : UIView
 
+@property (nonatomic, copy) NSMutableArray<NSNumber *> *likesDataSet;
+@property (nonatomic, copy) NSMutableArray<NSNumber *> *commentsDataSet;
+
 @end
