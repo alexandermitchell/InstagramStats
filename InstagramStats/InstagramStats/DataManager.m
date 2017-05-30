@@ -175,7 +175,7 @@
     
     NSNumber *followingNum = @(self.currentUser.followingNum);
     
-    NSArray *photosWithLocationArray = [self fetchPhotosWithLocation];
+    NSOrderedSet<Photo *> *photosWithLocationArray = self.currentUser.photos;
     
     NSOrderedSet<Photo *> *photos = self.currentUser.photos;
     
@@ -184,10 +184,9 @@
     
     NSDictionary *followingDict = @{@"title" : followingTitle, @"data" : followingNum};
     
-    NSDictionary *locationDict = @{@"title" : mapTitle, @"data" : photosWithLocationArray};
-    
     NSDictionary *photosDict = @{@"title" : photosTitle, @"data" : photos};
     
+    NSDictionary *locationDict = @{@"title" : mapTitle, @"data" : photosWithLocationArray};
     
     return [NSArray arrayWithObjects:followersDict, followingDict, photosDict, locationDict, nil];
     
@@ -196,8 +195,7 @@
 -(NSArray<Photo *> *) fetchPhotosWithLocation {
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Photo"];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"latitude != 0 AND longitude != 0"];
-    request.predicate = predicate;
+    //NSPredicate *predicate = [NSPredicate predicateWithFormat:@"latitude != 0 AND longitude != 0"];
     
     return [self.persistentContainer.viewContext executeFetchRequest:request error:nil];
 

@@ -11,5 +11,6 @@
 @interface DashboardCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic) NSDictionary *data;
+@property (nonatomic) NSInteger index;
 
 @end
