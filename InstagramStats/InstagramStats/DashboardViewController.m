@@ -32,7 +32,7 @@
     [super viewDidLoad];
     
     self.manager = [DataManager sharedManager];
-    [self.manager.engine logout];
+//    [self.manager.engine logout];
 
     if (![self.manager.engine isSessionValid]) {
         
@@ -73,8 +73,15 @@
 
 - (IBAction)openInstagram:(UIBarButtonItem *)sender {
 
-
+    NSURL *instagramURL = [NSURL URLWithString:@"instagram://camera"];
+    if ([[UIApplication sharedApplication] canOpenURL:instagramURL]) {
+        [[UIApplication sharedApplication] openURL:instagramURL
+                                           options:@{UIApplicationOpenURLOptionUniversalLinksOnly: instagramURL}
+                                 completionHandler:nil];
+    }
+    
 }
+
 
 
 #pragma mark LoginDelegateProtocol
