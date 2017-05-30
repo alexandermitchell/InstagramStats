@@ -39,13 +39,13 @@
     NSLog(@"%@", webView.request.URL);
     NSError *error;
     if ([[InstagramEngine sharedEngine] receivedValidAccessTokenFromURL:request.URL error:&error]) {
-        
+        DataManager *manager = [DataManager sharedManager];
         
 
         NSLog(@"Received access token: %@", [[InstagramEngine sharedEngine] accessToken]);
         
         [[InstagramEngine sharedEngine] getSelfUserDetailsWithSuccess:^(InstagramUser * _Nonnull user) {
-            DataManager *manager = [DataManager sharedManager];
+            
             [manager saveUser:user];
             
         
@@ -73,8 +73,6 @@
         }];
         
         
-        
-        [self dismissViewControllerAnimated:YES completion:nil];
         
     }
     return YES;

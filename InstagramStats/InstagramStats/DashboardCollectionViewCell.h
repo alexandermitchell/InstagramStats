@@ -10,6 +10,7 @@
 
 @interface DashboardCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic) NSArray *data;
+@property (nonatomic) NSDictionary *data;
+@property (nonatomic) NSInteger index;
 
 @end

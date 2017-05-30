@@ -36,14 +36,14 @@
     return sharedMyManager;
 }
 
--(User *)currentUser {
-    
-    if (_currentUser == nil) {
-        _currentUser = [[User alloc] initWithContext:self.persistentContainer.viewContext];
-    }
-    
-    return _currentUser;
-}
+//-(User *)currentUser {
+//    
+//    if (_currentUser == nil) {
+//        _currentUser = [[User alloc] initWithContext:self.persistentContainer.viewContext];
+//    }
+//    
+//    return _currentUser;
+//}
 
 @synthesize persistentContainer = _persistentContainer;
 
@@ -82,20 +82,20 @@
     NSArray<User *> *users = [self.persistentContainer.viewContext executeFetchRequest:request error:nil];
     
     NSLog(@"%@", users[0].fullName);
-    
-    self.currentUser = users[0];
-    
     return users;
-    
 }
 
 -(void)saveUser:(InstagramUser *)user {
+    
+    User *newUser = [[User alloc] initWithContext:self.persistentContainer.viewContext];
+    
+    newUser.fullName = user.fullName;
+    newUser.username = user.username;
+    newUser.followersNum = (int32_t)user.followedByCount;
+    newUser.followingNum = (int32_t)user.followsCount;
+    newUser.userID = user.Id;
 
-    self.currentUser.fullName = user.fullName;
-    self.currentUser.username = user.username;
-    self.currentUser.followersNum = (int32_t)user.followedByCount;
-    self.currentUser.followingNum = (int32_t)user.followsCount;
-    self.currentUser.userID = user.Id;
+    self.currentUser = newUser;
     
     
     [self saveContext];
@@ -133,7 +133,7 @@
         [self saveContext];
     }];
     
-    [self saveContext];
+    //[self saveContext];
     
 }
 
@@ -154,6 +154,66 @@
 +(void) loadImage:(NSData *)imageData complete:(void (^)(UIImage *image))complete {
     UIImage *loadedImage = [UIImage imageWithData:imageData];
     complete(loadedImage);
+}
+
+//Might have to put block in function!!!
+
+-(NSArray *) fetchCellArray {
+    
+    NSString *followersTitle = @"Followers";
+    NSString *followingTitle = @"Following";
+    NSString *mapTitle = @"Photo Map";
+    NSString *photosTitle = @"Total Posts";
+    
+    
+    
+    NSNumber *followersNum = @(self.currentUser.followersNum);
+    
+    NSNumber *followingNum = @(self.currentUser.followingNum);
+    
+    NSOrderedSet<Photo *> *photosWithLocationArray = self.currentUser.photos;
+    
+    NSOrderedSet<Photo *> *photos = self.currentUser.photos;
+    
+    
+
+    
+    NSDictionary *followersDict = [DataManager dictionaryForCellWithTitle:followersTitle
+                                                                subtitle:@""
+                                                            counterLabel:[followersNum description]
+                                                                 andData:nil];
+    NSDictionary *followingDict = [DataManager dictionaryForCellWithTitle:followingTitle
+                                                                 subtitle:@""
+                                                             counterLabel:[followingNum description]
+                                                                  andData:nil];
+    NSDictionary *photosDict = [DataManager dictionaryForCellWithTitle:photosTitle
+                                                              subtitle:@""
+                                                          counterLabel:@""
+                                                               andData:photos];
+    NSDictionary *locationDict = [DataManager dictionaryForCellWithTitle:mapTitle
+                                                                subtitle:@""
+                                                            counterLabel:@""
+                                                                 andData:photosWithLocationArray];
+    return [NSArray arrayWithObjects:followersDict, followingDict, photosDict, locationDict, nil];
+    
+}
+
+-(NSArray<Photo *> *) fetchPhotosWithLocation {
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Photo"];
+    //NSPredicate *predicate = [NSPredicate predicateWithFormat:@"latitude != 0 AND longitude != 0"];
+    
+    return [self.persistentContainer.viewContext executeFetchRequest:request error:nil];
+
+}
+
++(NSDictionary *)dictionaryForCellWithTitle:(NSString *)title subtitle:(NSString *)subtitle counterLabel:(NSString *)counter andData:(NSOrderedSet<Photo *> *)data {
+    return @{
+             @"title": title,
+             @"subtitle": subtitle,
+             @"counter": counter,
+             @"data": (data) ? data : @[]
+             };
 }
 
 @end
