@@ -16,7 +16,6 @@
 
 @interface DashboardViewController () <UICollectionViewDelegate, UICollectionViewDataSource, LoginDelegateProtocol>
 
-
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *graphView;
@@ -24,7 +23,6 @@
 @property (nonatomic) DataManager *manager;
 @property (nonatomic) InstagramEngine *engine;
 @property (nonatomic) NSArray *cellDataArray;
-
 
 @end
 
@@ -46,7 +44,6 @@
     if (![self.manager.engine isSessionValid]) {
     
         LoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Login"];
-        
         loginVC.delegate = self;
         [self presentViewController:loginVC animated:NO completion:^{
         }];
@@ -64,8 +61,6 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     DashboardCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DashboardCollectionViewCell" forIndexPath:indexPath];
-    
-    cell.index = indexPath.row;
     cell.data = self.cellDataArray[indexPath.row];
     
     return cell;

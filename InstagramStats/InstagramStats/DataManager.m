@@ -13,17 +13,9 @@
 
 @interface DataManager ()
 
-
-
 @end
 
 @implementation DataManager
-
--(instancetype) init {
-    if (self = [super init]) {
-    }
-    return self;
-}
 
 +(id)sharedManager {
     static DataManager *sharedMyManager = nil;
@@ -54,7 +46,6 @@
             _persistentContainer = [[NSPersistentContainer alloc] initWithName:@"InstagramStats"];
             [_persistentContainer loadPersistentStoresWithCompletionHandler:^(NSPersistentStoreDescription *storeDescription, NSError *error) {
                 if (error != nil) {
-                    
                     NSLog(@"Unresolved error %@, %@", error, error.userInfo);
                     abort();
                 }
@@ -96,27 +87,19 @@
     newUser.userID = user.Id;
 
     self.currentUser = newUser;
-    
-    
     [self saveContext];
-    
     NSLog(@"saved user");
-    
 }
 
 -(void) savePhotos:(NSArray<InstagramMedia *>*)media withUser:(User *)user {
-    
     for (InstagramMedia *photo in media) {
         [self saveMedia:photo withUser:user];
     }
-
 }
 
 -(void) saveMedia:(InstagramMedia *)media withUser:(User *)user {
-    
-    
+
     Photo *photo = [[Photo alloc] initWithContext:self.persistentContainer.viewContext];
-    
     
     photo.imageURL = [media.standardResolutionImageURL absoluteString];
     photo.likesNum = media.likesCount;
@@ -132,13 +115,9 @@
         NSLog(@"downloaded image");
         [self saveContext];
     }];
-    
-    //[self saveContext];
-    
 }
 
-- (void)downloadImage:(InstagramMedia *)media complete:(void (^)(UIImage *image))complete
-{
+- (void)downloadImage:(InstagramMedia *)media complete:(void (^)(UIImage *image))complete {
     
     NSURLSessionTask *task = [[NSURLSession sharedSession]
                               dataTaskWithURL:media.standardResolutionImageURL
@@ -159,42 +138,27 @@
 //Might have to put block in function!!!
 
 -(NSArray *) fetchCellArray {
-    
-    NSString *followersTitle = @"Followers";
-    NSString *followingTitle = @"Following";
-    NSString *mapTitle = @"Photo Map";
-    NSString *photosTitle = @"Total Posts";
-    
-    
-    
-    NSNumber *followersNum = @(self.currentUser.followersNum);
-    
-    NSNumber *followingNum = @(self.currentUser.followingNum);
-    
-    NSOrderedSet<Photo *> *photosWithLocationArray = self.currentUser.photos;
-    
-    NSOrderedSet<Photo *> *photos = self.currentUser.photos;
-    
-    
 
-    
-    NSDictionary *followersDict = [DataManager dictionaryForCellWithTitle:followersTitle
-                                                                subtitle:@""
-                                                            counterLabel:[followersNum description]
-                                                                 andData:nil];
-    NSDictionary *followingDict = [DataManager dictionaryForCellWithTitle:followingTitle
-                                                                 subtitle:@""
-                                                             counterLabel:[followingNum description]
-                                                                  andData:nil];
-    NSDictionary *photosDict = [DataManager dictionaryForCellWithTitle:photosTitle
-                                                              subtitle:@""
-                                                          counterLabel:@""
-                                                               andData:photos];
-    NSDictionary *locationDict = [DataManager dictionaryForCellWithTitle:mapTitle
-                                                                subtitle:@""
-                                                            counterLabel:@""
-                                                                 andData:photosWithLocationArray];
-    return [NSArray arrayWithObjects:followersDict, followingDict, photosDict, locationDict, nil];
+    // Order of arrays:
+    //                  1. followers
+    //                  2. following
+    //                  3. photos
+    //                  4. map
+
+    NSArray<NSString *> *titles = @[@"Followers", @"Following", @"Total Posts", @"Photo Map"];
+    NSArray<NSString *> *subtitles = @[@"", @"", @"", @""];
+    NSArray<NSString *> *counterLabels = @[[@(self.currentUser.followersNum) description], [@(self.currentUser.followingNum) description], @"", @""];
+    NSArray<NSOrderedSet *> *datasets = @[[NSOrderedSet orderedSet], [NSOrderedSet orderedSet], self.currentUser.photos, self.currentUser.photos];
+
+    NSMutableArray<NSDictionary *> *cellArray = [@[] mutableCopy];
+
+    for (int i = 0; i < titles.count; i++) {
+        [cellArray addObject:[DataManager dictionaryForCellWithTitle:titles[i]
+                                                            subtitle:subtitles[i]
+                                                        counterLabel:counterLabels[i]
+                                                             andData:datasets[i]]];
+    }
+    return cellArray;
     
 }
 
@@ -212,7 +176,7 @@
              @"title": title,
              @"subtitle": subtitle,
              @"counter": counter,
-             @"data": (data) ? data : @[]
+             @"data": (data) ? data : [NSOrderedSet orderedSet]
              };
 }
 
