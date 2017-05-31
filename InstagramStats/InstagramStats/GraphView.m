@@ -33,8 +33,6 @@
             [self.commentsDataSet addObject:@(arc4random_uniform(20))];
         }
     }
-    NSLog(@"%@", self.likesDataSet);
-    NSLog(@"%@", self.commentsDataSet);
     return self;
 }
 
@@ -147,7 +145,6 @@
     }
 
     CGFloat c = ([data doubleValue] - min) / (max - min);
-    //NSLog(@"%@: %@", @(__FUNCTION__), @(self.frame.size.height * (1 - c)));
     return self.frame.size.height * (1 - c);
 }
 
