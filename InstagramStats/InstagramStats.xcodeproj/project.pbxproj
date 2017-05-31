@@ -21,6 +21,8 @@
 		D01ABD101EDC727E009D11CE /* DashboardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D01ABD0F1EDC727E009D11CE /* DashboardCollectionViewCell.m */; };
 		D01ABD131EDC8DB4009D11CE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D01ABD121EDC8DB4009D11CE /* LoginViewController.m */; };
 		D01ABD151EDCD7F7009D11CE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D01ABD141EDCD7F7009D11CE /* MapKit.framework */; };
+		D01ABD1A1EDF39DE009D11CE /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D01ABD171EDF39DE009D11CE /* MapViewController.m */; };
+		D01ABD1B1EDF39DE009D11CE /* MyCustomPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D01ABD191EDF39DE009D11CE /* MyCustomPointAnnotation.m */; };
 		F33AB56DB3FD5C0604BD7050 /* libPods-InstagramStats.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 830C5B42B9CFD08B5589E92D /* libPods-InstagramStats.a */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +53,10 @@
 		D01ABD111EDC8DB4009D11CE /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		D01ABD121EDC8DB4009D11CE /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		D01ABD141EDCD7F7009D11CE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D01ABD161EDF39DE009D11CE /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		D01ABD171EDF39DE009D11CE /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		D01ABD181EDF39DE009D11CE /* MyCustomPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCustomPointAnnotation.h; sourceTree = "<group>"; };
+		D01ABD191EDF39DE009D11CE /* MyCustomPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCustomPointAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +120,10 @@
 				D01ABD0F1EDC727E009D11CE /* DashboardCollectionViewCell.m */,
 				D01ABD081EDB22B2009D11CE /* DashboardViewController.h */,
 				D01ABD091EDB22B2009D11CE /* DashboardViewController.m */,
+				D01ABD161EDF39DE009D11CE /* MapViewController.h */,
+				D01ABD171EDF39DE009D11CE /* MapViewController.m */,
+				D01ABD181EDF39DE009D11CE /* MyCustomPointAnnotation.h */,
+				D01ABD191EDF39DE009D11CE /* MyCustomPointAnnotation.m */,
 				D01ABCDC1ED9EFC8009D11CE /* Assets.xcassets */,
 				D01ABCDE1ED9EFC8009D11CE /* LaunchScreen.storyboard */,
 				D01ABCD91ED9EFC8009D11CE /* InstagramStats.xcdatamodeld */,
@@ -273,7 +283,9 @@
 				D01ABD131EDC8DB4009D11CE /* LoginViewController.m in Sources */,
 				D01ABD0A1EDB22B2009D11CE /* DashboardViewController.m in Sources */,
 				D01ABCD21ED9EFC8009D11CE /* AppDelegate.m in Sources */,
+				D01ABD1B1EDF39DE009D11CE /* MyCustomPointAnnotation.m in Sources */,
 				D01ABCFF1ED9FDF6009D11CE /* Photo.m in Sources */,
+				D01ABD1A1EDF39DE009D11CE /* MapViewController.m in Sources */,
 				D01ABCDB1ED9EFC8009D11CE /* InstagramStats.xcdatamodeld in Sources */,
 				D01ABCCF1ED9EFC8009D11CE /* main.m in Sources */,
 			);
