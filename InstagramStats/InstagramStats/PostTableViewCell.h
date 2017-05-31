@@ -14,4 +14,7 @@
 @property (nonatomic) NSOrderedSet <Photo *> *photos;
 @property (nonatomic) Photo *displayPhoto;
 
+- (void)setMinMaxValues;
+- (void)updateCellValues;
+
 @end

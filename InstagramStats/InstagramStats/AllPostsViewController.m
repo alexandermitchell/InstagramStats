@@ -48,11 +48,17 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    PostTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    PostTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.photos = self.manager.currentUser.photos;
     cell.displayPhoto = self.manager.currentUser.photos[indexPath.row];
     
+    //get min and max values for likes
+    [cell setMinMaxValues];
+    //cells progress view is now ready to be updated
+    [cell updateCellValues];
+    
     return cell;
 }
+
 
 @end
