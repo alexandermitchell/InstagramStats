@@ -53,10 +53,17 @@
 //        }];
 //    }
 
-    self.graphView.backgroundColor = [UIColor blackColor];
-    GraphView *graphView = [[GraphView alloc] init];
-    graphView.frame = self.graphView.bounds;
-    [self.graphView addSubview: graphView];
+    [self setupGraphView];
+
+
+//    if (![self.manager.engine isSessionValid]) {
+//    
+//        LoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Login"];
+//        loginVC.delegate = self;
+//        [self presentViewController:loginVC animated:NO completion:^{
+//        }];
+//    }
+
 }
 
 
@@ -100,6 +107,33 @@
     
     self.cellDataArray = [self.manager fetchCellArray];
     [self.collectionView reloadData];
+}
+
+-(void) setupGraphView {
+    
+    self.graphView.backgroundColor = [UIColor blackColor];
+    GraphView *graphView = [[GraphView alloc] init];
+    graphView.frame = CGRectMake(10, 10, self.graphView.frame.size.width * 0.8, self.graphView.frame.size.height * 0.8);
+    graphView.layer.borderColor = [UIColor whiteColor].CGColor;
+    [self.graphView addSubview: graphView];
+    
+    NSMutableArray *likesArray = [NSMutableArray new];
+    NSMutableArray *commentsArray = [NSMutableArray new];
+
+//    [self.manager.currentUser.photos sortedArrayUsingComparator:^NSComparisonResult(Photo *a, Photo *b) {
+//        return [a.postDate compare:b.postDate];
+//    }];
+//    
+//    for (Photo *photo in self.manager.currentUser.photos) {
+//        NSNumber *likes = @(photo.likesNum);
+//        NSNumber *comments = @(photo.commentsNum);
+//        
+//        [likesArray addObject:likes];
+//        [commentsArray addObject:comments];
+//    }
+//    graphView.likesDataSet = likesArray;
+//    graphView.commentsDataSet = commentsArray;
+    
 }
 
 @end
