@@ -156,7 +156,13 @@
                                         <connections>
                                             <outlet property="commentsProgress" destination="bIz-lF-4mL" id="Rzv-pk-6F5"/>
                                             <outlet property="likesProgress" destination="6xM-h1-yhY" id="bUp-LZ-Znv"/>
+                                            <outlet property="maxComment" destination="Xdf-ak-puc" id="afh-pk-Wwk"/>
+                                            <outlet property="maxLike" destination="Ghf-yi-Jvh" id="gvr-NE-qCw"/>
+                                            <outlet property="minComment" destination="5m3-Iy-CUi" id="QF4-Ln-1g0"/>
+                                            <outlet property="minLike" destination="tQo-dj-KbT" id="8at-Va-m69"/>
                                             <outlet property="postImageView" destination="2ej-8S-oq4" id="V2v-eU-qqW"/>
+                                            <outlet property="totalComments" destination="jRA-JF-VlY" id="BRS-ey-98J"/>
+                                            <outlet property="totalLikes" destination="LMV-th-mj0" id="3zs-83-sAl"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
