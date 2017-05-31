@@ -33,16 +33,16 @@
 -(void)setPhotos:(NSOrderedSet<Photo *> *)photos {
     
     //get and set minlike
-    self.minLike.text = [self getMinLikes:self.photos];
+    self.minLike.text = [self getMinLikes:photos];
     
     //get and set maxLike
-    self.maxLike.text = [self getMaxLikes:self.photos];
+    self.maxLike.text = [self getMaxLikes:photos];
     
     //get and set minComment
-    self.minComment.text = [self getMinComments:self.photos];
+    self.minComment.text = [self getMinComments:photos];
     
     //get and set maxComment
-    self.maxComment.text = [self getMaxComments:self.photos];
+    self.maxComment.text = [self getMaxComments:photos];
     
     
     _photos = photos;
@@ -51,13 +51,13 @@
 -(void)setDisplayPhoto:(Photo *)displayPhoto {
     
     //set postImageView
-    self.postImageView.image = [UIImage imageWithData:self.displayPhoto.image];
+    self.postImageView.image = [UIImage imageWithData:displayPhoto.image];
     
     //set totalLikes
-    self.totalLikes.text = [NSString stringWithFormat:@"%hd",self.displayPhoto.likesNum];
+    self.totalLikes.text = [NSString stringWithFormat:@"%hd",displayPhoto.likesNum];
     //set totalComments
     
-    self.totalComments.text = [NSString stringWithFormat:@"%hd",self.displayPhoto.commentsNum];
+    self.totalComments.text = [NSString stringWithFormat:@"%hd",displayPhoto.commentsNum];
     
     //set likeprogressbar (totalcomments / max comments)
     self.likesProgress.progress = ((float)self.displayPhoto.likesNum / [self.maxLike.text floatValue]);
