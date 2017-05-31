@@ -43,15 +43,15 @@
     [super viewDidLoad];
     
     self.manager = [DataManager sharedManager];
-//    [self.manager.engine logout];
+    [self.manager.engine logout];
 
-//    if (![self.manager.engine isSessionValid]) {
-//    
-//        LoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Login"];
-//        loginVC.delegate = self;
-//        [self presentViewController:loginVC animated:NO completion:^{
-//        }];
-//    }
+    if (![self.manager.engine isSessionValid]) {
+    
+        LoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Login"];
+        loginVC.delegate = self;
+        [self presentViewController:loginVC animated:NO completion:^{
+        }];
+    }
 
     self.graphView.backgroundColor = [UIColor blackColor];
     GraphView *graphView = [[GraphView alloc] init];
