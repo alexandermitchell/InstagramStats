@@ -26,7 +26,8 @@
 -(void) saveUser:(InstagramUser *)user;
 -(void) savePhotos:(NSArray<InstagramMedia *>*)media withUser:(User *)user;
 -(void) saveMedia:(InstagramMedia *)media withUser:(User *)user;
--(NSArray<User *> *) fetchUser;
+-(void)fetchUser:(InstagramUser *)user;
+-(void)fetchCurrentUser;
 -(NSArray *) fetchCellArray;
 
 

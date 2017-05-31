@@ -42,7 +42,8 @@
 
         [[InstagramEngine sharedEngine] getSelfUserDetailsWithSuccess:^(InstagramUser * _Nonnull user) {
 
-            [manager saveUser:user];
+            //[manager saveUser:user];
+            [manager fetchUser:user];
             NSLog(@"username: %@", user.username);
 
             [[InstagramEngine sharedEngine] getMediaForUser: manager.currentUser.userID withSuccess:^(NSArray<InstagramMedia *> * _Nonnull media, InstagramPaginationInfo * _Nonnull paginationInfo) {

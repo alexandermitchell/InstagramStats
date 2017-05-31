@@ -68,12 +68,28 @@
     }
 }
 
--(NSArray<User *> *)fetchUser {
+-(void)fetchUser:(InstagramUser *)user {
+    
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userID LIKE[c] %@", user.Id];
+    request.predicate = predicate;
+    
     NSArray<User *> *users = [self.persistentContainer.viewContext executeFetchRequest:request error:nil];
     
-    NSLog(@"%@", users[0].fullName);
-    return users;
+    if (users == nil || users.count == 0) {
+        [self saveUser:user];
+        NSLog(@"made new user");
+    } else {
+        self.currentUser = users[0];
+        NSLog(@"%@", users[0].fullName);
+    }
+
+}
+
+-(void) fetchCurrentUser {
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
+    NSArray<User *> *users = [self.persistentContainer.viewContext executeFetchRequest:request error:nil];
+    self.currentUser = users[0];
 }
 
 -(void)saveUser:(InstagramUser *)user {
@@ -92,6 +108,9 @@
 }
 
 -(void) savePhotos:(NSArray<InstagramMedia *>*)media withUser:(User *)user {
+    
+    user.photos = nil;
+    [self saveContext];
     for (InstagramMedia *photo in media) {
         [self saveMedia:photo withUser:user];
     }

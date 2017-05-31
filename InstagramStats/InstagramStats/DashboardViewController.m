@@ -31,18 +31,11 @@
 
 @implementation DashboardViewController
 
-//-(NSArray *)cellDataArray {
-//    if (_cellDataArray == nil) {
-//        _cellDataArray = [self.manager fetchCellArray];
-//    }
-//    return _cellDataArray;
-//}
-
 -(void)viewDidLoad {
     [super viewDidLoad];
     
     self.manager = [DataManager sharedManager];
-    [self.manager.engine logout];
+    //[self.manager.engine logout];
 
     if (![self.manager.engine isSessionValid]) {
     
@@ -50,6 +43,11 @@
         loginVC.delegate = self;
         [self presentViewController:loginVC animated:NO completion:^{
         }];
+    } else {
+        [self.manager fetchCurrentUser];
+        self.cellDataArray = [self.manager fetchCellArray];
+        [self setupGraphView];
+        [self.collectionView reloadData];
     }
     
 }
@@ -120,6 +118,7 @@
         [likesArray addObject:likes];
         [commentsArray addObject:comments];
     }
+    
     graphView.likesDataSet = likesArray;
     graphView.commentsDataSet = commentsArray;
     
