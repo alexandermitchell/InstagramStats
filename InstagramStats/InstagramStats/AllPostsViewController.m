@@ -43,6 +43,8 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PostTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    
+    return cell;
 }
 
 @end
