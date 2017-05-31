@@ -59,12 +59,18 @@
     
     self.totalComments.text = [NSString stringWithFormat:@"%hd",displayPhoto.commentsNum];
     
+   
     //set likeprogressbar (totalcomments / max comments)
     self.likesProgress.progress = ((float)self.displayPhoto.likesNum / [self.maxLike.text floatValue]);
+    [UIView animateWithDuration:2.0 animations:^{
+        [self.likesProgress layoutIfNeeded];
+    }];
    
     //set commentprogressbar (totalLikes / maxLikes)
     self.commentsProgress.progress = ((float)self.displayPhoto.commentsNum / [self.maxComment.text floatValue]);
-
+    [UIView animateWithDuration:2.0 animations:^{
+        [self.commentsProgress layoutIfNeeded];
+    }];
     
     
     _displayPhoto = displayPhoto;
