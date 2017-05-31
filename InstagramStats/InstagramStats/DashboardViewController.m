@@ -15,6 +15,8 @@
 #import "LoginViewController.h"
 #import "DashboardCollectionViewCell.h"
 #import "GraphView.h"
+#import "AllPostsViewController.h"
+#import "MapViewController.h"
 
 @interface DashboardViewController () <UICollectionViewDelegate, UICollectionViewDataSource, LoginDelegateProtocol>
 
@@ -66,6 +68,34 @@
     cell.data = self.cellDataArray[indexPath.row];
     
     return cell;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    switch (indexPath.row) {
+        case 2: {
+            
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"ShowAllPosts" bundle:nil];
+            
+            
+            AllPostsViewController *apVC = [storyboard instantiateViewControllerWithIdentifier:@"ShowAllPosts"];
+            
+            [self.navigationController pushViewController:apVC animated:YES];
+            
+            break;
+        }
+            
+        case 3: {
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            
+            MapViewController *mapVC = [storyboard instantiateViewControllerWithIdentifier:@"MapVC"];
+            
+            [self.navigationController pushViewController:mapVC animated:YES];
+            break;
+        }
+            
+        default:
+            break;
+    }
 }
 
 /*

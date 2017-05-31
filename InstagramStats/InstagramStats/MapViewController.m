@@ -38,11 +38,11 @@
     }
     
     //zooms in on specific photo that is hardcoded below (since not every annotation has a valid coordinate at this point)
-    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(39.466666666667, -0.375);
-    MKCoordinateSpan span = MKCoordinateSpanMake(12.5, 12.5);
-    MKCoordinateRegion region = MKCoordinateRegionMake(center, span);
+//    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(39.466666666667, -0.375);
+//    MKCoordinateSpan span = MKCoordinateSpanMake(12.5, 12.5);
+//    MKCoordinateRegion region = MKCoordinateRegionMake(center, span);
     self.mapView.showsUserLocation = NO;
-    [self.mapView setRegion:region animated:YES];
+    //[self.mapView setRegion:region animated:YES];
 }
 
 - (MKAnnotationView*)mapView:(MKMapView *)mapView
