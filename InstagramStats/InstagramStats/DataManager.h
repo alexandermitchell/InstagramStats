@@ -15,25 +15,25 @@
 @interface DataManager : NSObject
 
 @property (readonly, strong) NSPersistentContainer *persistentContainer;
-
 @property (nonatomic) User *currentUser;
-
 @property (nonatomic) InstagramEngine *engine;
 
-+(id)sharedManager;
+
+#pragma mark - Instance methods
+
 
 -(void)saveContext;
-
 -(void) saveUser:(InstagramUser *)user;
-
--(NSArray<User *> *) fetchUser;
-
 -(void) savePhotos:(NSArray<InstagramMedia *>*)media withUser:(User *)user;
-
 -(void) saveMedia:(InstagramMedia *)media withUser:(User *)user;
-
-+(void) loadImage:(NSData *)imageData complete:(void (^)(UIImage *image))complete;
-
+-(NSArray<User *> *) fetchUser;
 -(NSArray *) fetchCellArray;
+
+
+#pragma mark - Class methods
+
+
++(id)sharedManager;
++(void) loadImage:(NSData *)imageData complete:(void (^)(UIImage *image))complete;
 
 @end

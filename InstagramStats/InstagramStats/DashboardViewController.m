@@ -13,9 +13,9 @@
 #import "User+CoreDataProperties.h"
 #import "LoginViewController.h"
 #import "DashboardCollectionViewCell.h"
+#import "GraphView.h"
 
 @interface DashboardViewController () <UICollectionViewDelegate, UICollectionViewDataSource, LoginDelegateProtocol>
-
 
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -25,6 +25,8 @@
 @property (nonatomic) InstagramEngine *engine;
 @property (nonatomic) NSArray *cellDataArray;
 
+@property (nonatomic) NSMutableArray *likesDataset;
+@property (nonatomic) NSMutableArray *commentsDataset;
 
 @end
 
@@ -41,16 +43,20 @@
     [super viewDidLoad];
     
     self.manager = [DataManager sharedManager];
-    [self.manager.engine logout];
-    
-    if (![self.manager.engine isSessionValid]) {
-    
-        LoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Login"];
-        
-        loginVC.delegate = self;
-        [self presentViewController:loginVC animated:NO completion:^{
-        }];
-    }
+//    [self.manager.engine logout];
+
+//    if (![self.manager.engine isSessionValid]) {
+//    
+//        LoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Login"];
+//        loginVC.delegate = self;
+//        [self presentViewController:loginVC animated:NO completion:^{
+//        }];
+//    }
+
+    self.graphView.backgroundColor = [UIColor blackColor];
+    GraphView *graphView = [[GraphView alloc] init];
+    graphView.frame = self.graphView.bounds;
+    [self.graphView addSubview: graphView];
 }
 
 
@@ -64,8 +70,6 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     DashboardCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DashboardCollectionViewCell" forIndexPath:indexPath];
-    
-    cell.index = indexPath.row;
     cell.data = self.cellDataArray[indexPath.row];
     
     return cell;
@@ -94,6 +98,7 @@
 
 #pragma mark LoginDelegateProtocol
 
+
 -(void)loginDidSucceed {
     [self dismissViewControllerAnimated:YES
                              completion:nil];
@@ -101,6 +106,5 @@
     self.cellDataArray = [self.manager fetchCellArray];
     [self.collectionView reloadData];
 }
-
 
 @end
