@@ -13,7 +13,7 @@
 #import "User+CoreDataProperties.h"
 #import "MyCustomPointAnnotation.h"
 
-@interface MapViewController ()
+@interface MapViewController ()<MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic) DataManager *manager;
@@ -26,6 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.manager = [DataManager sharedManager];
+    self.mapView.delegate = self;
     self.annotations = [[NSMutableArray alloc]init];
     
     for (Photo *photo in self.manager.currentUser.photos) {
