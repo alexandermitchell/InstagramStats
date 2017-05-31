@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		11670D7F1EDCE558009D9A0C /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11670D7E1EDCE558009D9A0C /* GraphView.m */; };
+		9201012A1EDF531E00FCB342 /* ShowAllPosts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 920101291EDF531E00FCB342 /* ShowAllPosts.storyboard */; };
+		9201012D1EDF53F600FCB342 /* AllPostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9201012C1EDF53F600FCB342 /* AllPostsViewController.m */; };
+		920101311EDF552800FCB342 /* PostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 920101301EDF552800FCB342 /* PostTableViewCell.m */; };
 		D01ABCCF1ED9EFC8009D11CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D01ABCCE1ED9EFC8009D11CE /* main.m */; };
 		D01ABCD21ED9EFC8009D11CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D01ABCD11ED9EFC8009D11CE /* AppDelegate.m */; };
 		D01ABCD81ED9EFC8009D11CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D01ABCD61ED9EFC8009D11CE /* Main.storyboard */; };
@@ -31,6 +34,11 @@
 		11670D7E1EDCE558009D9A0C /* GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphView.m; sourceTree = "<group>"; };
 		1FBA3DA4FCB566320621DC1B /* Pods-InstagramStats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramStats.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InstagramStats/Pods-InstagramStats.debug.xcconfig"; sourceTree = "<group>"; };
 		830C5B42B9CFD08B5589E92D /* libPods-InstagramStats.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-InstagramStats.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		920101291EDF531E00FCB342 /* ShowAllPosts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ShowAllPosts.storyboard; sourceTree = "<group>"; };
+		9201012B1EDF53F600FCB342 /* AllPostsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllPostsViewController.h; sourceTree = "<group>"; };
+		9201012C1EDF53F600FCB342 /* AllPostsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllPostsViewController.m; sourceTree = "<group>"; };
+		9201012F1EDF552800FCB342 /* PostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostTableViewCell.h; sourceTree = "<group>"; };
+		920101301EDF552800FCB342 /* PostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostTableViewCell.m; sourceTree = "<group>"; };
 		BC1E65EC1431FCE086212DF2 /* Pods-InstagramStats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramStats.release.xcconfig"; path = "Pods/Target Support Files/Pods-InstagramStats/Pods-InstagramStats.release.xcconfig"; sourceTree = "<group>"; };
 		D01ABCCA1ED9EFC8009D11CE /* InstagramStats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramStats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D01ABCCE1ED9EFC8009D11CE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -101,6 +109,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9201012E1EDF53FB00FCB342 /* AllPostsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				920101291EDF531E00FCB342 /* ShowAllPosts.storyboard */,
+				9201012F1EDF552800FCB342 /* PostTableViewCell.h */,
+				920101301EDF552800FCB342 /* PostTableViewCell.m */,
+				9201012B1EDF53F600FCB342 /* AllPostsViewController.h */,
+				9201012C1EDF53F600FCB342 /* AllPostsViewController.m */,
+			);
+			name = AllPostsViewController;
+			sourceTree = "<group>";
+		};
 		D01ABCC11ED9EFC8009D11CE = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +154,7 @@
 				D01ABD161EDF39DE009D11CE /* MapViewController.h */,
 				D01ABD171EDF39DE009D11CE /* MapViewController.m */,
 				D01ABD181EDF39DE009D11CE /* MyCustomPointAnnotation.h */,
+				9201012E1EDF53FB00FCB342 /* AllPostsViewController */,
 				D01ABD191EDF39DE009D11CE /* MyCustomPointAnnotation.m */,
 				D01ABCDC1ED9EFC8009D11CE /* Assets.xcassets */,
 				D01ABCDE1ED9EFC8009D11CE /* LaunchScreen.storyboard */,
@@ -228,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D01ABCE01ED9EFC8009D11CE /* LaunchScreen.storyboard in Resources */,
+				9201012A1EDF531E00FCB342 /* ShowAllPosts.storyboard in Resources */,
 				D01ABCDD1ED9EFC8009D11CE /* Assets.xcassets in Resources */,
 				D01ABCD81ED9EFC8009D11CE /* Main.storyboard in Resources */,
 			);
@@ -291,6 +313,8 @@
 				D01ABD101EDC727E009D11CE /* DashboardCollectionViewCell.m in Sources */,
 				11670D7F1EDCE558009D9A0C /* GraphView.m in Sources */,
 				D01ABD021ED9FE09009D11CE /* User.m in Sources */,
+				920101311EDF552800FCB342 /* PostTableViewCell.m in Sources */,
+				9201012D1EDF53F600FCB342 /* AllPostsViewController.m in Sources */,
 				D01ABD051EDA0259009D11CE /* DataManager.m in Sources */,
 				D01ABD131EDC8DB4009D11CE /* LoginViewController.m in Sources */,
 				D01ABD0A1EDB22B2009D11CE /* DashboardViewController.m in Sources */,

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="IOD-ks-Cmt">
+            <objects>
+                <viewController id="Pp3-C5-IvE" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oWp-7D-aMy"/>
+                        <viewControllerLayoutGuide type="bottom" id="iHu-s7-cQQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2UH-38-NdZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Gn2-Ge-RVZ">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="120" id="WmK-ki-sOY" customClass="PostTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="120"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WmK-ki-sOY" id="RI1-Zf-ybH">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2ej-8S-oq4">
+                                                    <rect key="frame" x="8" y="8" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="298-jV-g4H"/>
+                                                        <constraint firstAttribute="height" constant="100" id="GhV-2p-eQK"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6xM-h1-yhY">
+                                                    <rect key="frame" x="210" y="26" width="140" height="2"/>
+                                                    <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="140" id="A5l-Ky-TZq"/>
+                                                    </constraints>
+                                                </progressView>
+                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bIz-lF-4mL">
+                                                    <rect key="frame" x="210" y="82" width="140" height="2"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="140" id="YES-G8-Gz0"/>
+                                                    </constraints>
+                                                </progressView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="2ej-8S-oq4" firstAttribute="leading" secondItem="RI1-Zf-ybH" secondAttribute="leadingMargin" id="6Ct-jv-1RR"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="bIz-lF-4mL" secondAttribute="bottom" constant="27.5" id="SHQ-Wk-B24"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="6xM-h1-yhY" secondAttribute="trailing" constant="17" id="bhC-6w-Aj3"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="bIz-lF-4mL" secondAttribute="trailing" constant="17" id="hTf-5s-5VT"/>
+                                                <constraint firstItem="2ej-8S-oq4" firstAttribute="top" secondItem="RI1-Zf-ybH" secondAttribute="topMargin" id="ozG-J0-M1Y"/>
+                                                <constraint firstItem="6xM-h1-yhY" firstAttribute="top" secondItem="RI1-Zf-ybH" secondAttribute="topMargin" constant="18" id="ynF-3Y-7r0"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="commentsProgress" destination="bIz-lF-4mL" id="Rzv-pk-6F5"/>
+                                            <outlet property="likesProgress" destination="6xM-h1-yhY" id="bUp-LZ-Znv"/>
+                                            <outlet property="postImageView" destination="2ej-8S-oq4" id="V2v-eU-qqW"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Pp3-C5-IvE" id="CcR-pG-959"/>
+                                    <outlet property="delegate" destination="Pp3-C5-IvE" id="Dl0-UO-bnD"/>
+                                </connections>
+                            </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3V2-hO-Ke3">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem id="R6d-2f-NHh"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3V2-hO-Ke3" firstAttribute="leading" secondItem="2UH-38-NdZ" secondAttribute="leading" id="2uh-uV-QE9"/>
+                            <constraint firstItem="Gn2-Ge-RVZ" firstAttribute="leading" secondItem="2UH-38-NdZ" secondAttribute="leading" id="7dN-le-8fI"/>
+                            <constraint firstAttribute="trailing" secondItem="Gn2-Ge-RVZ" secondAttribute="trailing" id="dWK-7X-IK9"/>
+                            <constraint firstItem="3V2-hO-Ke3" firstAttribute="top" secondItem="oWp-7D-aMy" secondAttribute="bottom" id="kaq-qw-ehv"/>
+                            <constraint firstItem="iHu-s7-cQQ" firstAttribute="top" secondItem="Gn2-Ge-RVZ" secondAttribute="bottom" id="sxJ-c3-WgZ"/>
+                            <constraint firstAttribute="trailing" secondItem="3V2-hO-Ke3" secondAttribute="trailing" id="xbK-hP-hTM"/>
+                            <constraint firstItem="Gn2-Ge-RVZ" firstAttribute="top" secondItem="3V2-hO-Ke3" secondAttribute="bottom" id="zVY-q7-Wto"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vI8-Jl-7iI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-226.40000000000001" y="62.518740629685162"/>
+        </scene>
+    </scenes>
+</document>
