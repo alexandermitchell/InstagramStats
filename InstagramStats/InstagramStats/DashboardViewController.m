@@ -11,6 +11,7 @@
 #import <InstagramKit.h>
 #import <InstagramEngine.h>
 #import "User+CoreDataProperties.h"
+#import "Photo+CoreDataProperties.h"
 #import "LoginViewController.h"
 #import "DashboardCollectionViewCell.h"
 #import "GraphView.h"
@@ -25,8 +26,6 @@
 @property (nonatomic) InstagramEngine *engine;
 @property (nonatomic) NSArray *cellDataArray;
 
-@property (nonatomic) NSMutableArray *likesDataset;
-@property (nonatomic) NSMutableArray *commentsDataset;
 
 @end
 
@@ -52,11 +51,7 @@
         [self presentViewController:loginVC animated:NO completion:^{
         }];
     }
-
-    self.graphView.backgroundColor = [UIColor blackColor];
-    GraphView *graphView = [[GraphView alloc] init];
-    graphView.frame = self.graphView.bounds;
-    [self.graphView addSubview: graphView];
+    
 }
 
 
@@ -104,7 +99,30 @@
                              completion:nil];
     
     self.cellDataArray = [self.manager fetchCellArray];
+    [self setupGraphView];
     [self.collectionView reloadData];
+}
+
+-(void) setupGraphView {
+    
+    self.graphView.backgroundColor = [UIColor blackColor];
+    GraphView *graphView = [[GraphView alloc] init];
+    graphView.frame = self.graphView.bounds;
+    [self.graphView addSubview: graphView];
+    
+    NSMutableArray *likesArray = [NSMutableArray new];
+    NSMutableArray *commentsArray = [NSMutableArray new];
+    
+    for (Photo *photo in self.manager.currentUser.photos) {
+        NSNumber *likes = @(photo.likesNum);
+        NSNumber *comments = @(photo.commentsNum);
+        
+        [likesArray addObject:likes];
+        [commentsArray addObject:comments];
+    }
+    graphView.likesDataSet = likesArray;
+    graphView.commentsDataSet = commentsArray;
+    
 }
 
 @end
