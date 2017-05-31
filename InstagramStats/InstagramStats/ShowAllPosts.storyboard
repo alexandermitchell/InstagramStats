@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Gn2-Ge-RVZ">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="120" id="WmK-ki-sOY" customClass="PostTableViewCell">
@@ -171,22 +171,13 @@
                                     <outlet property="delegate" destination="Pp3-C5-IvE" id="Dl0-UO-bnD"/>
                                 </connections>
                             </tableView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3V2-hO-Ke3">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <items>
-                                    <navigationItem id="R6d-2f-NHh"/>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="3V2-hO-Ke3" firstAttribute="leading" secondItem="2UH-38-NdZ" secondAttribute="leading" id="2uh-uV-QE9"/>
                             <constraint firstItem="Gn2-Ge-RVZ" firstAttribute="leading" secondItem="2UH-38-NdZ" secondAttribute="leading" id="7dN-le-8fI"/>
+                            <constraint firstItem="Gn2-Ge-RVZ" firstAttribute="top" secondItem="oWp-7D-aMy" secondAttribute="bottom" id="OIL-UV-DYy"/>
                             <constraint firstAttribute="trailing" secondItem="Gn2-Ge-RVZ" secondAttribute="trailing" id="dWK-7X-IK9"/>
-                            <constraint firstItem="3V2-hO-Ke3" firstAttribute="top" secondItem="oWp-7D-aMy" secondAttribute="bottom" id="kaq-qw-ehv"/>
                             <constraint firstItem="iHu-s7-cQQ" firstAttribute="top" secondItem="Gn2-Ge-RVZ" secondAttribute="bottom" id="sxJ-c3-WgZ"/>
-                            <constraint firstAttribute="trailing" secondItem="3V2-hO-Ke3" secondAttribute="trailing" id="xbK-hP-hTM"/>
-                            <constraint firstItem="Gn2-Ge-RVZ" firstAttribute="top" secondItem="3V2-hO-Ke3" secondAttribute="bottom" id="zVY-q7-Wto"/>
                         </constraints>
                     </view>
                 </viewController>
