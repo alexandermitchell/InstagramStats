@@ -106,6 +106,7 @@
     photo.commentsNum = media.commentCount;
     photo.latitude = media.location.latitude;
     photo.longitude = media.location.longitude;
+    photo.postDate = media.createdDate;
     photo.user = user;
     
     NSLog(@"saved photo to core data");
