@@ -8,8 +8,12 @@
 
 #import "AllPostsViewController.h"
 #import "PostTableViewCell.h"
+#import "DataManager.h"
+#import "User+CoreDataProperties.h"
 
 @interface AllPostsViewController () <UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic) DataManager *manager;
 
 @end
 
@@ -17,6 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.manager = [DataManager sharedManager];
     // Do any additional setup after loading the view.
 }
 
@@ -38,11 +43,14 @@
 #pragma mark - TableView Data Source Methods
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    
+    return self.manager.currentUser.photos.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PostTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    cell.photos = self.manager.currentUser.photos;
+    cell.displayPhoto = self.manager.currentUser.photos[indexPath.row];
     
     return cell;
 }

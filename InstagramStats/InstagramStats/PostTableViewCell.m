@@ -30,6 +30,32 @@
 
 @implementation PostTableViewCell
 
+-(void)setPhotos:(NSOrderedSet<Photo *> *)photos {
+    
+   
+    //get and set minlike
+    //get and set maxLike
+    
+    //get and set minComment
+    //get and set maxComment
+    
+    
+    _photos = photos;
+}
+
+-(void)setDisplayPhoto:(Photo *)displayPhoto {
+    
+    //set postImageView
+    //set totalLikes
+    //set totalComments
+    
+    //set likeprogressbar (totalcomments / max comments)
+    //set commentprogressbar (totalLikes / maxLikes)
+    
+    
+    _displayPhoto = displayPhoto;
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

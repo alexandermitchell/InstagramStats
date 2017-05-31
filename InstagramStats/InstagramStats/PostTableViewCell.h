@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Photo+CoreDataProperties.h"
 
 @interface PostTableViewCell : UITableViewCell
+
+@property (nonatomic) NSOrderedSet <Photo *> *photos;
+@property (nonatomic) Photo *displayPhoto;
 
 @end
