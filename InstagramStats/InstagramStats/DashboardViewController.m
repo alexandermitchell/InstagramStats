@@ -55,57 +55,59 @@
 
     // No Animation
 
-    self.graphView.backgroundColor = [UIColor blackColor];
-    GraphView *graphView = [[GraphView alloc] init];
-    graphView.frame = self.graphView.bounds;
-    [self.graphView addSubview: graphView];
+//    self.graphView.backgroundColor = [UIColor blackColor];
+//    GraphView *graphView = [[GraphView alloc] init];
+//    graphView.frame = self.graphView.bounds;
+//    [self.graphView addSubview: graphView];
 
     // Animation
 
-//    UIBezierPath *likesBezierPath = [self bezierPathForLikes];
-//    UIBezierPath *commentsBezierPath = [self bezierPathForComments];
+    UIBezierPath *likesBezierPath = [self bezierPathForLikes];
+    UIBezierPath *commentsBezierPath = [self bezierPathForComments];
 
 
-//    [likesBezierPath appendPath:commentsBezierPath];
-//
-//    CAShapeLayer *likesShapeLayer = [CAShapeLayer layer];
-//    CAShapeLayer *commentsShapeLayer = [CAShapeLayer layer];
-//
-//    likesShapeLayer.frame = self.graphView.bounds;
-//    commentsShapeLayer.frame = self.graphView.bounds;
-//
-//    likesShapeLayer.path = likesBezierPath.CGPath;
-//    commentsShapeLayer.path = commentsBezierPath.CGPath;
-//
-//    [self.graphView.layer addSublayer:likesShapeLayer];
-//    [self.graphView.layer addSublayer:commentsShapeLayer];
-//
-//    likesShapeLayer.strokeColor = [UIColor blueColor].CGColor;
-//    likesShapeLayer.lineWidth = 5.0;
-//
-//    commentsShapeLayer.strokeColor = [UIColor redColor].CGColor;
-//    commentsShapeLayer.lineWidth = 5.0;
+    [likesBezierPath appendPath:commentsBezierPath];
 
-//    likesShapeLayer.strokeStart = 0.0;
-//    commentsShapeLayer.strokeStart = 0.0;
-//
-//
-//
-//    CABasicAnimation *likesAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-//    likesAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-//    likesAnimation.duration = 4.0;
-//    likesAnimation.fromValue = @(0.0);
-//    likesAnimation.toValue = @(1.0);
-//
-//    [likesShapeLayer addAnimation:likesAnimation forKey:@"likesAnimation"];
-//
-//    CABasicAnimation *commentsAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-//    commentsAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-//    commentsAnimation.duration = 4.0;
-//    commentsAnimation.fromValue = @(0.0);
-//    commentsAnimation.toValue = @(1.0);
-//
-//    [likesShapeLayer addAnimation:commentsAnimation forKey:@"commentsA nimation"];
+    CAShapeLayer *likesShapeLayer = [CAShapeLayer layer];
+    CAShapeLayer *commentsShapeLayer = [CAShapeLayer layer];
+
+    likesShapeLayer.frame = self.graphView.bounds;
+    commentsShapeLayer.frame = self.graphView.bounds;
+
+    likesShapeLayer.path = likesBezierPath.CGPath;
+    commentsShapeLayer.path = commentsBezierPath.CGPath;
+
+    [self.graphView.layer addSublayer:likesShapeLayer];
+    [self.graphView.layer addSublayer:commentsShapeLayer];
+
+    likesShapeLayer.strokeColor = [UIColor blueColor].CGColor;
+    likesShapeLayer.lineWidth = 5.0;
+    likesShapeLayer.fillColor = [UIColor colorWithWhite:1 alpha:0].CGColor;
+
+    commentsShapeLayer.strokeColor = [UIColor redColor].CGColor;
+    commentsShapeLayer.lineWidth = 5.0;
+    commentsShapeLayer.fillColor = [UIColor colorWithWhite:1 alpha:0].CGColor;
+
+    likesShapeLayer.strokeStart = 0.0;
+    commentsShapeLayer.strokeStart = 0.0;
+
+
+
+    CABasicAnimation *likesAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+    likesAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    likesAnimation.duration = 4.0;
+    likesAnimation.fromValue = @(0.0);
+    likesAnimation.toValue = @(1.0);
+
+    [likesShapeLayer addAnimation:likesAnimation forKey:@"likesAnimation"];
+
+    CABasicAnimation *commentsAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+    commentsAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    commentsAnimation.duration = 4.0;
+    commentsAnimation.fromValue = @(0.0);
+    commentsAnimation.toValue = @(1.0);
+
+    [commentsShapeLayer addAnimation:commentsAnimation forKey:@"commentsAnimation"];
 }
 
 
