@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		11670D7F1EDCE558009D9A0C /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11670D7E1EDCE558009D9A0C /* GraphView.m */; };
+		11305F631EE07FD700ADE94F /* GraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11305F621EE07FD700ADE94F /* GraphViewController.m */; };
+		11305F651EE080D200ADE94F /* GraphViewStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11305F641EE080D200ADE94F /* GraphViewStoryboard.storyboard */; };
+		11305F671EE0894500ADE94F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11305F661EE0894500ADE94F /* Main.storyboard */; };
 		D01ABCCF1ED9EFC8009D11CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D01ABCCE1ED9EFC8009D11CE /* main.m */; };
 		D01ABCD21ED9EFC8009D11CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D01ABCD11ED9EFC8009D11CE /* AppDelegate.m */; };
-		D01ABCD81ED9EFC8009D11CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D01ABCD61ED9EFC8009D11CE /* Main.storyboard */; };
 		D01ABCDB1ED9EFC8009D11CE /* InstagramStats.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D01ABCD91ED9EFC8009D11CE /* InstagramStats.xcdatamodeld */; };
 		D01ABCDD1ED9EFC8009D11CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D01ABCDC1ED9EFC8009D11CE /* Assets.xcassets */; };
 		D01ABCE01ED9EFC8009D11CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D01ABCDE1ED9EFC8009D11CE /* LaunchScreen.storyboard */; };
@@ -25,8 +26,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		11670D7D1EDCE558009D9A0C /* GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphView.h; sourceTree = "<group>"; };
-		11670D7E1EDCE558009D9A0C /* GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphView.m; sourceTree = "<group>"; };
+		11305F611EE07FD700ADE94F /* GraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GraphViewController.h; path = ../GraphViewController.h; sourceTree = "<group>"; };
+		11305F621EE07FD700ADE94F /* GraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GraphViewController.m; path = ../GraphViewController.m; sourceTree = "<group>"; };
+		11305F641EE080D200ADE94F /* GraphViewStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GraphViewStoryboard.storyboard; sourceTree = "<group>"; };
+		11305F661EE0894500ADE94F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1FBA3DA4FCB566320621DC1B /* Pods-InstagramStats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramStats.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InstagramStats/Pods-InstagramStats.debug.xcconfig"; sourceTree = "<group>"; };
 		830C5B42B9CFD08B5589E92D /* libPods-InstagramStats.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-InstagramStats.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC1E65EC1431FCE086212DF2 /* Pods-InstagramStats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramStats.release.xcconfig"; path = "Pods/Target Support Files/Pods-InstagramStats/Pods-InstagramStats.release.xcconfig"; sourceTree = "<group>"; };
@@ -34,7 +37,6 @@
 		D01ABCCE1ED9EFC8009D11CE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D01ABCD01ED9EFC8009D11CE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D01ABCD11ED9EFC8009D11CE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D01ABCD71ED9EFC8009D11CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D01ABCDA1ED9EFC8009D11CE /* InstagramStats.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = InstagramStats.xcdatamodel; sourceTree = "<group>"; };
 		D01ABCDC1ED9EFC8009D11CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D01ABCDF1ED9EFC8009D11CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -68,15 +70,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		11670D831EDCE594009D9A0C /* Graph View */ = {
-			isa = PBXGroup;
-			children = (
-				11670D7D1EDCE558009D9A0C /* GraphView.h */,
-				11670D7E1EDCE558009D9A0C /* GraphView.m */,
-			);
-			name = "Graph View";
-			sourceTree = "<group>";
-		};
 		3522CF6E61D38D20BC921846 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,13 +111,16 @@
 			children = (
 				D01ABCD01ED9EFC8009D11CE /* AppDelegate.h */,
 				D01ABCD11ED9EFC8009D11CE /* AppDelegate.m */,
-				D01ABCD61ED9EFC8009D11CE /* Main.storyboard */,
 				D01ABD111EDC8DB4009D11CE /* LoginViewController.h */,
 				D01ABD121EDC8DB4009D11CE /* LoginViewController.m */,
 				D01ABD0E1EDC727E009D11CE /* DashboardCollectionViewCell.h */,
 				D01ABD0F1EDC727E009D11CE /* DashboardCollectionViewCell.m */,
 				D01ABD081EDB22B2009D11CE /* DashboardViewController.h */,
 				D01ABD091EDB22B2009D11CE /* DashboardViewController.m */,
+				11305F611EE07FD700ADE94F /* GraphViewController.h */,
+				11305F621EE07FD700ADE94F /* GraphViewController.m */,
+				11305F661EE0894500ADE94F /* Main.storyboard */,
+				11305F641EE080D200ADE94F /* GraphViewStoryboard.storyboard */,
 				D01ABCDC1ED9EFC8009D11CE /* Assets.xcassets */,
 				D01ABCDE1ED9EFC8009D11CE /* LaunchScreen.storyboard */,
 				D01ABCD91ED9EFC8009D11CE /* InstagramStats.xcdatamodeld */,
@@ -136,7 +132,6 @@
 				D01ABD001ED9FE09009D11CE /* User.h */,
 				D01ABD011ED9FE09009D11CE /* User.m */,
 				D01ABD071EDA234D009D11CE /* API_KEYS.h */,
-				11670D831EDCE594009D9A0C /* Graph View */,
 				D01ABCCD1ED9EFC8009D11CE /* Supporting Files */,
 			);
 			path = InstagramStats;
@@ -219,7 +214,8 @@
 			files = (
 				D01ABCE01ED9EFC8009D11CE /* LaunchScreen.storyboard in Resources */,
 				D01ABCDD1ED9EFC8009D11CE /* Assets.xcassets in Resources */,
-				D01ABCD81ED9EFC8009D11CE /* Main.storyboard in Resources */,
+				11305F651EE080D200ADE94F /* GraphViewStoryboard.storyboard in Resources */,
+				11305F671EE0894500ADE94F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,9 +275,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D01ABD101EDC727E009D11CE /* DashboardCollectionViewCell.m in Sources */,
-				11670D7F1EDCE558009D9A0C /* GraphView.m in Sources */,
 				D01ABD021ED9FE09009D11CE /* User.m in Sources */,
 				D01ABD051EDA0259009D11CE /* DataManager.m in Sources */,
+				11305F631EE07FD700ADE94F /* GraphViewController.m in Sources */,
 				D01ABD131EDC8DB4009D11CE /* LoginViewController.m in Sources */,
 				D01ABD0A1EDB22B2009D11CE /* DashboardViewController.m in Sources */,
 				D01ABCD21ED9EFC8009D11CE /* AppDelegate.m in Sources */,
@@ -294,14 +290,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D01ABCD61ED9EFC8009D11CE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D01ABCD71ED9EFC8009D11CE /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D01ABCDE1ED9EFC8009D11CE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
