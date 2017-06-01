@@ -8,8 +8,11 @@
 
 #import <MapKit/MapKit.h>
 
-@interface MyCustomPointAnnotation : MKPointAnnotation
+@interface MyCustomPointAnnotation : NSObject <MKAnnotation>
 
 @property (nonatomic) UIImage *myImage;
+@property (nonatomic) CLLocationCoordinate2D coordinate;
+@property (nonatomic) NSString *likesNum;
+@property (nonatomic) NSString *commentsNum;
 
 @end
