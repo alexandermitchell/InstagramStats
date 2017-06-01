@@ -10,4 +10,7 @@
 
 @interface DashboardViewController : UIViewController
 
+// view hex colour: 003669
+// view rgb colours R:0 G:54 B:105
+
 @end

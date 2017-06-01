@@ -21,7 +21,9 @@
 @interface DashboardViewController () <UICollectionViewDelegate, UICollectionViewDataSource, LoginDelegateProtocol>
 
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
+
 @property (weak, nonatomic) IBOutlet UIView *graphView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic) DataManager *manager;
@@ -36,6 +38,8 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     
+//    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0 green:54/255.0 blue:105/255.0 alpha:1.0]];
+    
     self.manager = [DataManager sharedManager];
     //[self.manager.engine logout];
 
@@ -48,6 +52,10 @@
     } else {
         [self.manager fetchCurrentUser];
         self.cellDataArray = [self.manager fetchCellArray];
+        self.profileImageView.image = [UIImage imageWithData:self.manager.currentUser.photos[0].image];
+        self.usernameLabel.text = self.manager.currentUser.username;
+        
+        
         [self setupGraphView];
         [self.collectionView reloadData];
     }
@@ -66,6 +74,9 @@
     
     DashboardCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DashboardCollectionViewCell" forIndexPath:indexPath];
     cell.data = self.cellDataArray[indexPath.row];
+    
+    cell.layer.masksToBounds = YES;
+    cell.layer.cornerRadius = 10;
     
     return cell;
 }
@@ -127,13 +138,16 @@
                              completion:nil];
     
     self.cellDataArray = [self.manager fetchCellArray];
+    self.usernameLabel.text = self.manager.currentUser.username;
+    
+    self.profileImageView.image = [UIImage imageWithData:self.manager.currentUser.photos[0].image];
     [self setupGraphView];
     [self.collectionView reloadData];
 }
 
 -(void) setupGraphView {
     
-    self.graphView.backgroundColor = [UIColor blackColor];
+    
     GraphView *graphView = [[GraphView alloc] init];
     graphView.frame = self.graphView.bounds;
     [self.graphView addSubview: graphView];

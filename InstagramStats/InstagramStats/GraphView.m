@@ -37,6 +37,8 @@
 }
 
 - (void)drawRect:(CGRect)rect {
+    [[UIColor colorWithRed:0 green:54/255.0 blue:105/255.0 alpha:1.0] setFill];
+    UIRectFill(rect);
     CGContextRef context = UIGraphicsGetCurrentContext();
     self.partitionWidth = self.frame.size.width / (self.likesDataSet.count + 1);
     [self setupBackgroundGrid:context];
@@ -50,7 +52,7 @@
 
 -(void)setupBackgroundGrid:(CGContextRef)context {
 
-    self.layer.backgroundColor = [UIColor blackColor].CGColor;
+    self.backgroundColor = [UIColor colorWithRed:0 green:54/255.0 blue:105/255.0 alpha:1.0];
 
     for (int i = 1; i <= self.likesDataSet.count; i++) {
         [self drawVerticalLineAt:i * self.partitionWidth
@@ -69,11 +71,11 @@
 }
 
 -(void)drawLikesLineWithContext:(CGContextRef)context {
-    [self drawLineWithData:self.likesDataSet andContext:context andColor:[UIColor blueColor]];
+    [self drawLineWithData:self.likesDataSet andContext:context andColor:[UIColor colorWithRed:236/255.0 green:0 blue:98/255.0 alpha:1.0]];
 }
 
 -(void)drawCommentsLineWithContext:(CGContextRef)context {
-    [self drawLineWithData:self.commentsDataSet andContext:context andColor:[UIColor redColor]];
+    [self drawLineWithData:self.commentsDataSet andContext:context andColor:[UIColor colorWithRed:0 green:148/255.0 blue:236/255.0 alpha:1.0]];
 }
 
 -(void)drawLineWithData:(NSArray<NSNumber *> *)dataset andContext:(CGContextRef)context andColor:(UIColor *)color {
