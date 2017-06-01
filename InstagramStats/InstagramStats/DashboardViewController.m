@@ -75,7 +75,6 @@
 
 @property (nonatomic) DataManager *manager;
 @property (nonatomic) InstagramEngine *engine;
-@property (nonatomic) NSArray *cellDataArray;
 
 @property (nonatomic) NSMutableArray *likesDataset;
 @property (nonatomic) NSMutableArray *commentsDataset;
@@ -92,18 +91,19 @@
 //    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0 green:54/255.0 blue:105/255.0 alpha:1.0]];
     
     self.manager = [DataManager sharedManager];
-    //[self.manager.engine logout];
+     //[self.manager.engine logout];
 
     if (![self.manager.engine isSessionValid]) {
     
         LoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Login"];
         loginVC.delegate = self;
-        [self presentViewController:loginVC animated:NO completion:^{
+        [self presentViewController:loginVC animated:YES completion:^{
         }];
+        
     } else {
         [self.manager fetchCurrentUser];
-        //self.cellDataArray = [self.manager fetchCellArray];
-        self.profileImageView.image = [UIImage imageWithData:self.manager.currentUser.photos[0].image];
+        
+        self.profileImageView.image = [UIImage imageWithData:self.manager.currentUser.photos[3].image];
         self.usernameLabel.text = self.manager.currentUser.username;
         [self setupButtonSubviews];
         
@@ -133,12 +133,13 @@
     [self dismissViewControllerAnimated:YES
                              completion:nil];
     
-    self.cellDataArray = [self.manager fetchCellArray];
     self.usernameLabel.text = self.manager.currentUser.username;
     
     self.profileImageView.image = [UIImage imageWithData:self.manager.currentUser.photos[0].image];
     [self setupGraphView];
-    //[self.collectionView reloadData];
+    [self setupButtonSubviews];
+    [self setupAnimatedBezierPaths];
+
 }
 
 -(void) setupGraphView {
@@ -287,6 +288,7 @@
 -(void)setupAnimatedBezierPaths {
     [self setupLikesAnimationBezierPath];
     [self setupCommentsAnimationBezierPath];
+    NSLog(@"Finished setupAnimatedBezierPaths");
 }
 
 -(void)setupAnimatedBezierPathWithDataset:(NSArray *)dataset andColor:(UIColor *)color {

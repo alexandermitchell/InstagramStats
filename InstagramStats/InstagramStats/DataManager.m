@@ -113,6 +113,7 @@
     [self saveContext];
     for (InstagramMedia *photo in media) {
         [self saveMedia:photo withUser:user];
+        
     }
 }
 
@@ -131,9 +132,11 @@
     NSLog(@"saved photo to core data");
     
     [self downloadImage:media complete:^(UIImage *image) {
+        
         photo.image = UIImageJPEGRepresentation(image, 1.0);
         NSLog(@"downloaded image");
         [self saveContext];
+        
     }];
 }
 

@@ -49,6 +49,7 @@
             [[InstagramEngine sharedEngine] getMediaForUser: manager.currentUser.userID withSuccess:^(NSArray<InstagramMedia *> * _Nonnull media, InstagramPaginationInfo * _Nonnull paginationInfo) {
 
                 [manager savePhotos:media withUser:manager.currentUser];
+                
                 [self.delegate loginDidSucceed];
 
             } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {

@@ -28,7 +28,6 @@
 -(void) saveMedia:(InstagramMedia *)media withUser:(User *)user;
 -(void)fetchUser:(InstagramUser *)user;
 -(void)fetchCurrentUser;
--(NSArray *) fetchCellArray;
 
 
 #pragma mark - Class methods
