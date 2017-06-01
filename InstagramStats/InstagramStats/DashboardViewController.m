@@ -53,61 +53,7 @@
 //        }];
 //    }
 
-    // No Animation
-
-//    self.graphView.backgroundColor = [UIColor blackColor];
-//    GraphView *graphView = [[GraphView alloc] init];
-//    graphView.frame = self.graphView.bounds;
-//    [self.graphView addSubview: graphView];
-
-    // Animation
-
-    UIBezierPath *likesBezierPath = [self bezierPathForLikes];
-    UIBezierPath *commentsBezierPath = [self bezierPathForComments];
-
-
-    [likesBezierPath appendPath:commentsBezierPath];
-
-    CAShapeLayer *likesShapeLayer = [CAShapeLayer layer];
-    CAShapeLayer *commentsShapeLayer = [CAShapeLayer layer];
-
-    likesShapeLayer.frame = self.graphView.bounds;
-    commentsShapeLayer.frame = self.graphView.bounds;
-
-    likesShapeLayer.path = likesBezierPath.CGPath;
-    commentsShapeLayer.path = commentsBezierPath.CGPath;
-
-    [self.graphView.layer addSublayer:likesShapeLayer];
-    [self.graphView.layer addSublayer:commentsShapeLayer];
-
-    likesShapeLayer.strokeColor = [UIColor blueColor].CGColor;
-    likesShapeLayer.lineWidth = 5.0;
-    likesShapeLayer.fillColor = [UIColor colorWithWhite:1 alpha:0].CGColor;
-
-    commentsShapeLayer.strokeColor = [UIColor redColor].CGColor;
-    commentsShapeLayer.lineWidth = 5.0;
-    commentsShapeLayer.fillColor = [UIColor colorWithWhite:1 alpha:0].CGColor;
-
-    likesShapeLayer.strokeStart = 0.0;
-    commentsShapeLayer.strokeStart = 0.0;
-
-
-
-    CABasicAnimation *likesAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-    likesAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    likesAnimation.duration = 4.0;
-    likesAnimation.fromValue = @(0.0);
-    likesAnimation.toValue = @(1.0);
-
-    [likesShapeLayer addAnimation:likesAnimation forKey:@"likesAnimation"];
-
-    CABasicAnimation *commentsAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-    commentsAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    commentsAnimation.duration = 4.0;
-    commentsAnimation.fromValue = @(0.0);
-    commentsAnimation.toValue = @(1.0);
-
-    [commentsShapeLayer addAnimation:commentsAnimation forKey:@"commentsAnimation"];
+    [self setupAnimatedBezierPaths];
 }
 
 
@@ -154,38 +100,10 @@
 }
 
 
-#pragma mark - Statistics curves
-
--(NSMutableArray *)likesDataset {
-    if (!_likesDataset) {
-        _likesDataset = [[NSMutableArray alloc] init];
-        for (int i = 0; i < 20; i++) {
-            [_likesDataset addObject:@(arc4random_uniform(30) + 10)];
-        }
-    }
-    return _likesDataset;
-}
-
--(NSMutableArray *)commentsDataset {
-    if (!_commentsDataset) {
-        _commentsDataset = [[NSMutableArray alloc] init];
-        for (int i = 0; i < 20; i++) {
-            [_commentsDataset addObject:@(arc4random_uniform(10))];
-        }
-    }
-    return _commentsDataset;
-}
+#pragma mark - Bezier Path methods
 
 
--(UIBezierPath *)bezierPathForLikes {
-    return [self bezierPathForDataset:self.likesDataset withColor:[UIColor blueColor]];
-}
-
--(UIBezierPath *)bezierPathForComments {
-    return [self bezierPathForDataset:self.commentsDataset withColor:[UIColor redColor]];
-}
-
--(UIBezierPath *)bezierPathForDataset:(NSArray *)dataset withColor:(UIColor *)color {
+-(UIBezierPath *)bezierPathForDataset:(NSArray *)dataset {
     UIBezierPath *path = [[UIBezierPath alloc] init];
 
     CGFloat maxData = [DashboardViewController getMax:dataset];
@@ -216,27 +134,50 @@
     return path;
 }
 
-+(CGFloat)getMax:(NSArray<NSNumber *> *)dataset {
-    NSNumber *max = dataset[0];
 
-    for (int i = 0; i < dataset.count; i++) {
-        if ([max compare:dataset[i]] == NSOrderedAscending) {
-            max = dataset[i];
-        }
-    }
-    return [max doubleValue];
+#pragma mark - Bezier Path Animation methods
+
+
+-(void)setupLikesAnimationBezierPath {
+    [self setupAnimatedBezierPathWithDataset:self.likesDataset andColor:[UIColor redColor]];
 }
 
-+(CGFloat)getMin:(NSArray<NSNumber *> *)dataset {
-    NSNumber *min = dataset[0];
-
-    for (int i = 0; i < dataset.count; i++) {
-        if ([min compare:dataset[i]] == NSOrderedDescending) {
-            min = dataset[i];
-        }
-    }
-    return [min doubleValue];
+-(void)setupCommentsAnimationBezierPath {
+    [self setupAnimatedBezierPathWithDataset:self.commentsDataset andColor:[UIColor blueColor]];
 }
+
+-(void)setupAnimatedBezierPaths {
+    [self setupLikesAnimationBezierPath];
+    [self setupCommentsAnimationBezierPath];
+}
+
+-(void)setupAnimatedBezierPathWithDataset:(NSArray *)dataset andColor:(UIColor *)color {
+
+    UIBezierPath *bezierPath = [self bezierPathForDataset:dataset];
+
+    CAShapeLayer *shapelayer = [CAShapeLayer layer];
+    shapelayer.frame = self.graphView.bounds;
+    shapelayer.path = bezierPath.CGPath;
+    [self.graphView.layer addSublayer:shapelayer];
+
+    shapelayer.strokeColor = color.CGColor;
+    shapelayer.lineWidth = 5.0;
+    shapelayer.fillColor = [UIColor colorWithWhite:1 alpha:0].CGColor;
+
+    shapelayer.strokeStart = 0.0;
+
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    animation.duration = 4.0;
+    animation.fromValue = @(0.0);
+    animation.toValue = @(1.0);
+
+    [shapelayer addAnimation:animation forKey:@"animation"];
+}
+
+
+#pragma mark - Utility Geometric Methods
+
 
 +(CGPoint)getMidpointBetween:(CGPoint)p and:(CGPoint)q {
     return CGPointMake((p.x + q.x) / 2, (p.y + q.y) / 2);
@@ -257,8 +198,33 @@
     }
 
     CGFloat c = ([data doubleValue] - min) / (max - min);
-    //NSLog(@"%@: %@", @(__FUNCTION__), @(self.frame.size.height * (1 - c)));
     return self.graphView.frame.size.height * (1 - c);
+}
+
+
+#pragma mark - NSArray Utility Functions
+
+
++(CGFloat)getMax:(NSArray<NSNumber *> *)dataset {
+    NSNumber *max = dataset[0];
+
+    for (int i = 0; i < dataset.count; i++) {
+        if ([max compare:dataset[i]] == NSOrderedAscending) {
+            max = dataset[i];
+        }
+    }
+    return [max doubleValue];
+}
+
++(CGFloat)getMin:(NSArray<NSNumber *> *)dataset {
+    NSNumber *min = dataset[0];
+
+    for (int i = 0; i < dataset.count; i++) {
+        if ([min compare:dataset[i]] == NSOrderedDescending) {
+            min = dataset[i];
+        }
+    }
+    return [min doubleValue];
 }
 
 
