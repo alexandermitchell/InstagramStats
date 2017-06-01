@@ -13,6 +13,7 @@
 #import "User+CoreDataProperties.h"
 #import "LoginViewController.h"
 #import "DashboardCollectionViewCell.h"
+#import "UIBezierPath+Statistics.h"
 
 @interface DashboardViewController () <UICollectionViewDelegate, UICollectionViewDataSource, LoginDelegateProtocol>
 
@@ -99,41 +100,6 @@
 }
 
 
-#pragma mark - Bezier Path methods
-
-
--(UIBezierPath *)bezierPathForDataset:(NSArray *)dataset {
-    UIBezierPath *path = [[UIBezierPath alloc] init];
-
-    CGFloat maxData = [DashboardViewController getMax:dataset];
-    CGFloat minData = [DashboardViewController getMin:dataset];
-
-    CGFloat partitionWidth = self.graphView.bounds.size.width / (dataset.count + 1);
-
-    [path moveToPoint:CGPointMake(0, [self getHeightForData:dataset[0]
-                                                  WithinMin:minData
-                                                     andMax:maxData])];
-
-    for (int i = 1; i < dataset.count; i++) {
-        CGPoint p = CGPointMake((i - 1) * partitionWidth, [self getHeightForData:dataset[i - 1]
-                                                                       WithinMin:minData
-                                                                          andMax:maxData]);
-        CGPoint q = CGPointMake(i * partitionWidth, [self getHeightForData:dataset[i]
-                                                                 WithinMin:minData
-                                                                    andMax:maxData]);
-
-        CGPoint midpoint = [DashboardViewController getMidpointBetween:p and:q];
-        CGPoint controlPoint1 = [DashboardViewController getControlPointFor:midpoint and:p];
-        CGPoint controlPoint2 = [DashboardViewController getControlPointFor:midpoint and:q];
-
-        [path addQuadCurveToPoint:midpoint controlPoint:controlPoint1];
-        [path addQuadCurveToPoint:q controlPoint:controlPoint2];
-    }
-
-    return path;
-}
-
-
 #pragma mark - Bezier Path Animation methods
 
 
@@ -152,7 +118,9 @@
 
 -(void)setupAnimatedBezierPathWithDataset:(NSArray *)dataset andColor:(UIColor *)color {
 
-    UIBezierPath *bezierPath = [self bezierPathForDataset:dataset];
+    UIBezierPath *bezierPath = [UIBezierPath bezierPathForDataset:dataset
+                                               withPartitionWidth:self.graphView.bounds.size.width / (dataset.count + 1)
+                                                        andHeight:self.graphView.frame.size.height];
 
     CAShapeLayer *shapelayer = [CAShapeLayer layer];
     shapelayer.frame = self.graphView.bounds;
@@ -173,58 +141,5 @@
 
     [shapelayer addAnimation:animation forKey:@"animation"];
 }
-
-
-#pragma mark - Utility Geometric Methods
-
-
-+(CGPoint)getMidpointBetween:(CGPoint)p and:(CGPoint)q {
-    return CGPointMake((p.x + q.x) / 2, (p.y + q.y) / 2);
-}
-
-+(CGPoint)getControlPointFor:(CGPoint)p and:(CGPoint)q {
-    CGPoint controlPoint = [DashboardViewController getMidpointBetween:p and:q];
-    CGFloat diffY = fabs(q.y - controlPoint.y);
-
-    controlPoint.y += (p.y < q.y) ? +diffY : -diffY;
-
-    return controlPoint;
-}
-
--(CGFloat)getHeightForData:(NSNumber *)data WithinMin:(CGFloat)min andMax:(CGFloat)max {
-    if (max == min) {
-        return 0;
-    }
-
-    CGFloat c = ([data doubleValue] - min) / (max - min);
-    return self.graphView.frame.size.height * (1 - c);
-}
-
-
-#pragma mark - NSArray Utility Functions
-
-
-+(CGFloat)getMax:(NSArray<NSNumber *> *)dataset {
-    NSNumber *max = dataset[0];
-
-    for (int i = 0; i < dataset.count; i++) {
-        if ([max compare:dataset[i]] == NSOrderedAscending) {
-            max = dataset[i];
-        }
-    }
-    return [max doubleValue];
-}
-
-+(CGFloat)getMin:(NSArray<NSNumber *> *)dataset {
-    NSNumber *min = dataset[0];
-
-    for (int i = 0; i < dataset.count; i++) {
-        if ([min compare:dataset[i]] == NSOrderedDescending) {
-            min = dataset[i];
-        }
-    }
-    return [min doubleValue];
-}
-
 
 @end

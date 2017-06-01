@@ -10,6 +10,7 @@
 		11305F631EE07FD700ADE94F /* GraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11305F621EE07FD700ADE94F /* GraphViewController.m */; };
 		11305F651EE080D200ADE94F /* GraphViewStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11305F641EE080D200ADE94F /* GraphViewStoryboard.storyboard */; };
 		11305F671EE0894500ADE94F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11305F661EE0894500ADE94F /* Main.storyboard */; };
+		11305F6A1EE094EB00ADE94F /* UIBezierPath+Statistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 11305F691EE094EB00ADE94F /* UIBezierPath+Statistics.m */; };
 		D01ABCCF1ED9EFC8009D11CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D01ABCCE1ED9EFC8009D11CE /* main.m */; };
 		D01ABCD21ED9EFC8009D11CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D01ABCD11ED9EFC8009D11CE /* AppDelegate.m */; };
 		D01ABCDB1ED9EFC8009D11CE /* InstagramStats.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D01ABCD91ED9EFC8009D11CE /* InstagramStats.xcdatamodeld */; };
@@ -30,6 +31,8 @@
 		11305F621EE07FD700ADE94F /* GraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GraphViewController.m; path = ../GraphViewController.m; sourceTree = "<group>"; };
 		11305F641EE080D200ADE94F /* GraphViewStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GraphViewStoryboard.storyboard; sourceTree = "<group>"; };
 		11305F661EE0894500ADE94F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		11305F681EE094EB00ADE94F /* UIBezierPath+Statistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+Statistics.h"; sourceTree = "<group>"; };
+		11305F691EE094EB00ADE94F /* UIBezierPath+Statistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+Statistics.m"; sourceTree = "<group>"; };
 		1FBA3DA4FCB566320621DC1B /* Pods-InstagramStats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramStats.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InstagramStats/Pods-InstagramStats.debug.xcconfig"; sourceTree = "<group>"; };
 		830C5B42B9CFD08B5589E92D /* libPods-InstagramStats.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-InstagramStats.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC1E65EC1431FCE086212DF2 /* Pods-InstagramStats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramStats.release.xcconfig"; path = "Pods/Target Support Files/Pods-InstagramStats/Pods-InstagramStats.release.xcconfig"; sourceTree = "<group>"; };
@@ -117,6 +120,8 @@
 				D01ABD0F1EDC727E009D11CE /* DashboardCollectionViewCell.m */,
 				D01ABD081EDB22B2009D11CE /* DashboardViewController.h */,
 				D01ABD091EDB22B2009D11CE /* DashboardViewController.m */,
+				11305F681EE094EB00ADE94F /* UIBezierPath+Statistics.h */,
+				11305F691EE094EB00ADE94F /* UIBezierPath+Statistics.m */,
 				11305F611EE07FD700ADE94F /* GraphViewController.h */,
 				11305F621EE07FD700ADE94F /* GraphViewController.m */,
 				11305F661EE0894500ADE94F /* Main.storyboard */,
@@ -277,6 +282,7 @@
 				D01ABD101EDC727E009D11CE /* DashboardCollectionViewCell.m in Sources */,
 				D01ABD021ED9FE09009D11CE /* User.m in Sources */,
 				D01ABD051EDA0259009D11CE /* DataManager.m in Sources */,
+				11305F6A1EE094EB00ADE94F /* UIBezierPath+Statistics.m in Sources */,
 				11305F631EE07FD700ADE94F /* GraphViewController.m in Sources */,
 				D01ABD131EDC8DB4009D11CE /* LoginViewController.m in Sources */,
 				D01ABD0A1EDB22B2009D11CE /* DashboardViewController.m in Sources */,
