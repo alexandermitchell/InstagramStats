@@ -11,6 +11,9 @@
 		9201012A1EDF531E00FCB342 /* ShowAllPosts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 920101291EDF531E00FCB342 /* ShowAllPosts.storyboard */; };
 		9201012D1EDF53F600FCB342 /* AllPostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9201012C1EDF53F600FCB342 /* AllPostsViewController.m */; };
 		920101311EDF552800FCB342 /* PostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 920101301EDF552800FCB342 /* PostTableViewCell.m */; };
+		920101341EE0613A00FCB342 /* CustomMKAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 920101331EE0613A00FCB342 /* CustomMKAnnotationView.m */; };
+		920101361EE0662C00FCB342 /* CustomCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 920101351EE0662C00FCB342 /* CustomCalloutView.xib */; };
+		920101391EE0664D00FCB342 /* CustomCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 920101381EE0664D00FCB342 /* CustomCalloutView.m */; };
 		D01ABCCF1ED9EFC8009D11CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D01ABCCE1ED9EFC8009D11CE /* main.m */; };
 		D01ABCD21ED9EFC8009D11CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D01ABCD11ED9EFC8009D11CE /* AppDelegate.m */; };
 		D01ABCD81ED9EFC8009D11CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D01ABCD61ED9EFC8009D11CE /* Main.storyboard */; };
@@ -39,6 +42,11 @@
 		9201012C1EDF53F600FCB342 /* AllPostsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllPostsViewController.m; sourceTree = "<group>"; };
 		9201012F1EDF552800FCB342 /* PostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostTableViewCell.h; sourceTree = "<group>"; };
 		920101301EDF552800FCB342 /* PostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostTableViewCell.m; sourceTree = "<group>"; };
+		920101321EE0613A00FCB342 /* CustomMKAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomMKAnnotationView.h; sourceTree = "<group>"; };
+		920101331EE0613A00FCB342 /* CustomMKAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomMKAnnotationView.m; sourceTree = "<group>"; };
+		920101351EE0662C00FCB342 /* CustomCalloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCalloutView.xib; sourceTree = "<group>"; };
+		920101371EE0664D00FCB342 /* CustomCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCalloutView.h; sourceTree = "<group>"; };
+		920101381EE0664D00FCB342 /* CustomCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCalloutView.m; sourceTree = "<group>"; };
 		BC1E65EC1431FCE086212DF2 /* Pods-InstagramStats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramStats.release.xcconfig"; path = "Pods/Target Support Files/Pods-InstagramStats/Pods-InstagramStats.release.xcconfig"; sourceTree = "<group>"; };
 		D01ABCCA1ED9EFC8009D11CE /* InstagramStats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramStats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D01ABCCE1ED9EFC8009D11CE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -121,6 +129,16 @@
 			name = AllPostsViewController;
 			sourceTree = "<group>";
 		};
+		9201013A1EE0665300FCB342 /* CustomCalloutView */ = {
+			isa = PBXGroup;
+			children = (
+				920101351EE0662C00FCB342 /* CustomCalloutView.xib */,
+				920101371EE0664D00FCB342 /* CustomCalloutView.h */,
+				920101381EE0664D00FCB342 /* CustomCalloutView.m */,
+			);
+			name = CustomCalloutView;
+			sourceTree = "<group>";
+		};
 		D01ABCC11ED9EFC8009D11CE = {
 			isa = PBXGroup;
 			children = (
@@ -152,10 +170,13 @@
 				D01ABD081EDB22B2009D11CE /* DashboardViewController.h */,
 				D01ABD091EDB22B2009D11CE /* DashboardViewController.m */,
 				D01ABD161EDF39DE009D11CE /* MapViewController.h */,
+				9201013A1EE0665300FCB342 /* CustomCalloutView */,
 				D01ABD171EDF39DE009D11CE /* MapViewController.m */,
 				D01ABD181EDF39DE009D11CE /* MyCustomPointAnnotation.h */,
-				9201012E1EDF53FB00FCB342 /* AllPostsViewController */,
 				D01ABD191EDF39DE009D11CE /* MyCustomPointAnnotation.m */,
+				920101321EE0613A00FCB342 /* CustomMKAnnotationView.h */,
+				920101331EE0613A00FCB342 /* CustomMKAnnotationView.m */,
+				9201012E1EDF53FB00FCB342 /* AllPostsViewController */,
 				D01ABCDC1ED9EFC8009D11CE /* Assets.xcassets */,
 				D01ABCDE1ED9EFC8009D11CE /* LaunchScreen.storyboard */,
 				D01ABCD91ED9EFC8009D11CE /* InstagramStats.xcdatamodeld */,
@@ -251,6 +272,7 @@
 				D01ABCE01ED9EFC8009D11CE /* LaunchScreen.storyboard in Resources */,
 				9201012A1EDF531E00FCB342 /* ShowAllPosts.storyboard in Resources */,
 				D01ABCDD1ED9EFC8009D11CE /* Assets.xcassets in Resources */,
+				920101361EE0662C00FCB342 /* CustomCalloutView.xib in Resources */,
 				D01ABCD81ED9EFC8009D11CE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,6 +339,8 @@
 				9201012D1EDF53F600FCB342 /* AllPostsViewController.m in Sources */,
 				D01ABD051EDA0259009D11CE /* DataManager.m in Sources */,
 				D01ABD131EDC8DB4009D11CE /* LoginViewController.m in Sources */,
+				920101341EE0613A00FCB342 /* CustomMKAnnotationView.m in Sources */,
+				920101391EE0664D00FCB342 /* CustomCalloutView.m in Sources */,
 				D01ABD0A1EDB22B2009D11CE /* DashboardViewController.m in Sources */,
 				D01ABCD21ED9EFC8009D11CE /* AppDelegate.m in Sources */,
 				D01ABD1B1EDF39DE009D11CE /* MyCustomPointAnnotation.m in Sources */,

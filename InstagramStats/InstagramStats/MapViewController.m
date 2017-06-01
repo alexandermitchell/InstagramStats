@@ -12,6 +12,7 @@
 #import "Photo+CoreDataProperties.h"
 #import "User+CoreDataProperties.h"
 #import "MyCustomPointAnnotation.h"
+#import "CustomMKAnnotationView.h"
 
 @interface MapViewController ()<MKMapViewDelegate>
 
@@ -48,10 +49,10 @@
 - (MKAnnotationView*)mapView:(MKMapView *)mapView
            viewForAnnotation:(id<MKAnnotation>)annotation
 {
-    MKAnnotationView *pin = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"pin"];
+    CustomMKAnnotationView *pin = (CustomMKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"pin"];
     
     if (pin == nil) {
-        pin = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"pin"];
+        pin = [[CustomMKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"pin"];
         
     }
     
@@ -68,6 +69,7 @@
     
     
     pin.image = resizedPin;
+    
     [pin setCanShowCallout:YES];
     [self.mapView addSubview:pin];
     
