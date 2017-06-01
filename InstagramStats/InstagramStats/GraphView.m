@@ -37,7 +37,7 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    [[UIColor colorWithRed:0 green:54/255.0 blue:105/255.0 alpha:1.0] setFill];
+    [[UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1.0] setFill];
     UIRectFill(rect);
     CGContextRef context = UIGraphicsGetCurrentContext();
     self.partitionWidth = self.frame.size.width / (self.likesDataSet.count + 1);
@@ -52,12 +52,12 @@
 
 -(void)setupBackgroundGrid:(CGContextRef)context {
 
-    self.backgroundColor = [UIColor colorWithRed:0 green:54/255.0 blue:105/255.0 alpha:1.0];
+    self.backgroundColor = [UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1.0];
 
-    for (int i = 1; i <= self.likesDataSet.count; i++) {
-        [self drawVerticalLineAt:i * self.partitionWidth
-                     withContext:context];
-    }
+//    for (int i = 1; i <= self.likesDataSet.count; i++) {
+//        [self drawVerticalLineAt:i * self.partitionWidth
+//                     withContext:context];
+//    }
 }
 
 -(void) drawVerticalLineAt:(CGFloat)locationX withContext:(CGContextRef)context {

@@ -22,10 +22,57 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 
+// Image Wrapper View Outlets
+
+@property (weak, nonatomic) IBOutlet UIView *imageWrapper;
+
+@property (weak, nonatomic) IBOutlet UIView *profileStatsView;
+
+@property (weak, nonatomic) IBOutlet UIImageView *heartImageView;
+
+@property (weak, nonatomic) IBOutlet UIImageView *commentImageView;
+
+@property (weak, nonatomic) IBOutlet UILabel *profileLikesLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *profileCommentsLabel;
+
+// Other Wraper View Outlets
+
+@property (weak, nonatomic) IBOutlet UIView *buttonWrapper;
+
+@property (weak, nonatomic) IBOutlet UIView *graphWrapper;
+
+// Followers Button Outlets
+
+@property (weak, nonatomic) IBOutlet UIView *followersBtnView;
+
+@property (weak, nonatomic) IBOutlet UILabel *followersCountLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *followersTitleLabel;
+
+// Following Button Outlets
+@property (weak, nonatomic) IBOutlet UIView *followingBtnView;
+
+@property (weak, nonatomic) IBOutlet UILabel *followingCountLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *followingTitleLabel;
+
+// All Posts Button Outlets
+
+@property (weak, nonatomic) IBOutlet UIView *allPostsBtnView;
+
+@property (weak, nonatomic) IBOutlet UILabel *allPostsTitleLabel;
+
+// Map Button Outlets
+
+@property (weak, nonatomic) IBOutlet UIView *mapBtnView;
+
+@property (weak, nonatomic) IBOutlet UILabel *mapTitleLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *graphView;
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
 @property (nonatomic) DataManager *manager;
 @property (nonatomic) InstagramEngine *engine;
 @property (nonatomic) NSArray *cellDataArray;
@@ -54,7 +101,7 @@
         //self.cellDataArray = [self.manager fetchCellArray];
         self.profileImageView.image = [UIImage imageWithData:self.manager.currentUser.photos[0].image];
         self.usernameLabel.text = self.manager.currentUser.username;
-        
+        [self setupButtonSubviews];
         
         [self setupGraphView];
         
@@ -62,62 +109,6 @@
     
 }
 
-
-#pragma mark - Collection View Data Source Methods
-
-
-//-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-//    return self.cellDataArray.count;
-//}
-//
-//-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//    DashboardCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DashboardCollectionViewCell" forIndexPath:indexPath];
-//    cell.data = self.cellDataArray[indexPath.row];
-//    
-//    cell.layer.masksToBounds = YES;
-//    cell.layer.cornerRadius = 10;
-//    
-//    return cell;
-//}
-//
-//-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-//    switch (indexPath.row) {
-//        case 2: {
-//            
-//            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"ShowAllPosts" bundle:nil];
-//            
-//            
-//            AllPostsViewController *apVC = [storyboard instantiateViewControllerWithIdentifier:@"ShowAllPosts"];
-//            
-//            [self.navigationController pushViewController:apVC animated:YES];
-//            
-//            break;
-//        }
-//            
-//        case 3: {
-//            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//            
-//            MapViewController *mapVC = [storyboard instantiateViewControllerWithIdentifier:@"MapVC"];
-//            
-//            [self.navigationController pushViewController:mapVC animated:YES];
-//            break;
-//        }
-//            
-//        default:
-//            break;
-//    }
-//}
-
-/*
- #pragma mark - Navigation
- 
-  In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-  Get the new view controller using [segue destinationViewController].
-  Pass the selected object to the new view controller.
- }
- */
 
 - (IBAction)openInstagram:(UIBarButtonItem *)sender {
     NSURL *instagramURL = [NSURL URLWithString:@"instagram://camera"];
@@ -167,5 +158,84 @@
     graphView.commentsDataSet = commentsArray;
     
 }
+
+- (IBAction)showFollowers:(UITapGestureRecognizer *)sender {
+    
+    
+}
+
+- (IBAction)showFollowing:(UITapGestureRecognizer *)sender {
+    
+}
+
+- (IBAction)showAllPosts:(UITapGestureRecognizer *)sender {
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"ShowAllPosts" bundle:nil];
+    
+    AllPostsViewController *allPostsVC = [storyboard instantiateViewControllerWithIdentifier:@"ShowAllPosts"];
+    
+    [self.navigationController pushViewController:allPostsVC animated:YES];
+    
+    
+}
+
+- (IBAction)showMap:(UITapGestureRecognizer *)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    MapViewController *mapVC = [storyboard instantiateViewControllerWithIdentifier:@"MapVC"];
+    
+    [self.navigationController pushViewController:mapVC animated:YES];
+    
+}
+
+-(void) setupButtonSubviews {
+    
+    // Followers subview setup
+    self.followersBtnView.layer.cornerRadius = self.followersBtnView.bounds.size.width/2;
+    self.followersBtnView.layer.masksToBounds = YES;
+    self.followersCountLabel.text = [NSString stringWithFormat:@"%d",self.manager.currentUser.followersNum];
+    
+    // Following subview setup
+    
+    self.followingBtnView.layer.cornerRadius = self.followingBtnView.bounds.size.width/2;
+    self.followingBtnView.layer.masksToBounds = YES;
+    self.followingCountLabel.text = [NSString stringWithFormat:@"%d",self.manager.currentUser.followingNum];
+    
+    // All Posts subview setup
+    
+    self.allPostsBtnView.layer.cornerRadius = self.allPostsBtnView.bounds.size.width/2;
+    self.allPostsBtnView.layer.masksToBounds = YES;
+    
+    // Map subview setup
+    
+    self.mapBtnView.layer.cornerRadius = self.mapBtnView.bounds.size.width/2;
+    self.mapBtnView.layer.masksToBounds = YES;
+    
+    // button wrapper border
+    
+    self.buttonWrapper.layer.borderWidth = 1;
+    self.buttonWrapper.layer.borderColor = [UIColor colorWithRed:175.0/255 green:175.0/255 blue:175.0/255 alpha:1.0].CGColor;
+    
+    //profile stats view
+    
+    self.profileStatsView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.6];
+    
+    self.profileStatsView.layer.cornerRadius = 4;
+    self.profileStatsView.layer.masksToBounds = YES;
+    
+    self.heartImageView.image = [self.heartImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.heartImageView setTintColor:[UIColor colorWithRed:120.0/255 green:120.0/255 blue:120.0/255 alpha:1.0]];
+    self.profileLikesLabel.text = [NSString stringWithFormat:@"%d", self.manager.currentUser.photos[0].likesNum];
+    
+    self.commentImageView.image = [self.commentImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.commentImageView setTintColor:[UIColor colorWithRed:120.0/255 green:120.0/255 blue:120.0/255 alpha:1.0]];
+    self.profileCommentsLabel.text = [NSString stringWithFormat:@"%d", self.manager.currentUser.photos[0].commentsNum];
+    
+    
+}
+
+
+
+
 
 @end
