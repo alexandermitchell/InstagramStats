@@ -18,7 +18,7 @@
 #import "AllPostsViewController.h"
 #import "MapViewController.h"
 
-@interface DashboardViewController () <UICollectionViewDelegate, UICollectionViewDataSource, LoginDelegateProtocol>
+@interface DashboardViewController () <LoginDelegateProtocol>
 
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 
@@ -51,13 +51,13 @@
         }];
     } else {
         [self.manager fetchCurrentUser];
-        self.cellDataArray = [self.manager fetchCellArray];
+        //self.cellDataArray = [self.manager fetchCellArray];
         self.profileImageView.image = [UIImage imageWithData:self.manager.currentUser.photos[0].image];
         self.usernameLabel.text = self.manager.currentUser.username;
         
         
         [self setupGraphView];
-        [self.collectionView reloadData];
+        
     }
     
 }
@@ -66,48 +66,48 @@
 #pragma mark - Collection View Data Source Methods
 
 
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.cellDataArray.count;
-}
-
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    DashboardCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DashboardCollectionViewCell" forIndexPath:indexPath];
-    cell.data = self.cellDataArray[indexPath.row];
-    
-    cell.layer.masksToBounds = YES;
-    cell.layer.cornerRadius = 10;
-    
-    return cell;
-}
-
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    switch (indexPath.row) {
-        case 2: {
-            
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"ShowAllPosts" bundle:nil];
-            
-            
-            AllPostsViewController *apVC = [storyboard instantiateViewControllerWithIdentifier:@"ShowAllPosts"];
-            
-            [self.navigationController pushViewController:apVC animated:YES];
-            
-            break;
-        }
-            
-        case 3: {
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            
-            MapViewController *mapVC = [storyboard instantiateViewControllerWithIdentifier:@"MapVC"];
-            
-            [self.navigationController pushViewController:mapVC animated:YES];
-            break;
-        }
-            
-        default:
-            break;
-    }
-}
+//-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+//    return self.cellDataArray.count;
+//}
+//
+//-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//    DashboardCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DashboardCollectionViewCell" forIndexPath:indexPath];
+//    cell.data = self.cellDataArray[indexPath.row];
+//    
+//    cell.layer.masksToBounds = YES;
+//    cell.layer.cornerRadius = 10;
+//    
+//    return cell;
+//}
+//
+//-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+//    switch (indexPath.row) {
+//        case 2: {
+//            
+//            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"ShowAllPosts" bundle:nil];
+//            
+//            
+//            AllPostsViewController *apVC = [storyboard instantiateViewControllerWithIdentifier:@"ShowAllPosts"];
+//            
+//            [self.navigationController pushViewController:apVC animated:YES];
+//            
+//            break;
+//        }
+//            
+//        case 3: {
+//            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//            
+//            MapViewController *mapVC = [storyboard instantiateViewControllerWithIdentifier:@"MapVC"];
+//            
+//            [self.navigationController pushViewController:mapVC animated:YES];
+//            break;
+//        }
+//            
+//        default:
+//            break;
+//    }
+//}
 
 /*
  #pragma mark - Navigation
@@ -142,7 +142,7 @@
     
     self.profileImageView.image = [UIImage imageWithData:self.manager.currentUser.photos[0].image];
     [self setupGraphView];
-    [self.collectionView reloadData];
+    //[self.collectionView reloadData];
 }
 
 -(void) setupGraphView {
