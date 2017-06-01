@@ -155,32 +155,6 @@
     complete(loadedImage);
 }
 
-//Might have to put block in function!!!
-
--(NSArray *) fetchCellArray {
-
-    // Order of arrays:
-    //                  1. followers
-    //                  2. following
-    //                  3. photos
-    //                  4. map
-
-    NSArray<NSString *> *titles = @[@"Followers", @"Following", @"Total Posts", @"Photo Map"];
-    NSArray<NSString *> *subtitles = @[@"", @"", @"", @""];
-    NSArray<NSString *> *counterLabels = @[[@(self.currentUser.followersNum) description], [@(self.currentUser.followingNum) description], @"", @""];
-    NSArray<NSOrderedSet *> *datasets = @[[NSOrderedSet orderedSet], [NSOrderedSet orderedSet], self.currentUser.photos, self.currentUser.photos];
-
-    NSMutableArray<NSDictionary *> *cellArray = [@[] mutableCopy];
-
-    for (int i = 0; i < titles.count; i++) {
-        [cellArray addObject:[DataManager dictionaryForCellWithTitle:titles[i]
-                                                            subtitle:subtitles[i]
-                                                        counterLabel:counterLabels[i]
-                                                             andData:datasets[i]]];
-    }
-    return cellArray;
-}
-
 -(NSArray<Photo *> *) fetchPhotosWithLocation {
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Photo"];
@@ -188,15 +162,6 @@
     
     return [self.persistentContainer.viewContext executeFetchRequest:request error:nil];
 
-}
-
-+(NSDictionary *)dictionaryForCellWithTitle:(NSString *)title subtitle:(NSString *)subtitle counterLabel:(NSString *)counter andData:(NSOrderedSet<Photo *> *)data {
-    return @{
-             @"title": title,
-             @"subtitle": subtitle,
-             @"counter": counter,
-             @"data": (data) ? data : [NSOrderedSet orderedSet]
-             };
 }
 
 @end
