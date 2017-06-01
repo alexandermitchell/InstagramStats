@@ -69,11 +69,11 @@
 }
 
 -(void)drawLikesLineWithContext:(CGContextRef)context {
-    [self drawLineWithData:self.likesDataSet andContext:context andColor:[UIColor blueColor]];
+    [self drawLineWithData:self.likesDataSet andContext:context andColor:[UIColor redColor]];
 }
 
 -(void)drawCommentsLineWithContext:(CGContextRef)context {
-    [self drawLineWithData:self.commentsDataSet andContext:context andColor:[UIColor redColor]];
+    [self drawLineWithData:self.commentsDataSet andContext:context andColor:[UIColor blueColor]];
 }
 
 -(void)drawLineWithData:(NSArray<NSNumber *> *)dataset andContext:(CGContextRef)context andColor:(UIColor *)color {

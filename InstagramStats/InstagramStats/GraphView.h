@@ -13,4 +13,7 @@
 @property (nonatomic) NSMutableArray<NSNumber *> *likesDataSet;
 @property (nonatomic) NSMutableArray<NSNumber *> *commentsDataSet;
 
++(CGFloat)getMin:(NSArray<NSNumber *> *)dataset;
++(CGFloat)getMax:(NSArray<NSNumber *> *)dataset;
+
 @end

@@ -113,13 +113,112 @@
     
     self.graphView.backgroundColor = [UIColor blackColor];
     GraphView *graphView = [[GraphView alloc] init];
-    graphView.frame = CGRectMake(10, 10, self.graphView.frame.size.width * 0.8, self.graphView.frame.size.height * 0.8);
+    graphView.frame = CGRectMake(25, 25, self.graphView.frame.size.width * 0.95, self.graphView.frame.size.height * 0.8);
     graphView.layer.borderColor = [UIColor whiteColor].CGColor;
+    graphView.layer.borderWidth = 2.0;
     [self.graphView addSubview: graphView];
-    
-    NSMutableArray *likesArray = [NSMutableArray new];
-    NSMutableArray *commentsArray = [NSMutableArray new];
 
+    UILabel *oldLabel = [[UILabel alloc] initWithFrame:CGRectMake(3,
+                                                                  3,
+                                                                  100,
+                                                                  100)];
+    oldLabel.text = @"older";
+    oldLabel.textColor = [UIColor whiteColor];
+    [self.graphView addSubview:oldLabel];
+    [oldLabel sizeToFit];
+
+    UILabel *newLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.graphView.frame.size.width - 10,
+                                                                  3,
+                                                                  100,
+                                                                  100)];
+    newLabel.text = @"newer";
+    newLabel.textColor = [UIColor whiteColor];
+    [self.graphView addSubview:newLabel];
+    [newLabel sizeToFit];
+
+    CGFloat minLikes = [GraphView getMin:graphView.likesDataSet];
+    CGFloat maxLikes = [GraphView getMax:graphView.likesDataSet];
+
+    UILabel *maxLikesLabel = [[UILabel alloc] init];
+    maxLikesLabel.text = [@(maxLikes) description];
+    maxLikesLabel.font = [UIFont fontWithName:@"ArialMT" size:15.0];
+    maxLikesLabel.textColor = [UIColor redColor];
+
+    [self.graphView addSubview:maxLikesLabel];
+    maxLikesLabel.frame = CGRectMake(3,
+                                     oldLabel.frame.size.height,
+                                     10,
+                                     10);
+    [maxLikesLabel sizeToFit];
+
+    UITextView *likesTextView = [[UITextView alloc] init];
+    likesTextView.textColor = [UIColor redColor];
+    likesTextView.font = [UIFont fontWithName:@"ArialMT" size:10.0];
+    likesTextView.text = @"L \nI \nK \nE \nS ";
+    likesTextView.backgroundColor = [UIColor blackColor];
+    likesTextView.frame = CGRectMake(3,
+                                     maxLikesLabel.frame.origin.y + maxLikesLabel.frame.size.height,
+                                     20,
+                                     20);
+    [likesTextView sizeToFit];
+    [self.graphView addSubview:likesTextView];
+
+    UILabel *minLikesLabel = [[UILabel alloc] init];
+    minLikesLabel.text = [@(minLikes) description];
+    minLikesLabel.font = [UIFont fontWithName:@"ArialMT" size:15.0];
+    minLikesLabel.textColor = [UIColor redColor];
+
+    [self.graphView addSubview:minLikesLabel];
+    minLikesLabel.frame = CGRectMake(3,
+                                     likesTextView.frame.origin.y + likesTextView.frame.size.height,
+                                     10,
+                                     10);
+    [minLikesLabel sizeToFit];
+
+
+    CGFloat minComments = [GraphView getMin:graphView.commentsDataSet];
+    CGFloat maxComments = [GraphView getMax:graphView.commentsDataSet];
+
+    UILabel *maxCommentsLabel = [[UILabel alloc] init];
+    maxCommentsLabel.text = [@(maxComments) description];
+    maxCommentsLabel.font = [UIFont fontWithName:@"ArialMT" size:15.0];
+    maxCommentsLabel.textColor = [UIColor blueColor];
+
+    [self.graphView addSubview:maxCommentsLabel];
+    maxCommentsLabel.frame = CGRectMake(newLabel.frame.origin.x + 20,
+                                     newLabel.frame.size.height,
+                                     10,
+                                     10);
+    [maxCommentsLabel sizeToFit];
+
+    UITextView *commentsTextView = [[UITextView alloc] init];
+    commentsTextView.textColor = [UIColor blueColor];
+    commentsTextView.font = [UIFont fontWithName:@"ArialMT" size:10.0];
+    commentsTextView.text = @"C\no\nm\nm\ne\nn\nt\ns";
+    commentsTextView.backgroundColor = [UIColor blackColor];
+    commentsTextView.frame = CGRectMake(newLabel.frame.origin.x + 20,
+                                     maxCommentsLabel.frame.origin.y + maxCommentsLabel.frame.size.height,
+                                     20,
+                                     20);
+    [commentsTextView sizeToFit];
+    [self.graphView addSubview:commentsTextView];
+
+    UILabel *minCommentsLabel = [[UILabel alloc] init];
+    minCommentsLabel.text = [@(minComments) description];
+    minCommentsLabel.font = [UIFont fontWithName:@"ArialMT" size:15.0];
+    minCommentsLabel.textColor = [UIColor blueColor];
+
+    [self.graphView addSubview:minCommentsLabel];
+    minCommentsLabel.frame = CGRectMake(newLabel.frame.origin.x + 20,
+                                     commentsTextView.frame.origin.y + commentsTextView.frame.size.height,
+                                     10,
+                                     10);
+    [minCommentsLabel sizeToFit];
+
+    
+//    NSMutableArray *likesArray = [NSMutableArray new];
+//    NSMutableArray *commentsArray = [NSMutableArray new];
+//
 //    [self.manager.currentUser.photos sortedArrayUsingComparator:^NSComparisonResult(Photo *a, Photo *b) {
 //        return [a.postDate compare:b.postDate];
 //    }];
