@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Pp3-C5-IvE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="GCr-vR-YCM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,14 +23,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Gn2-Ge-RVZ">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="120" id="WmK-ki-sOY" customClass="PostTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WmK-ki-sOY" id="RI1-Zf-ybH">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2ej-8S-oq4">
@@ -174,14 +174,33 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Gn2-Ge-RVZ" firstAttribute="leading" secondItem="2UH-38-NdZ" secondAttribute="leading" id="7dN-le-8fI"/>
-                            <constraint firstItem="Gn2-Ge-RVZ" firstAttribute="top" secondItem="oWp-7D-aMy" secondAttribute="bottom" id="OIL-UV-DYy"/>
-                            <constraint firstAttribute="trailing" secondItem="Gn2-Ge-RVZ" secondAttribute="trailing" id="dWK-7X-IK9"/>
-                            <constraint firstItem="iHu-s7-cQQ" firstAttribute="top" secondItem="Gn2-Ge-RVZ" secondAttribute="bottom" id="sxJ-c3-WgZ"/>
+                            <constraint firstItem="iHu-s7-cQQ" firstAttribute="top" secondItem="Gn2-Ge-RVZ" secondAttribute="bottom" id="Oyn-av-ST8"/>
+                            <constraint firstAttribute="trailing" secondItem="Gn2-Ge-RVZ" secondAttribute="trailing" id="R0B-Gd-UEA"/>
+                            <constraint firstItem="Gn2-Ge-RVZ" firstAttribute="top" secondItem="2UH-38-NdZ" secondAttribute="top" id="jZy-1u-eRU"/>
+                            <constraint firstItem="Gn2-Ge-RVZ" firstAttribute="leading" secondItem="2UH-38-NdZ" secondAttribute="leading" id="lWL-m4-Ecz"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="l22-Bc-MWq"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vI8-Jl-7iI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="712.79999999999995" y="62.518740629685162"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="W7b-c8-qvP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GCr-vR-YCM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vht-PV-Yie">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Pp3-C5-IvE" kind="relationship" relationship="rootViewController" id="Qle-MM-DaT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GlK-vd-gqZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-226.40000000000001" y="62.518740629685162"/>
         </scene>
