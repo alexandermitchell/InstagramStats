@@ -49,6 +49,8 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PostTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    
+    [cell cleanCell];
     cell.photos = self.manager.currentUser.photos;
     cell.displayPhoto = self.manager.currentUser.photos[indexPath.row];
     

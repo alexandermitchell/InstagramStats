@@ -83,6 +83,13 @@
     
 }
 
+- (void)cleanCell {
+    
+    self.commentsProgress.progress = 0;
+    self.likesProgress.progress = 0;
+    
+}
+
 -(NSString *)getMaxComments:(NSOrderedSet<Photo *> *)photos {
     NSNumber *max = @(photos[0].commentsNum);
     
