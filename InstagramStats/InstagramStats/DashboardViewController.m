@@ -43,8 +43,8 @@
     [super viewDidLoad];
     
     self.manager = [DataManager sharedManager];
-//    [self.manager.engine logout];
-
+    //[self.manager.engine logout];
+    
 //    if (![self.manager.engine isSessionValid]) {
 //    
 //        LoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Login"];
@@ -53,17 +53,7 @@
 //        }];
 //    }
 
-    [self setupGraphView];
-
-
-//    if (![self.manager.engine isSessionValid]) {
-//    
-//        LoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Login"];
-//        loginVC.delegate = self;
-//        [self presentViewController:loginVC animated:NO completion:^{
-//        }];
-//    }
-
+    [self setupAnimatedBezierPaths];
 }
 
 
@@ -109,130 +99,133 @@
     [self.collectionView reloadData];
 }
 
--(void) setupGraphView {
-    
-    self.graphView.backgroundColor = [UIColor blackColor];
-    GraphView *graphView = [[GraphView alloc] init];
-    graphView.frame = CGRectMake(25, 25, self.graphView.frame.size.width * 0.95, self.graphView.frame.size.height * 0.8);
-    graphView.layer.borderColor = [UIColor whiteColor].CGColor;
-    graphView.layer.borderWidth = 2.0;
-    [self.graphView addSubview: graphView];
 
-    UILabel *oldLabel = [[UILabel alloc] initWithFrame:CGRectMake(3,
-                                                                  3,
-                                                                  100,
-                                                                  100)];
-    oldLabel.text = @"older";
-    oldLabel.textColor = [UIColor whiteColor];
-    [self.graphView addSubview:oldLabel];
-    [oldLabel sizeToFit];
-
-    UILabel *newLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.graphView.frame.size.width - 10,
-                                                                  3,
-                                                                  100,
-                                                                  100)];
-    newLabel.text = @"newer";
-    newLabel.textColor = [UIColor whiteColor];
-    [self.graphView addSubview:newLabel];
-    [newLabel sizeToFit];
-
-    CGFloat minLikes = [GraphView getMin:graphView.likesDataSet];
-    CGFloat maxLikes = [GraphView getMax:graphView.likesDataSet];
-
-    UILabel *maxLikesLabel = [[UILabel alloc] init];
-    maxLikesLabel.text = [@(maxLikes) description];
-    maxLikesLabel.font = [UIFont fontWithName:@"ArialMT" size:15.0];
-    maxLikesLabel.textColor = [UIColor redColor];
-
-    [self.graphView addSubview:maxLikesLabel];
-    maxLikesLabel.frame = CGRectMake(3,
-                                     oldLabel.frame.size.height,
-                                     10,
-                                     10);
-    [maxLikesLabel sizeToFit];
-
-    UITextView *likesTextView = [[UITextView alloc] init];
-    likesTextView.textColor = [UIColor redColor];
-    likesTextView.font = [UIFont fontWithName:@"ArialMT" size:10.0];
-    likesTextView.text = @"L \nI \nK \nE \nS ";
-    likesTextView.backgroundColor = [UIColor blackColor];
-    likesTextView.frame = CGRectMake(3,
-                                     maxLikesLabel.frame.origin.y + maxLikesLabel.frame.size.height,
-                                     20,
-                                     20);
-    [likesTextView sizeToFit];
-    [self.graphView addSubview:likesTextView];
-
-    UILabel *minLikesLabel = [[UILabel alloc] init];
-    minLikesLabel.text = [@(minLikes) description];
-    minLikesLabel.font = [UIFont fontWithName:@"ArialMT" size:15.0];
-    minLikesLabel.textColor = [UIColor redColor];
-
-    [self.graphView addSubview:minLikesLabel];
-    minLikesLabel.frame = CGRectMake(3,
-                                     likesTextView.frame.origin.y + likesTextView.frame.size.height,
-                                     10,
-                                     10);
-    [minLikesLabel sizeToFit];
+#pragma mark - Bezier Path methods
 
 
-    CGFloat minComments = [GraphView getMin:graphView.commentsDataSet];
-    CGFloat maxComments = [GraphView getMax:graphView.commentsDataSet];
+-(UIBezierPath *)bezierPathForDataset:(NSArray *)dataset {
+    UIBezierPath *path = [[UIBezierPath alloc] init];
 
-    UILabel *maxCommentsLabel = [[UILabel alloc] init];
-    maxCommentsLabel.text = [@(maxComments) description];
-    maxCommentsLabel.font = [UIFont fontWithName:@"ArialMT" size:15.0];
-    maxCommentsLabel.textColor = [UIColor blueColor];
+    CGFloat maxData = [DashboardViewController getMax:dataset];
+    CGFloat minData = [DashboardViewController getMin:dataset];
 
-    [self.graphView addSubview:maxCommentsLabel];
-    maxCommentsLabel.frame = CGRectMake(newLabel.frame.origin.x + 20,
-                                     newLabel.frame.size.height,
-                                     10,
-                                     10);
-    [maxCommentsLabel sizeToFit];
+    CGFloat partitionWidth = self.graphView.bounds.size.width / (dataset.count + 1);
 
-    UITextView *commentsTextView = [[UITextView alloc] init];
-    commentsTextView.textColor = [UIColor blueColor];
-    commentsTextView.font = [UIFont fontWithName:@"ArialMT" size:10.0];
-    commentsTextView.text = @"C\no\nm\nm\ne\nn\nt\ns";
-    commentsTextView.backgroundColor = [UIColor blackColor];
-    commentsTextView.frame = CGRectMake(newLabel.frame.origin.x + 20,
-                                     maxCommentsLabel.frame.origin.y + maxCommentsLabel.frame.size.height,
-                                     20,
-                                     20);
-    [commentsTextView sizeToFit];
-    [self.graphView addSubview:commentsTextView];
+    [path moveToPoint:CGPointMake(0, [self getHeightForData:dataset[0]
+                                                  WithinMin:minData
+                                                     andMax:maxData])];
 
-    UILabel *minCommentsLabel = [[UILabel alloc] init];
-    minCommentsLabel.text = [@(minComments) description];
-    minCommentsLabel.font = [UIFont fontWithName:@"ArialMT" size:15.0];
-    minCommentsLabel.textColor = [UIColor blueColor];
+    for (int i = 1; i < dataset.count; i++) {
+        CGPoint p = CGPointMake((i - 1) * partitionWidth, [self getHeightForData:dataset[i - 1]
+                                                                       WithinMin:minData
+                                                                          andMax:maxData]);
+        CGPoint q = CGPointMake(i * partitionWidth, [self getHeightForData:dataset[i]
+                                                                 WithinMin:minData
+                                                                    andMax:maxData]);
 
-    [self.graphView addSubview:minCommentsLabel];
-    minCommentsLabel.frame = CGRectMake(newLabel.frame.origin.x + 20,
-                                     commentsTextView.frame.origin.y + commentsTextView.frame.size.height,
-                                     10,
-                                     10);
-    [minCommentsLabel sizeToFit];
+        CGPoint midpoint = [DashboardViewController getMidpointBetween:p and:q];
+        CGPoint controlPoint1 = [DashboardViewController getControlPointFor:midpoint and:p];
+        CGPoint controlPoint2 = [DashboardViewController getControlPointFor:midpoint and:q];
 
-    
-//    NSMutableArray *likesArray = [NSMutableArray new];
-//    NSMutableArray *commentsArray = [NSMutableArray new];
-//
-//    [self.manager.currentUser.photos sortedArrayUsingComparator:^NSComparisonResult(Photo *a, Photo *b) {
-//        return [a.postDate compare:b.postDate];
-//    }];
-//    
-//    for (Photo *photo in self.manager.currentUser.photos) {
-//        NSNumber *likes = @(photo.likesNum);
-//        NSNumber *comments = @(photo.commentsNum);
-//        
-//        [likesArray addObject:likes];
-//        [commentsArray addObject:comments];
-//    }
-//    graphView.likesDataSet = likesArray;
-//    graphView.commentsDataSet = commentsArray;
-    
+        [path addQuadCurveToPoint:midpoint controlPoint:controlPoint1];
+        [path addQuadCurveToPoint:q controlPoint:controlPoint2];
+    }
+
+    return path;
 }
+
+
+#pragma mark - Bezier Path Animation methods
+
+
+-(void)setupLikesAnimationBezierPath {
+    [self setupAnimatedBezierPathWithDataset:self.likesDataset andColor:[UIColor redColor]];
+}
+
+-(void)setupCommentsAnimationBezierPath {
+    [self setupAnimatedBezierPathWithDataset:self.commentsDataset andColor:[UIColor blueColor]];
+}
+
+-(void)setupAnimatedBezierPaths {
+    [self setupLikesAnimationBezierPath];
+    [self setupCommentsAnimationBezierPath];
+}
+
+-(void)setupAnimatedBezierPathWithDataset:(NSArray *)dataset andColor:(UIColor *)color {
+
+    UIBezierPath *bezierPath = [self bezierPathForDataset:dataset];
+
+    CAShapeLayer *shapelayer = [CAShapeLayer layer];
+    shapelayer.frame = self.graphView.bounds;
+    shapelayer.path = bezierPath.CGPath;
+    [self.graphView.layer addSublayer:shapelayer];
+
+    shapelayer.strokeColor = color.CGColor;
+    shapelayer.lineWidth = 5.0;
+    shapelayer.fillColor = [UIColor colorWithWhite:1 alpha:0].CGColor;
+
+    shapelayer.strokeStart = 0.0;
+
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    animation.duration = 4.0;
+    animation.fromValue = @(0.0);
+    animation.toValue = @(1.0);
+
+    [shapelayer addAnimation:animation forKey:@"animation"];
+}
+
+
+#pragma mark - Utility Geometric Methods
+
+
++(CGPoint)getMidpointBetween:(CGPoint)p and:(CGPoint)q {
+    return CGPointMake((p.x + q.x) / 2, (p.y + q.y) / 2);
+}
+
++(CGPoint)getControlPointFor:(CGPoint)p and:(CGPoint)q {
+    CGPoint controlPoint = [DashboardViewController getMidpointBetween:p and:q];
+    CGFloat diffY = fabs(q.y - controlPoint.y);
+
+    controlPoint.y += (p.y < q.y) ? +diffY : -diffY;
+
+    return controlPoint;
+}
+
+-(CGFloat)getHeightForData:(NSNumber *)data WithinMin:(CGFloat)min andMax:(CGFloat)max {
+    if (max == min) {
+        return 0;
+    }
+
+    CGFloat c = ([data doubleValue] - min) / (max - min);
+    return self.graphView.frame.size.height * (1 - c);
+}
+
+
+#pragma mark - NSArray Utility Functions
+
+
++(CGFloat)getMax:(NSArray<NSNumber *> *)dataset {
+    NSNumber *max = dataset[0];
+
+    for (int i = 0; i < dataset.count; i++) {
+        if ([max compare:dataset[i]] == NSOrderedAscending) {
+            max = dataset[i];
+        }
+    }
+    return [max doubleValue];
+}
+
++(CGFloat)getMin:(NSArray<NSNumber *> *)dataset {
+    NSNumber *min = dataset[0];
+
+    for (int i = 0; i < dataset.count; i++) {
+        if ([min compare:dataset[i]] == NSOrderedDescending) {
+            min = dataset[i];
+        }
+    }
+    return [min doubleValue];
+}
+
 
 @end
