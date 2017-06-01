@@ -12,54 +12,37 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CustomCalloutView">
-            <rect key="frame" x="0.0" y="0.0" width="50" height="15"/>
+            <rect key="frame" x="0.0" y="0.0" width="75" height="21"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Heart" translatesAutoresizingMaskIntoConstraints="NO" id="hwW-vh-O8N">
-                    <rect key="frame" x="1" y="3" width="11" height="9"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="11" id="VZ7-o1-GGU"/>
-                        <constraint firstAttribute="height" constant="9" id="liw-44-Er6"/>
-                    </constraints>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Comment" translatesAutoresizingMaskIntoConstraints="NO" id="MSC-qJ-p4W">
-                    <rect key="frame" x="26" y="2" width="11" height="10"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="11" id="qVD-JV-o8U"/>
-                        <constraint firstAttribute="height" constant="10" id="yI9-pr-hC7"/>
-                    </constraints>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJO-SY-tHp">
-                    <rect key="frame" x="39" y="4" width="9.5" height="7"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="9.5" id="8Om-gE-45i"/>
-                        <constraint firstAttribute="height" constant="7" id="dSJ-jB-Dy1"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="5"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lRY-SH-Rg7">
-                    <rect key="frame" x="14" y="4" width="9.5" height="7"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="7" id="I9O-nB-LQc"/>
-                        <constraint firstAttribute="width" constant="9.5" id="Uhv-8L-2PM"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="5"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="YLJ-hT-IQD">
+                    <rect key="frame" x="0.0" y="3" width="75" height="15"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Heart" translatesAutoresizingMaskIntoConstraints="NO" id="hwW-vh-O8N">
+                            <rect key="frame" x="0.0" y="0.0" width="16.5" height="15"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lRY-SH-Rg7">
+                            <rect key="frame" x="19.5" y="0.0" width="16.5" height="15"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Comment" translatesAutoresizingMaskIntoConstraints="NO" id="MSC-qJ-p4W">
+                            <rect key="frame" x="39" y="0.0" width="16.5" height="15"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJO-SY-tHp">
+                            <rect key="frame" x="58.5" y="0.0" width="16.5" height="15"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="RJO-SY-tHp" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="C4l-Z1-FNk"/>
-                <constraint firstAttribute="trailing" secondItem="RJO-SY-tHp" secondAttribute="trailing" constant="1.5" id="MGC-RC-OcY"/>
-                <constraint firstItem="lRY-SH-Rg7" firstAttribute="leading" secondItem="hwW-vh-O8N" secondAttribute="trailing" constant="2" id="ZKz-JV-Hou"/>
-                <constraint firstItem="hwW-vh-O8N" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="1" id="Zvd-nK-Jcz"/>
-                <constraint firstItem="RJO-SY-tHp" firstAttribute="leading" secondItem="MSC-qJ-p4W" secondAttribute="trailing" constant="2" id="a8P-lX-mUM"/>
-                <constraint firstItem="hwW-vh-O8N" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="s4T-0k-lvc"/>
-                <constraint firstItem="MSC-qJ-p4W" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="vE8-CD-wWh"/>
-                <constraint firstItem="lRY-SH-Rg7" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="wuI-JA-btw"/>
+                <constraint firstItem="YLJ-hT-IQD" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="7HA-FN-JSi"/>
+                <constraint firstItem="YLJ-hT-IQD" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="jYx-Tq-d3v"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -69,7 +52,7 @@
                 <outlet property="likeImage" destination="hwW-vh-O8N" id="wPC-qD-4tn"/>
                 <outlet property="likeLabel" destination="lRY-SH-Rg7" id="T8O-3N-ztG"/>
             </connections>
-            <point key="canvasLocation" x="-7" y="-152.5"/>
+            <point key="canvasLocation" x="-7.5" y="-158.5"/>
         </view>
     </objects>
     <resources>

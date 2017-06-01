@@ -96,7 +96,11 @@
         calloutView.likeLabel.text = @"0";
     }
     calloutView.commentLabel.text = customAnnotation.commentsNum;
-    calloutView.frame = CGRectMake(0, 0, view.frame.size.width, calloutView.frame.size.height);
+    calloutView.layer.masksToBounds = YES;
+    calloutView.layer.cornerRadius = 2.0;
+    
+    //calloutView.bounds.size.width/2;
+    //bounds.width/2 to be citcle.
     calloutView.center = CGPointMake(view.bounds.size.width/2, -calloutView.bounds.size.height*0.52);
     [view addSubview:calloutView];
     [mapView setCenterCoordinate:view.annotation.coordinate animated:YES];
