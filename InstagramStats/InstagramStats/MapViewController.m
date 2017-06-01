@@ -56,12 +56,13 @@
     
     if (pin == nil) {
         pin = [[CustomMKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"pin"];
-        
+        pin.canShowCallout = NO;
+    } else {
+        pin.annotation = annotation;
     }
     
     MyCustomPointAnnotation *pointAnnotation = (MyCustomPointAnnotation *)annotation;
-    pin.annotation = pointAnnotation;
- 
+
     //reduce image size to prevent MKAnnotationView's view from resizing to accomodate the full sized image
     UIImage *pinImage = pointAnnotation.myImage;
     CGSize size = CGSizeMake(50, 50);
@@ -69,11 +70,9 @@
     [pinImage drawInRect:(CGRectMake(0, 0, size.width, size.height))];
     UIImage *resizedPin = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    
-    
     pin.image = resizedPin;
     
-    [pin setCanShowCallout:YES];
+
     [self.mapView addSubview:pin];
     
     
@@ -87,11 +86,15 @@
 //        return
 //    }
     
-    MyCustomPointAnnotation *customAnnotation = (MyCustomPointAnnotation *)view;
+    MyCustomPointAnnotation *customAnnotation = (MyCustomPointAnnotation *)view.annotation;
     
     NSArray *views = [[NSBundle mainBundle]loadNibNamed:@"CustomCalloutView" owner:nil options:nil];
     CustomCalloutView *calloutView = (CustomCalloutView *)views[0];
+    if (customAnnotation.likesNum != nil) {
     calloutView.likeLabel.text = customAnnotation.likesNum;
+    } else {
+        calloutView.likeLabel.text = @"0";
+    }
     calloutView.commentLabel.text = customAnnotation.commentsNum;
     calloutView.center = CGPointMake(view.bounds.size.width/2, calloutView.bounds.size.height);
     [view addSubview:calloutView];
