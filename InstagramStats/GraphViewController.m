@@ -34,6 +34,7 @@ static UIColor *commentsColor;
     likesColor = [UIColor redColor];
     commentsColor = [UIColor blueColor];
     self.combineSlider.tintColor = [self getCombinedColor];
+    self.combineSlider.continuous = NO;
     [self setupAnimatedEngagementCurve];
 }
 
@@ -55,6 +56,10 @@ static UIColor *commentsColor;
 
 - (IBAction)sliderChanged:(UISlider *)sender {
     sender.tintColor = [self getCombinedColor];
+    for (CAShapeLayer *shapeLayer in self.engagementView.layer.sublayers) {
+        [shapeLayer removeFromSuperlayer];
+    }
+    [self setupAnimatedEngagementCurve];
 }
 
 
@@ -84,8 +89,8 @@ static UIColor *commentsColor;
     return [UIBezierPath bezierPathForDataset:[GraphViewController combine:dataset1
                                                                        and:dataset2
                                                                 withLambda:lambda]
-                           withPartitionWidth:self.view.frame.size.width / (dataset1.count + 1)
-                                    andHeight:self.view.frame.size.height];
+                           withPartitionWidth:self.engagementView.frame.size.width / (dataset1.count + 1)
+                                    andHeight:self.engagementView.frame.size.height];
 }
 
 +(NSArray *)combine:(NSArray *)dataset1 and:(NSArray *)dataset2 withLambda:(CGFloat) lambda {
@@ -107,15 +112,16 @@ static UIColor *commentsColor;
 -(void)setupAnimatedEngagementCurve {
 
     NSArray *combinedStats = [self getUserCombinedStats];
-
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(5, 5, self.engagementView.bounds.size.width, self.engagementView.bounds.size.height * 0.95)];
     UIBezierPath *bezierPath = [UIBezierPath bezierPathForDataset:combinedStats
-                                               withPartitionWidth:self.view.bounds.size.width / (combinedStats.count + 1)
-                                                        andHeight:self.view.frame.size.height];
+                                               withPartitionWidth:view.bounds.size.width / (combinedStats.count + 1)
+                                                        andHeight:view.frame.size.height];
 
     CAShapeLayer *shapelayer = [CAShapeLayer layer];
-    shapelayer.frame = self.engagementView.bounds;
     shapelayer.path = bezierPath.CGPath;
-    [self.engagementView.layer addSublayer:shapelayer];
+
+    [view.layer addSublayer:shapelayer];
+    [self.engagementView addSubview:view];
 
     shapelayer.strokeColor = [self getCombinedColor].CGColor;
     shapelayer.lineWidth = 5.0;
@@ -135,8 +141,11 @@ static UIColor *commentsColor;
 -(NSArray *)getUserLikeStats {
 
     NSMutableArray *likesStats = [@[] mutableCopy];
-    for (Photo *photo in self.user.photos) {
-        [likesStats addObject:@(photo.likesNum)];
+//    for (Photo *photo in self.user.photos) {
+//        [likesStats addObject:@(photo.likesNum)];
+//    }
+    for (int i = 0; i < 20; i++) {
+        [likesStats addObject:@(arc4random_uniform(30) + 1)];
     }
     return [likesStats copy];
 }
@@ -144,8 +153,11 @@ static UIColor *commentsColor;
 -(NSArray *)getUserCommentStats {
 
     NSMutableArray *commentStats = [@[] mutableCopy];
-    for (Photo *photo in self.user.photos) {
-        [commentStats addObject:@(photo.commentsNum)];
+   // for (Photo *photo in self.user.photos) {
+//        [commentStats addObject:@(photo.commentsNum)];
+//    }
+    for (int i = 0; i < 20; i++) {
+        [commentStats addObject:@(arc4random_uniform(20))];
     }
     return [commentStats copy];
 }
