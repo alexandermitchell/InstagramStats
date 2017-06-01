@@ -111,6 +111,17 @@
 
 -(void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
     
+    if ([view isKindOfClass:[CustomMKAnnotationView class]]){
+        
+        for (UIView *subview in view.subviews) {
+            
+            [subview removeFromSuperview];
+            
+        }
+        
+        
+    }
+    
     
     //if view is kind of class - customMKAnnotationView) { for subview in view.subviews {subview removeFromSuperView}}}
 }
