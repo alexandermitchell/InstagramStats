@@ -10,12 +10,7 @@
 
 @implementation CustomMKAnnotationView
 
-//- (id)initWithAnnotation:(id<MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier{
-//    self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier];
-//    if (self) {
-//    }
-//    return self;
-//}
+//need to implement in order to handle touch events when you subclass MKAnnotationView
 
 - (UIView*)hitTest:(CGPoint)point withEvent:(UIEvent*)event
 {

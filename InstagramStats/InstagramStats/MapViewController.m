@@ -19,7 +19,6 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic) DataManager *manager;
-@property (nonatomic) NSMutableArray <MyCustomPointAnnotation *> *annotations;
 
 @end
 
@@ -29,8 +28,8 @@
     [super viewDidLoad];
     self.manager = [DataManager sharedManager];
     self.mapView.delegate = self;
-    self.annotations = [[NSMutableArray alloc]init];
     
+    //create annotations and add them to the map.
     for (Photo *photo in self.manager.currentUser.photos) {
         MyCustomPointAnnotation *point = [[MyCustomPointAnnotation alloc]init];
         point.coordinate = CLLocationCoordinate2DMake(photo.latitude, photo.longitude);
@@ -38,15 +37,17 @@
         point.likesNum = [NSString stringWithFormat:@"%hd",photo.likesNum];
         point.commentsNum = [NSString stringWithFormat:@"%hd",photo.commentsNum];
         [self.mapView addAnnotation:point];
-        [self.annotations addObject:point];
+
     }
     
-    //zooms in on specific photo that is hardcoded below (since not every annotation has a valid coordinate at this point)
-//    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(39.466666666667, -0.375);
+  //    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(39.466666666667, -0.375);
 //    MKCoordinateSpan span = MKCoordinateSpanMake(12.5, 12.5);
 //    MKCoordinateRegion region = MKCoordinateRegionMake(center, span);
-    self.mapView.showsUserLocation = NO;
     //[self.mapView setRegion:region animated:YES];
+    
+    self.mapView.showsUserLocation = NO;
+
+
 }
 
 - (MKAnnotationView*)mapView:(MKMapView *)mapView
@@ -70,8 +71,8 @@
     [pinImage drawInRect:(CGRectMake(0, 0, size.width, size.height))];
     UIImage *resizedPin = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+
     pin.image = resizedPin;
-    
 
     [self.mapView addSubview:pin];
     
@@ -82,27 +83,25 @@
 
 -(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
     
-//    if (view.annotation isEqual:MKUserLocation) {
-//        return
-//    }
-    
+    //cast the annotation to your custom class so you can access its properties
     MyCustomPointAnnotation *customAnnotation = (MyCustomPointAnnotation *)view.annotation;
-    
+    //load customnib which holds the customCalloutView
     NSArray *views = [[NSBundle mainBundle]loadNibNamed:@"CustomCalloutView" owner:nil options:nil];
+    //there is only 1 view in the nib, grab the view item
     CustomCalloutView *calloutView = (CustomCalloutView *)views[0];
-    if (customAnnotation.likesNum != nil) {
+    
+    //access the properties on your customAnnotation and use them to set the labels on the calloutView
     calloutView.likeLabel.text = customAnnotation.likesNum;
-    } else {
-        calloutView.likeLabel.text = @"0";
-    }
     calloutView.commentLabel.text = customAnnotation.commentsNum;
+    
+    //make rounded edges on the callout, because fancy stuff
     calloutView.layer.masksToBounds = YES;
     calloutView.layer.cornerRadius = 2.0;
     
-    //calloutView.bounds.size.width/2;
-    //bounds.width/2 to be citcle.
+    //center the callout to be over the annotationView
     calloutView.center = CGPointMake(view.bounds.size.width/2, -calloutView.bounds.size.height*0.52);
     [view addSubview:calloutView];
+    
     [mapView setCenterCoordinate:view.annotation.coordinate animated:YES];
     
     
