@@ -13,7 +13,6 @@
 #import "User+CoreDataProperties.h"
 #import "LoginViewController.h"
 #import "DashboardCollectionViewCell.h"
-#import "GraphView.h"
 
 @interface DashboardViewController () <UICollectionViewDelegate, UICollectionViewDataSource, LoginDelegateProtocol>
 
