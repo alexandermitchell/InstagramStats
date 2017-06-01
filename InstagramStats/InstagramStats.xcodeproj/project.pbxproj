@@ -139,6 +139,20 @@
 			name = CustomCalloutView;
 			sourceTree = "<group>";
 		};
+		9201013B1EE06C6300FCB342 /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				9201013A1EE0665300FCB342 /* CustomCalloutView */,
+				D01ABD161EDF39DE009D11CE /* MapViewController.h */,
+				D01ABD171EDF39DE009D11CE /* MapViewController.m */,
+				D01ABD181EDF39DE009D11CE /* MyCustomPointAnnotation.h */,
+				D01ABD191EDF39DE009D11CE /* MyCustomPointAnnotation.m */,
+				920101321EE0613A00FCB342 /* CustomMKAnnotationView.h */,
+				920101331EE0613A00FCB342 /* CustomMKAnnotationView.m */,
+			);
+			name = MapView;
+			sourceTree = "<group>";
+		};
 		D01ABCC11ED9EFC8009D11CE = {
 			isa = PBXGroup;
 			children = (
@@ -169,13 +183,7 @@
 				D01ABD0F1EDC727E009D11CE /* DashboardCollectionViewCell.m */,
 				D01ABD081EDB22B2009D11CE /* DashboardViewController.h */,
 				D01ABD091EDB22B2009D11CE /* DashboardViewController.m */,
-				D01ABD161EDF39DE009D11CE /* MapViewController.h */,
-				9201013A1EE0665300FCB342 /* CustomCalloutView */,
-				D01ABD171EDF39DE009D11CE /* MapViewController.m */,
-				D01ABD181EDF39DE009D11CE /* MyCustomPointAnnotation.h */,
-				D01ABD191EDF39DE009D11CE /* MyCustomPointAnnotation.m */,
-				920101321EE0613A00FCB342 /* CustomMKAnnotationView.h */,
-				920101331EE0613A00FCB342 /* CustomMKAnnotationView.m */,
+				9201013B1EE06C6300FCB342 /* MapView */,
 				9201012E1EDF53FB00FCB342 /* AllPostsViewController */,
 				D01ABCDC1ED9EFC8009D11CE /* Assets.xcassets */,
 				D01ABCDE1ED9EFC8009D11CE /* LaunchScreen.storyboard */,

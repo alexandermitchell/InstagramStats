@@ -10,12 +10,12 @@
 
 @implementation CustomMKAnnotationView
 
-- (id)initWithAnnotation:(id<MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier{
-    self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier];
-    if (self) {
-    }
-    return self;
-}
+//- (id)initWithAnnotation:(id<MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier{
+//    self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier];
+//    if (self) {
+//    }
+//    return self;
+//}
 
 - (UIView*)hitTest:(CGPoint)point withEvent:(UIEvent*)event
 {

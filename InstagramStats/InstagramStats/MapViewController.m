@@ -13,6 +13,7 @@
 #import "User+CoreDataProperties.h"
 #import "MyCustomPointAnnotation.h"
 #import "CustomMKAnnotationView.h"
+#import "CustomCalloutView.h"
 
 @interface MapViewController ()<MKMapViewDelegate>
 
@@ -34,6 +35,8 @@
         MyCustomPointAnnotation *point = [[MyCustomPointAnnotation alloc]init];
         point.coordinate = CLLocationCoordinate2DMake(photo.latitude, photo.longitude);
         point.myImage = [UIImage imageWithData:photo.image];
+        point.likesNum = [NSString stringWithFormat:@"%hd",photo.likesNum];
+        point.commentsNum = [NSString stringWithFormat:@"%hd",photo.commentsNum];
         [self.mapView addAnnotation:point];
         [self.annotations addObject:point];
     }
@@ -78,11 +81,30 @@
 
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    
+//    if (view.annotation isEqual:MKUserLocation) {
+//        return
+//    }
+    
+    MyCustomPointAnnotation *customAnnotation = (MyCustomPointAnnotation *)view;
+    
+    NSArray *views = [[NSBundle mainBundle]loadNibNamed:@"CustomCalloutView" owner:nil options:nil];
+    CustomCalloutView *calloutView = (CustomCalloutView *)views[0];
+    calloutView.likeLabel.text = customAnnotation.likesNum;
+    calloutView.commentLabel.text = customAnnotation.commentsNum;
+    calloutView.center = CGPointMake(view.bounds.size.width/2, calloutView.bounds.size.height);
+    [view addSubview:calloutView];
+    [mapView setCenterCoordinate:view.annotation.coordinate animated:YES];
+    
+    
+    
 }
 
+-(void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
+    
+    //if view is kind of class - customMKAnnotationView) { for subview in view.subviews {subview removeFromSuperView}}}
+}
 
 
 @end
