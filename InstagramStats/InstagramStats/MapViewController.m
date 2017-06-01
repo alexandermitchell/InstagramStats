@@ -96,7 +96,8 @@
         calloutView.likeLabel.text = @"0";
     }
     calloutView.commentLabel.text = customAnnotation.commentsNum;
-    calloutView.center = CGPointMake(view.bounds.size.width/2, calloutView.bounds.size.height);
+    calloutView.frame = CGRectMake(0, 0, view.frame.size.width, calloutView.frame.size.height);
+    calloutView.center = CGPointMake(view.bounds.size.width/2, -calloutView.bounds.size.height*0.52);
     [view addSubview:calloutView];
     [mapView setCenterCoordinate:view.annotation.coordinate animated:YES];
     
@@ -105,6 +106,7 @@
 }
 
 -(void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
+    
     
     //if view is kind of class - customMKAnnotationView) { for subview in view.subviews {subview removeFromSuperView}}}
 }
