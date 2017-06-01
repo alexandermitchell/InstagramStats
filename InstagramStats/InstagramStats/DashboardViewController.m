@@ -77,6 +77,10 @@
 @property (nonatomic) InstagramEngine *engine;
 @property (nonatomic) NSArray *cellDataArray;
 
+@property (nonatomic) NSMutableArray *likesDataset;
+@property (nonatomic) NSMutableArray *commentsDataset;
+
+
 
 @end
 
@@ -104,6 +108,7 @@
         [self setupButtonSubviews];
         
         [self setupGraphView];
+        [self setupAnimatedBezierPaths];
         
     }
     
@@ -139,9 +144,9 @@
 -(void) setupGraphView {
     
     
-    GraphView *graphView = [[GraphView alloc] init];
-    graphView.frame = self.graphView.bounds;
-    [self.graphView addSubview: graphView];
+//    GraphView *graphView = [[GraphView alloc] init];
+//    graphView.frame = self.graphView.bounds;
+//    [self.graphView addSubview: graphView];
     
     NSMutableArray *likesArray = [NSMutableArray new];
     NSMutableArray *commentsArray = [NSMutableArray new];
@@ -154,8 +159,8 @@
         [commentsArray addObject:comments];
     }
     
-    graphView.likesDataSet = likesArray;
-    graphView.commentsDataSet = commentsArray;
+    self.likesDataset = likesArray;
+    self.commentsDataset = commentsArray;
     
 }
 
@@ -231,7 +236,134 @@
     [self.commentImageView setTintColor:[UIColor colorWithRed:120.0/255 green:120.0/255 blue:120.0/255 alpha:1.0]];
     self.profileCommentsLabel.text = [NSString stringWithFormat:@"%d", self.manager.currentUser.photos[0].commentsNum];
     
+}
+
+#pragma mark - Bezier Path methods
+
+
+-(UIBezierPath *)bezierPathForDataset:(NSArray *)dataset {
+    UIBezierPath *path = [[UIBezierPath alloc] init];
     
+    CGFloat maxData = [DashboardViewController getMax:dataset];
+    CGFloat minData = [DashboardViewController getMin:dataset];
+    
+    CGFloat partitionWidth = self.graphView.bounds.size.width / (dataset.count + 1);
+    
+    [path moveToPoint:CGPointMake(0, [self getHeightForData:dataset[0]
+                                                  WithinMin:minData
+                                                     andMax:maxData])];
+    
+    for (int i = 1; i < dataset.count; i++) {
+        CGPoint p = CGPointMake((i - 1) * partitionWidth, [self getHeightForData:dataset[i - 1]
+                                                                       WithinMin:minData
+                                                                          andMax:maxData]);
+        CGPoint q = CGPointMake(i * partitionWidth, [self getHeightForData:dataset[i]
+                                                                 WithinMin:minData
+                                                                    andMax:maxData]);
+        
+        CGPoint midpoint = [DashboardViewController getMidpointBetween:p and:q];
+        CGPoint controlPoint1 = [DashboardViewController getControlPointFor:midpoint and:p];
+        CGPoint controlPoint2 = [DashboardViewController getControlPointFor:midpoint and:q];
+        
+        [path addQuadCurveToPoint:midpoint controlPoint:controlPoint1];
+        [path addQuadCurveToPoint:q controlPoint:controlPoint2];
+    }
+    
+    return path;
+}
+
+
+#pragma mark - Bezier Path Animation methods
+
+
+-(void)setupLikesAnimationBezierPath {
+    [self setupAnimatedBezierPathWithDataset:self.likesDataset andColor:[UIColor colorWithRed:236/255.0 green:0 blue:98/255.0 alpha:1.0]];
+}
+
+-(void)setupCommentsAnimationBezierPath {
+    [self setupAnimatedBezierPathWithDataset:self.commentsDataset andColor:[UIColor colorWithRed:0 green:148/255.0 blue:236/255.0 alpha:1.0]];
+}
+
+-(void)setupAnimatedBezierPaths {
+    [self setupLikesAnimationBezierPath];
+    [self setupCommentsAnimationBezierPath];
+}
+
+-(void)setupAnimatedBezierPathWithDataset:(NSArray *)dataset andColor:(UIColor *)color {
+    
+    UIBezierPath *bezierPath = [self bezierPathForDataset:dataset];
+    
+    CAShapeLayer *shapelayer = [CAShapeLayer layer];
+    shapelayer.frame = CGRectMake(0, 0, self.graphView.frame.size.width * .8, self.graphView.frame.size.height * .8);
+    //shapelayer.frame = self.graphView.bounds;
+    shapelayer.path = bezierPath.CGPath;
+    [self.graphView.layer addSublayer:shapelayer];
+    
+    shapelayer.strokeColor = color.CGColor;
+    shapelayer.lineWidth = 5.0;
+    shapelayer.fillColor = [UIColor colorWithWhite:1 alpha:0].CGColor;
+    
+    shapelayer.strokeStart = 0.0;
+    
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    animation.duration = 4.0;
+    animation.fromValue = @(0.0);
+    animation.toValue = @(1.0);
+    
+    [shapelayer addAnimation:animation forKey:@"animation"];
+}
+
+
+#pragma mark - Utility Geometric Methods
+
+
++(CGPoint)getMidpointBetween:(CGPoint)p and:(CGPoint)q {
+    return CGPointMake((p.x + q.x) / 2, (p.y + q.y) / 2);
+}
+
++(CGPoint)getControlPointFor:(CGPoint)p and:(CGPoint)q {
+    CGPoint controlPoint = [DashboardViewController getMidpointBetween:p and:q];
+    CGFloat diffY = fabs(q.y - controlPoint.y);
+    
+    controlPoint.y += (p.y < q.y) ? +diffY : -diffY;
+    
+    return controlPoint;
+}
+
+-(CGFloat)getHeightForData:(NSNumber *)data WithinMin:(CGFloat)min andMax:(CGFloat)max {
+    if (max == min) {
+        return 0;
+    }
+    
+    CGFloat c = ([data doubleValue] - min) / (max - min);
+    return self.graphView.frame.size.height * (1 - c);
+}
+
+
+#pragma mark - NSArray Utility Functions
+
+
++(CGFloat)getMax:(NSArray<NSNumber *> *)dataset {
+    NSNumber *max = dataset[0];
+    
+    for (int i = 0; i < dataset.count; i++) {
+        if ([max compare:dataset[i]] == NSOrderedAscending) {
+            max = dataset[i];
+        }
+    }
+    return [max doubleValue];
+}
+
++(CGFloat)getMin:(NSArray<NSNumber *> *)dataset {
+    NSNumber *min = dataset[0];
+    
+    for (int i = 0; i < dataset.count; i++) {
+        if ([min compare:dataset[i]] == NSOrderedDescending) {
+            min = dataset[i];
+        }
+    }
+    return [min doubleValue];
 }
 
 
