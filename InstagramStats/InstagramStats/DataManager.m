@@ -204,32 +204,38 @@
 
 }
 
-//-(NSDictionary<NSString *, NSArray *> *) dayUploadStats {
-//    NSMutableDictionary<NSString *, NSMutableArray *> *adict = [@{@"Monday" : [@[@0, @0, @0] mutableCopy], @"Tuesday" : [@[@0, @0, @0] mutableCopy], @"Wednesday" : [@[@0, @0, @0] mutableCopy], @"Thursday" : [@[@0, @0, @0] mutableCopy], @"Friday" : [@[@0, @0, @0] mutableCopy], @"Saturday" : [@[@0, @0, @0] mutableCopy], @"Sunday" : [@[@0, @0, @0] mutableCopy]} mutableCopy];
-//    
-//    
-//    for (Photo *photo in self.currentUser.photos) {
-//        NSString *day = [self formattedDate:photo.postDate];
-//        NSMutableArray *dayArray = adict[day];
-//        NSNumber *photoCount = dayArray[0];
-//        NSNumber *photoLikes = dayArray[1];
-//        adict[day][0] = [[NSNumber alloc]initWithInteger:[photoCount integerValue] + 1];
-//        adict[day][1] = [[NSNumber alloc]initWithInteger:[photoLikes integerValue] + photo.likesNum];
-//        NSNumber *ratio = [photoLikes floatValue] / [photoCount floatValue] ;
-//        [adict[day][[1] integerValue] / adict[day][0]];
-//        adict[day][2] = ;
-//        
-//    }
-//    
-//    return ;
-//    
-//}
+-(NSDictionary<NSString *, NSArray *> *) dayUploadStats {
+    NSMutableDictionary<NSString *, NSMutableArray *> *adict = [@{@"Monday" : [@[@0, @0, @0] mutableCopy], @"Tuesday" : [@[@0, @0, @0] mutableCopy], @"Wednesday" : [@[@0, @0, @0] mutableCopy], @"Thursday" : [@[@0, @0, @0] mutableCopy], @"Friday" : [@[@0, @0, @0] mutableCopy], @"Saturday" : [@[@0, @0, @0] mutableCopy], @"Sunday" : [@[@0, @0, @0] mutableCopy]} mutableCopy];
+    
+    
+    for (Photo *photo in self.currentUser.photos) {
+        NSString *day = [self formattedDate:photo.postDate];
+        NSMutableArray *dayArray = adict[day];
+        NSNumber *photoCount = dayArray[0];
+        NSNumber *photoLikes = dayArray[1];
+        adict[day][0] = [[NSNumber alloc]initWithInteger:[photoCount integerValue] + 1];
+        adict[day][1] = [[NSNumber alloc]initWithInteger:[photoLikes integerValue] + photo.likesNum];
+        
+        //
+        NSNumber *ratio = @([photoLikes floatValue] / [photoCount floatValue]);
+        adict[day][2] = ratio;
+        
+        
+    }
+    
+    NSLog(@"%@", adict);
+    
+    
+    
+    return [adict copy];
+    
+}
 
-//-(NSString *) formattedDate:(NSDate *)date {
-//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//    [dateFormatter setDateFormat:@"EEEE"];
-//    
-//    return [dateFormatter stringFromDate:date];
-//}
+-(NSString *) formattedDate:(NSDate *)date {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"EEEE"];
+    
+    return [dateFormatter stringFromDate:date];
+}
 
 @end

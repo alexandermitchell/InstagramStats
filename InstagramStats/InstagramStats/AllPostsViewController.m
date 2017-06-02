@@ -22,6 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.manager = [DataManager sharedManager];
+    
+    [self.manager dayUploadStats];
     // Do any additional setup after loading the view.
 }
 

@@ -37,6 +37,7 @@
 -(void)fetchUser:(InstagramUser *)user;
 -(void)fetchCurrentUser;
 //-(void) fetchRemoteUserDetails;
+-(NSDictionary<NSString *, NSArray *> *) dayUploadStats;
 
 
 #pragma mark - Class methods
