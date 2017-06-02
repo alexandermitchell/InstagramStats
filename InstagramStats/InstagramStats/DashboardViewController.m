@@ -101,6 +101,7 @@
         }];
         
     } else {
+        
         [self.manager fetchCurrentUser];
         
         self.profileImageView.image = [UIImage imageWithData:self.manager.currentUser.photos[3].image];
