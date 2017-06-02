@@ -91,14 +91,17 @@
 //    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0 green:54/255.0 blue:105/255.0 alpha:1.0]];
     
     self.manager = [DataManager sharedManager];
-     [self.manager.engine logout];
+    // [self.manager.engine logout];
 
     if (![self.manager.engine isSessionValid]) {
+        
     
         LoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Login"];
         loginVC.delegate = self;
         [self presentViewController:loginVC animated:YES completion:^{
         }];
+        
+        
         
     } else {
         
