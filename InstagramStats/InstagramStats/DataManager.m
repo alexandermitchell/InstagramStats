@@ -28,15 +28,6 @@
     return sharedMyManager;
 }
 
-//-(User *)currentUser {
-//    
-//    if (_currentUser == nil) {
-//        _currentUser = [[User alloc] initWithContext:self.persistentContainer.viewContext];
-//    }
-//    
-//    return _currentUser;
-//}
-
 @synthesize persistentContainer = _persistentContainer;
 
 -(NSPersistentContainer *)persistentContainer {
@@ -67,6 +58,28 @@
         abort();
     }
 }
+
+//-(void) fetchRemoteUserDetails {
+//    [[InstagramEngine sharedEngine] getSelfUserDetailsWithSuccess:^(InstagramUser * _Nonnull user) {
+//        
+//        //[manager saveUser:user];
+//        [self updateUser:user];
+//        NSLog(@"username: %@", user.username);
+//        
+//        [self.engine getMediaForUser: self.currentUser.userID withSuccess:^(NSArray<InstagramMedia *> * _Nonnull media, InstagramPaginationInfo * _Nonnull paginationInfo) {
+//            
+//            [self saveRemotePhotos:media withUser:self.currentUser];
+//            
+//            
+//        } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+//            NSLog(@"failed getting media call %@", error.localizedDescription);
+//        }];
+//        
+//    } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+//        
+//    }];
+//
+//}
 
 -(void)fetchUser:(InstagramUser *)user {
     
@@ -107,6 +120,19 @@
     NSLog(@"saved user");
 }
 
+-(void)updateUser:(InstagramUser *)user {
+    
+    self.currentUser.fullName = user.fullName;
+    self.currentUser.username = user.username;
+    self.currentUser.followersNum = (int32_t)user.followedByCount;
+    self.currentUser.followingNum = (int32_t)user.followsCount;
+    self.currentUser.userID = user.Id;
+    
+    [self saveContext];
+}
+
+
+
 -(void) savePhotos:(NSArray<InstagramMedia *>*)media withUser:(User *)user {
     
     user.photos = nil;
@@ -116,6 +142,17 @@
         
     }
 }
+
+//-(void) saveRemotePhotos:(NSArray<InstagramMedia *>*)media withUser:(User *)user {
+//    
+//    user.photos = nil;
+//    [self saveContext];
+//    for (InstagramMedia *photo in media) {
+//        [self saveMedia:photo withUser:user];
+//        
+//    }
+//    [self.delegate finishedFetchingUser];
+//}
 
 -(void) saveMedia:(InstagramMedia *)media withUser:(User *)user {
 
@@ -166,5 +203,33 @@
     return [self.persistentContainer.viewContext executeFetchRequest:request error:nil];
 
 }
+
+//-(NSDictionary<NSString *, NSArray *> *) dayUploadStats {
+//    NSMutableDictionary<NSString *, NSMutableArray *> *adict = [@{@"Monday" : [@[@0, @0, @0] mutableCopy], @"Tuesday" : [@[@0, @0, @0] mutableCopy], @"Wednesday" : [@[@0, @0, @0] mutableCopy], @"Thursday" : [@[@0, @0, @0] mutableCopy], @"Friday" : [@[@0, @0, @0] mutableCopy], @"Saturday" : [@[@0, @0, @0] mutableCopy], @"Sunday" : [@[@0, @0, @0] mutableCopy]} mutableCopy];
+//    
+//    
+//    for (Photo *photo in self.currentUser.photos) {
+//        NSString *day = [self formattedDate:photo.postDate];
+//        NSMutableArray *dayArray = adict[day];
+//        NSNumber *photoCount = dayArray[0];
+//        NSNumber *photoLikes = dayArray[1];
+//        adict[day][0] = [[NSNumber alloc]initWithInteger:[photoCount integerValue] + 1];
+//        adict[day][1] = [[NSNumber alloc]initWithInteger:[photoLikes integerValue] + photo.likesNum];
+//        NSNumber *ratio = [photoLikes floatValue] / [photoCount floatValue] ;
+//        [adict[day][[1] integerValue] / adict[day][0]];
+//        adict[day][2] = ;
+//        
+//    }
+//    
+//    return ;
+//    
+//}
+
+//-(NSString *) formattedDate:(NSDate *)date {
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//    [dateFormatter setDateFormat:@"EEEE"];
+//    
+//    return [dateFormatter stringFromDate:date];
+//}
 
 @end

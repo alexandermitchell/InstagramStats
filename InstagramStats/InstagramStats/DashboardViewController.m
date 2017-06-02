@@ -91,7 +91,8 @@
 //    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0 green:54/255.0 blue:105/255.0 alpha:1.0]];
     
     self.manager = [DataManager sharedManager];
-    // [self.manager.engine logout];
+    [self.manager.engine logout];
+    //self.manager.delegate = self;
 
     if (![self.manager.engine isSessionValid]) {
         
@@ -107,7 +108,7 @@
         
         [self.manager fetchCurrentUser];
         
-        self.profileImageView.image = [UIImage imageWithData:self.manager.currentUser.photos[3].image];
+        self.profileImageView.image = [UIImage imageWithData:self.manager.currentUser.photos[0].image];
         self.usernameLabel.text = self.manager.currentUser.username;
         [self setupButtonSubviews];
         
@@ -152,6 +153,7 @@
 //    GraphView *graphView = [[GraphView alloc] init];
 //    graphView.frame = self.graphView.bounds;
 //    [self.graphView addSubview: graphView];
+    
     
     NSMutableArray *likesArray = [NSMutableArray new];
     NSMutableArray *commentsArray = [NSMutableArray new];
@@ -306,7 +308,7 @@
     [self.graphView.layer addSublayer:shapelayer];
     
     shapelayer.strokeColor = color.CGColor;
-    shapelayer.lineWidth = 5.0;
+    shapelayer.lineWidth = 3.0;
     shapelayer.fillColor = [UIColor colorWithWhite:1 alpha:0].CGColor;
     
     shapelayer.strokeStart = 0.0;
@@ -370,6 +372,25 @@
         }
     }
     return [min doubleValue];
+}
+
+//- (IBAction)updateUserInfo:(UIBarButtonItem *)sender {
+//    
+//    [self.manager fetchRemoteUserDetails];
+//    
+//}
+
+
+-(void)finishedFetchingUser {
+    NSLog(@"got here");
+
+    self.usernameLabel.text = self.manager.currentUser.username;
+    
+    self.profileImageView.image = [UIImage imageWithData:self.manager.currentUser.photos[0].image];
+    [self setupGraphView];
+    [self setupButtonSubviews];
+    [self setupAnimatedBezierPaths];
+    [self.view setNeedsDisplay];
 }
 
 

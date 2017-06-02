@@ -12,11 +12,19 @@
 
 @import CoreData;
 
+//@protocol FetchUserProtocol
+//
+//-(void) finishedFetchingUser;
+//
+//@end
+
 @interface DataManager : NSObject
 
 @property (readonly, strong) NSPersistentContainer *persistentContainer;
 @property (nonatomic) User *currentUser;
 @property (nonatomic) InstagramEngine *engine;
+
+//@property (nonatomic) id<FetchUserProtocol> delegate;
 
 
 #pragma mark - Instance methods
@@ -28,6 +36,7 @@
 -(void) saveMedia:(InstagramMedia *)media withUser:(User *)user;
 -(void)fetchUser:(InstagramUser *)user;
 -(void)fetchCurrentUser;
+//-(void) fetchRemoteUserDetails;
 
 
 #pragma mark - Class methods
