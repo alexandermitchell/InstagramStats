@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Tlb-wH-Ey6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Tlb-wH-Ey6">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -273,7 +273,7 @@
                             <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                         <view key="titleView" contentMode="scaleToFill" id="e7t-Ms-Zxl">
-                            <rect key="frame" x="113" y="6" width="150" height="33"/>
+                            <rect key="frame" x="112.5" y="5.5" width="150" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mrT-m8-QlC">
@@ -357,7 +357,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Tlb-wH-Ey6" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="3oY-kH-2JU">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="3oY-kH-2JU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -413,22 +413,44 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hPq-EF-Smi">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Heart" translatesAutoresizingMaskIntoConstraints="NO" id="igu-kR-81t">
+                                <rect key="frame" x="16" y="30" width="16" height="13"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="16" id="HSD-uO-7YW"/>
+                                    <constraint firstAttribute="height" constant="13" id="SLa-8A-vhB"/>
+                                </constraints>
+                            </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Comment" translatesAutoresizingMaskIntoConstraints="NO" id="z2C-3L-chf">
+                                <rect key="frame" x="53" y="30" width="16" height="13"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="13" id="Kau-nP-yxt"/>
+                                    <constraint firstAttribute="width" constant="16" id="O3q-b7-KFg"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="hPq-EF-Smi" secondAttribute="trailing" id="10t-C7-I6H"/>
+                            <constraint firstItem="hPq-EF-Smi" firstAttribute="top" secondItem="igu-kR-81t" secondAttribute="bottom" constant="-43" id="CyM-zC-fkE"/>
+                            <constraint firstItem="z2C-3L-chf" firstAttribute="centerY" secondItem="igu-kR-81t" secondAttribute="centerY" id="HkE-uM-PQT"/>
                             <constraint firstItem="l3B-Sk-izU" firstAttribute="top" secondItem="hPq-EF-Smi" secondAttribute="bottom" id="KTi-t9-ugl"/>
                             <constraint firstItem="hPq-EF-Smi" firstAttribute="leading" secondItem="xRw-Sc-4C4" secondAttribute="leading" id="PUG-48-Uq0"/>
+                            <constraint firstItem="hPq-EF-Smi" firstAttribute="leading" secondItem="igu-kR-81t" secondAttribute="trailing" constant="-32" id="Rnb-Mn-W6L"/>
+                            <constraint firstItem="z2C-3L-chf" firstAttribute="leading" secondItem="igu-kR-81t" secondAttribute="trailing" constant="21" id="U0W-8d-aBp"/>
                             <constraint firstItem="hPq-EF-Smi" firstAttribute="top" secondItem="xRw-Sc-4C4" secondAttribute="top" id="YtB-t4-S6G"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="commentImage" destination="z2C-3L-chf" id="vgJ-KV-hCh"/>
+                        <outlet property="likeImage" destination="igu-kR-81t" id="9SP-Ed-0cx"/>
                         <outlet property="mapView" destination="hPq-EF-Smi" id="ghQ-ME-BK1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NwA-eA-71j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1105" y="1576"/>
+            <point key="canvasLocation" x="1104.8" y="1574.6626686656673"/>
         </scene>
     </scenes>
     <resources>

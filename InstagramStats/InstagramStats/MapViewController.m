@@ -19,6 +19,8 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic) DataManager *manager;
+@property (weak, nonatomic) IBOutlet UIImageView *likeImage;
+@property (weak, nonatomic) IBOutlet UIImageView *commentImage;
 
 @end
 
@@ -28,6 +30,13 @@
     [super viewDidLoad];
     self.manager = [DataManager sharedManager];
     self.mapView.delegate = self;
+    UITapGestureRecognizer *likeTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(maxLikeButtonTapped)];
+    
+    UITapGestureRecognizer *commentTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(maxCommentButtonTapped)];
+    
+    [self.likeImage addGestureRecognizer:likeTap];
+    
+    [self.commentImage addGestureRecognizer:commentTap];
     
     //create annotations and add them to the map.
     for (Photo *photo in self.manager.currentUser.photos) {
@@ -41,7 +50,7 @@
     }
     
   //    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(39.466666666667, -0.375);
-//    MKCoordinateSpan span = MKCoordinateSpanMake(12.5, 12.5);
+//    MKCoordinateSpan span = MKCoordinateSpanMake(2.5, 2.5);
 //    MKCoordinateRegion region = MKCoordinateRegionMake(center, span);
     //[self.mapView setRegion:region animated:YES];
     
@@ -49,6 +58,50 @@
 
 
 }
+
+- (void)maxLikeButtonTapped {
+    double latitude = self.manager.currentUser.photos[0].latitude;
+    double longitude = self.manager.currentUser.photos[0].longitude;
+    int likesNum = (int)self.manager.currentUser.photos[0].likesNum;
+    
+    for (Photo *photo in self.manager.currentUser.photos) {
+        if (photo.likesNum > likesNum) {
+            latitude = photo.latitude;
+            longitude = photo.longitude;
+            likesNum = (int)photo.likesNum;
+        }
+    }
+    
+    //find max comment photo in manager.photos
+        CLLocationCoordinate2D center = CLLocationCoordinate2DMake(latitude, longitude);
+        MKCoordinateSpan span = MKCoordinateSpanMake(2.5, 2.5);
+        MKCoordinateRegion region = MKCoordinateRegionMake(center, span);
+        [self.mapView setRegion:region animated:YES];
+    
+}
+
+- (void)maxCommentButtonTapped {
+    
+    double latitude = self.manager.currentUser.photos[0].latitude;
+    double longitude = self.manager.currentUser.photos[0].longitude;
+    int commentsNum = (int)self.manager.currentUser.photos[0].commentsNum;
+    
+    for (Photo *photo in self.manager.currentUser.photos) {
+        if (photo.commentsNum > commentsNum) {
+            latitude = photo.latitude;
+            longitude = photo.longitude;
+            commentsNum = (int)photo.commentsNum;
+        }
+    }
+    //find max comment photo in manager.photos
+        CLLocationCoordinate2D center = CLLocationCoordinate2DMake(latitude, longitude);
+        MKCoordinateSpan span = MKCoordinateSpanMake(2.5, 2.5);
+        MKCoordinateRegion region = MKCoordinateRegionMake(center, span);
+        [self.mapView setRegion:region animated:YES];
+    
+}
+
+#pragma mark - MapView Delegate Methods
 
 - (MKAnnotationView*)mapView:(MKMapView *)mapView
            viewForAnnotation:(id<MKAnnotation>)annotation
