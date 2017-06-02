@@ -12,7 +12,6 @@
 #import "Photo+CoreDataProperties.h"
 
 
-
 static UIColor *likesColor;
 static UIColor *commentsColor;
 
@@ -36,6 +35,8 @@ static UIColor *commentsColor;
     self.combineSlider.tintColor = [self getCombinedColor];
     self.combineSlider.continuous = NO;
     [self setupAnimatedEngagementCurve];
+    [self setupPunchCard];
+    [self setupHintosgram];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -112,7 +113,7 @@ static UIColor *commentsColor;
 -(void)setupAnimatedEngagementCurve {
 
     NSArray *combinedStats = [self getUserCombinedStats];
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(5, 5, self.engagementView.bounds.size.width, self.engagementView.bounds.size.height * 0.95)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(20, 5, self.engagementView.bounds.size.width, self.engagementView.bounds.size.height * 0.95)];
     UIBezierPath *bezierPath = [UIBezierPath bezierPathForDataset:combinedStats
                                                withPartitionWidth:view.bounds.size.width / (combinedStats.count + 1)
                                                         andHeight:view.frame.size.height];
@@ -124,7 +125,7 @@ static UIColor *commentsColor;
     [self.engagementView addSubview:view];
 
     shapelayer.strokeColor = [self getCombinedColor].CGColor;
-    shapelayer.lineWidth = 5.0;
+    shapelayer.lineWidth = 2.0;
     shapelayer.fillColor = [UIColor colorWithWhite:1 alpha:0].CGColor;
 
     shapelayer.strokeStart = 0.0;
@@ -153,7 +154,7 @@ static UIColor *commentsColor;
 -(NSArray *)getUserCommentStats {
 
     NSMutableArray *commentStats = [@[] mutableCopy];
-   // for (Photo *photo in self.user.photos) {
+//    for (Photo *photo in self.user.photos) {
 //        [commentStats addObject:@(photo.commentsNum)];
 //    }
     for (int i = 0; i < 20; i++) {
@@ -168,12 +169,18 @@ static UIColor *commentsColor;
                              withLambda:self.combineSlider.value];
 }
 
--(NSArray *)getFakeData {
-    NSMutableArray *fake = [@[] mutableCopy];
-    for (int i = 0; i < 20; i++) {
-        [fake addObject:@(arc4random_uniform(30) + 10)];
-    }
-    return [fake copy];
+
+#pragma mark - Punch Card methods
+
+
+-(void)setupPunchCard {
+}
+
+
+#pragma mark - Hintsogram methods
+
+
+-(void)setupHintosgram {
 }
 
 @end
