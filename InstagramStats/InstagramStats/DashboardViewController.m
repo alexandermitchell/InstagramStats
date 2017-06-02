@@ -91,7 +91,7 @@
 //    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0 green:54/255.0 blue:105/255.0 alpha:1.0]];
     
     self.manager = [DataManager sharedManager];
-     //[self.manager.engine logout];
+     [self.manager.engine logout];
 
     if (![self.manager.engine isSessionValid]) {
     
@@ -130,16 +130,16 @@
 
 
 -(void)loginDidSucceed {
-    [self dismissViewControllerAnimated:YES
-                             completion:nil];
     
-    self.usernameLabel.text = self.manager.currentUser.username;
-    
-    self.profileImageView.image = [UIImage imageWithData:self.manager.currentUser.photos[0].image];
-    [self setupGraphView];
-    [self setupButtonSubviews];
-    [self setupAnimatedBezierPaths];
-
+    [self dismissViewControllerAnimated:YES completion:^{
+        self.usernameLabel.text = self.manager.currentUser.username;
+        
+        self.profileImageView.image = [UIImage imageWithData:self.manager.currentUser.photos[0].image];
+        [self setupGraphView];
+        [self setupButtonSubviews];
+        [self setupAnimatedBezierPaths];
+    }];
+  
 }
 
 -(void) setupGraphView {
