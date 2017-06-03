@@ -13,10 +13,9 @@ following goals:
 1) Consume an API (We went with Instagram).
 2) Utilize a third party framework with Cocoa Pods (Instagram Kit).
 3) Persist our data (We used Core Data).
-4) Show a solid understanding what we learned about the iOS SDK - MapKit, UIKit, nav controllers, tableViews, passing data,
-Core Graphics, gesture recognizers and asynchronus network requests.
-5) Control the scope of the project so that we arrive at a MVP 24 hours prior to our presentation, allowing us to polish the UI
-as much as possible.
+4) Show a solid understanding of what we learned about the iOS SDK - MapKit, UIKit, nav controllers, tableViews, passing data,
+   Core Graphics, gesture recognizers and asynchronus network requests.
+5) Control the scope of the project so that we arrive at a MVP 24 hours prior to our presentation, allowing us to polish the      UI as much as possible.
 
 The Result:
 An Instagram Analytics Dashboard that accesses your Instagram statistics through their (heavily sandboxed) API. Then we displayed
