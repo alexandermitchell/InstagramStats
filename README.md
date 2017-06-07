@@ -7,7 +7,7 @@ Timeline:
 - We presented the app less than 6 days later on June 2nd at 2:00 PM.
 
 During our time in the iOS Immersive Bootcamp at Lighthouse Labs, Alex, Adam and I teamed up to test out the knowledge
-we gained throguh the first 4 weeks of the program. When we sat down to plan out this project, we came up with the
+we gained through the first 4 weeks of the program. When we sat down to plan out this project, we came up with the
 following goals:
 
 1) Consume an API (We went with Instagram).
