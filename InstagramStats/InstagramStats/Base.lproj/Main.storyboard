@@ -393,13 +393,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fsP-4i-Umy">
-                                <rect key="frame" x="0.0" y="28" width="375" height="639"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fsP-4i-Umy">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="fsP-4i-Umy" secondAttribute="trailing" id="K5K-vJ-2MB"/>
+                            <constraint firstItem="fsP-4i-Umy" firstAttribute="top" secondItem="e9k-O7-ksf" secondAttribute="bottom" id="eUo-aG-Orf"/>
+                            <constraint firstItem="fsP-4i-Umy" firstAttribute="leading" secondItem="cqF-WM-Lmi" secondAttribute="leading" id="lie-lN-SXU"/>
+                            <constraint firstItem="hzd-Iv-3iK" firstAttribute="top" secondItem="fsP-4i-Umy" secondAttribute="bottom" id="qmb-Sv-HWw"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="webView" destination="fsP-4i-Umy" id="iHi-QT-CrJ"/>
