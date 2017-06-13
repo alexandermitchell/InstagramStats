@@ -23,8 +23,7 @@ information in a visually pleasing way, allowing users to compare likes and comm
 the photos were taken.
 
 Moving forward:
-- finish tweaking initial network call
-- update Autolayout constraints
+- fix bug where sometimes front image doesn't load on initial login (works every time afterwards)
 - add refresh function with progress wheel / icon to wait for the network
 - get approval to move off of sandbox if we want to implement further statistics
 
