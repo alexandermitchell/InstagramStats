@@ -66,11 +66,15 @@
     
     //set likeprogressbar (totalcomments / max comments)
     self.likesProgress.progress = ((float)self.displayPhoto.likesNum / [self.maxLike.text floatValue]);
-    
-    [UIView animateWithDuration:2.0 animations:^{
+    [UIView animateWithDuration:2.0 delay:1.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+//        self.likesProgress.progress = ((float)self.displayPhoto.likesNum / [self.maxLike.text floatValue]);
         [self.likesProgress layoutIfNeeded];
-        
-    }];
+    } completion:nil];
+    
+//    [UIView animateWithDuration:2.0 animations:^{
+//        [self.likesProgress layoutIfNeeded];
+//        
+//    }];
     
     //set commentprogressbar (totalLikes / maxLikes)
     self.commentsProgress.progress = ((float)self.displayPhoto.commentsNum / [self.maxComment.text floatValue]);
